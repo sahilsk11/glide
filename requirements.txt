@@ -1,7 +1,11 @@
+certifi==2020.12.5
 cffi==1.14.4
 chardet==4.0.0
 cryptography==3.3.1
+idna==2.10
 pdfminer.six==20201018
 pycparser==2.20
+requests==2.25.1
 six==1.15.0
 sortedcontainers==2.3.0
+urllib3==1.26.2

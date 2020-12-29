@@ -1,12 +1,13 @@
 from io import StringIO
-import json
-
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
+import requests
+import json
+
 
 def resume_to_str(filename):
   output_string = StringIO()
@@ -20,24 +21,12 @@ def resume_to_str(filename):
           interpreter.process_page(page)
   return output_string.getvalue()
 
-def calculate_points(cleaned_text):
-  f = open("points.json")
-  data = json.load(f)
-  points = 0
-  for key in data:
-    if cleaned_text.find(key) > 0:
-      points += data[key]
-  return points
+def get_cleaned_resume_text(filename):
+  raw_text = resume_to_str(filename)
+  cleaned_text = raw_text.replace("\n\n", "")
+  return cleaned_text.lower()
 
-def interpret_points(points):
-  if points < 10:
-    return "no internship for you"
-  elif points < 20:
-    return "aight, you got hope"
-  return "you in homie"
-
-raw_text = resume_to_str('sahil_kapur_resume.pdf')
-cleaned_text = raw_text.replace("\n\n", "")
-cleaned_text = cleaned_text.lower()
-points = calculate_points(cleaned_text)
-print(interpret_points(points), "("+str(points)+" points)")
+def resume_to_dict(filename):
+  resume = open(filename, "rb")
+  r = requests.post('https://jobs.lever.co/parseResume', files=dict(resume=resume))
+  return r.json()

@@ -1,0 +1,147 @@
+{
+  "createdAt": 1609235786406,
+  "lastStoryAt": 1609235786406,
+  "names": [
+    "Sahil Kapur"
+  ],
+  "links": [
+    {
+      "path": null,
+      "domain": "symops.com",
+      "url": "https://symops.com"
+    },
+    {
+      "path": null,
+      "domain": "sahilkapur.com",
+      "url": "sahilkapur.com"
+    }
+  ],
+  "summary": {
+    "experience": "Sahil Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Sales (mostly General). Sahil Kapur has 6 years of work experience, with 5 years of management experience, including a high-level position.",
+    "management": "Current position is a executive-level management role: President\r\nStarting on 1/1/2020, the candidate held the following executive-level management position for 12 months:\r\n\tTitle: President for Delta Mu Kappa\r\nStarting on 1/1/2015, the candidate held the following low-level management position for 4 years:\r\n\tTitle: Golf Coach for First Tee",
+    "workTime": {
+      "months": 77,
+      "years": 6
+    },
+    "managementTime": {
+      "months": 60,
+      "years": 5
+    }
+  },
+  "positions": [
+    {
+      "title": "Freelance Web Developer",
+      "org": "Sym",
+      "summary": "Minor\r\n\n\n\u2022 Collaborated with engineering team to rebuild company\tGraduation: May 2022\r\nwebsite in React (https://symops.com)\tGPA: 3.71",
+      "start": {
+        "year": 2020,
+        "month": 1,
+        "timestamp": 1577865600000
+      },
+      "isCurrent": true
+    },
+    {
+      "title": "Software Engr Intern",
+      "org": "HeadSpin",
+      "summary": "Harker High School\r\n\n\n\u2022 Architected and built SWAT (sales weekly app tracker)\tSocieties: Varsity Golf, Red Cross,\r\nusing React.js, Node.js, Python, and SQL\tDECA\r\nGPA: 3.98\r\n\n\n\u2022 SWAT dashboard aggregates worldwide usage data of major mobile apps into actionable visualizations for\t.involvement.\r\nsales/marketing to drive leads",
+      "start": {
+        "year": 2020,
+        "month": 1,
+        "timestamp": 1577865600000
+      },
+      "isCurrent": true
+    },
+    {
+      "title": "President",
+      "org": "Delta Mu Kappa",
+      "start": {
+        "year": 2020,
+        "month": 1,
+        "timestamp": 1577865600000
+      },
+      "isCurrent": true
+    },
+    {
+      "title": "Intent-based voice assistant",
+      "org": "Ultron",
+      "summary": "schoolers to find unique\r\n\n\n\u2022 Developed cloud-based Node.js system that controls\tvolunteering events\r\nlights, tracks workouts, and automates a majority of my\t\n\n\u2022 Developed in MIT incubator",
+      "start": {
+        "year": 2020,
+        "month": 1,
+        "timestamp": 1577865600000
+      },
+      "isCurrent": true
+    },
+    {
+      "title": "Software Engr Intern",
+      "org": "Prudential Financial",
+      "summary": "\n\n\u2022 Lead planning/development of\r\n\n\n\u2022 Implemented microservice monitoring application\tPurdue's co-ed entrepreneurship\r\n\n\n\u2022 Tracks health metrics/downtime of 800 API services and\tfraternity (50+ members)\r\nupdates health on live status page\t\n\n\u2022 Focused on building community of makers in the Midwest\r\n\r\n.notable projects.\tMIT Launch   Participant\r\n\n\n\u2022 Created platform for high",
+      "start": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      },
+      "end": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      }
+    },
+    {
+      "org": "Cratus",
+      "summary": ".skills.\r\n\n\n\u2022 Created and deployed AWS production-ready API\tLanguages: JavaScript, Java,\r\nendpoints written in Golang, Node.js, Python, and Java\tC/C++, Python3, Golang, SQL\r\n\n\n\u2022 Developed analysis system to measure execution speed,\tFrameworks: React, Express, Node,\r\nmemory usage, and scalability of endpoints in each\tFlask, Spring boot, MongoDB,\r\nlanguage\tMySQL\r\n\n\n\u2022 Automated verbose test reports for performance\tTechnologies: AWS, bash, git,\r\ncomparison of each endpoint\tApache, Docker, Nginx, Gunicorn,\r\nGoogle Cloud, REST APIs",
+      "start": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      },
+      "end": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      }
+    },
+    {
+      "org": "ThinkTwice",
+      "summary": "Other: Data structures, Figma, Linux\r\n\n\n\u2022 JS-based web app for users to view philanthropic\tOS, NLP, Raspberry Pi\r\nalternatives to blowing cash\r\n\n\n\u2022 Received 3rd place Product of the Day on Product Hunt\r\nwith over 8,000 pageviews in 2 days",
+      "start": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      },
+      "end": {
+        "year": 2019,
+        "month": 1,
+        "timestamp": 1546329600000
+      }
+    },
+    {
+      "title": "Golf Coach",
+      "org": "First Tee",
+      "summary": "\n\n\u2022 Built customized NLP service to parse intents\tShare my love of the game with\r\n\n\n\u2022 Service runs on Siri, Alexa, Google, and uses React.js for   economically and culturally diverse\r\nweb interface\tgrade-school students",
+      "start": {
+        "year": 2015,
+        "month": 1,
+        "timestamp": 1420099200000
+      },
+      "end": {
+        "year": 2018,
+        "month": 1,
+        "timestamp": 1514793600000
+      }
+    }
+  ],
+  "schools": [
+    {
+      "org": "Purdue University",
+      "degree": "B.S.",
+      "field": "Computer Science",
+      "end": {
+        "year": 2021,
+        "month": 1,
+        "timestamp": 1609488000000
+      },
+      "summary": "Amazon   Incoming Software Engr Intern (2021)\tPurdue University\r\nB.S. Computer Science, Economics"
+    }
+  ]
+}
