@@ -17,7 +17,12 @@ source env/bin/activate
 ```
 Then, execute the main file in the src directory:
 ```
+cd src/
 python3 main.py
+```
+or
+```
+python3 src/main.py
 ```
 Deactivate the virtual environment when finished:
 ```
