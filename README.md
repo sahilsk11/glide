@@ -11,10 +11,15 @@ deactivate
 
 ## Usage
 
-To activate the virtual environment, run:
+To activate the virtual environment, run the following from the root directory:
 ```
 source env/bin/activate
-cd src
+```
+Then, execute the main file in the src directory:
+```
 python3 main.py
+```
+Deactivate the virtual environment when finished:
+```
 deactivate
 ```
