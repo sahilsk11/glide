@@ -1,63 +1,27 @@
-import React, { useMemo } from 'react'
-import "./dropzone.css";
-import { useDropzone } from 'react-dropzone'
-const baseStyle = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out'
-};
+import 'react-dropzone-uploader/dist/styles.css'
+import Dropzone from 'react-dropzone-uploader'
 
-const activeStyle = {
-  borderColor: '#2196f3'
-};
+export default function FileDropzone() {
+  // specify upload params and url for your files
+  const simlateProd = false;
+  const endpoint = (simlateProd ? "" : "http://localhost:5000") + "/postResume"
+  const getUploadParams = ({ meta }) => { return { url: endpoint } }
 
-const acceptStyle = {
-  borderColor: '#00e676'
-};
+  // called every time a file's `status` changes
+  const handleChangeStatus = ({ meta, file }, status) => { console.log(status, meta, file) }
 
-const rejectStyle = {
-  borderColor: '#ff1744'
-};
-
-export default function Dropzone(props) {
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({ 
-    accept: '.pdf',
-    maxFiles: 1
-   });
-
-  const style = useMemo(() => ({
-    ...baseStyle,
-    ...(isDragActive ? activeStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isDragActive,
-    isDragReject,
-    isDragAccept
-  ]);
+  // receives array of files that are done uploading when submit button is clicked
+  const handleSubmit = (files, allFiles) => {
+    console.log(files.map(f => f.meta))
+    allFiles.forEach(f => f.remove())
+  }
 
   return (
-    <div className="container">
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
-    </div>
-  );
+    <Dropzone
+      getUploadParams={getUploadParams}
+      onChangeStatus={handleChangeStatus}
+      onSubmit={handleSubmit}
+      accept="*"
+    />
+  )
 }
