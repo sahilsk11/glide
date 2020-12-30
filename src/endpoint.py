@@ -10,6 +10,7 @@ def healthcheck():
 def accept_resume():
   if authenticate(flask.request.json):
     # save resume as file
+    print(flask.request.files)
     # parse resume and get results
     return flask.jsonify({"success": True})
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
