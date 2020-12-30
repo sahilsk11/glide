@@ -4,6 +4,7 @@
 
 On Linux machines, run the following in the root directory:
 ```
+python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 deactivate
