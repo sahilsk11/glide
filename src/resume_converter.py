@@ -9,9 +9,9 @@ import requests
 import json
 
 
-def resume_to_str(filename):
+def resume_to_str(filename, path="saved-resumes/"):
   output_string = StringIO()
-  with open(filename, 'rb') as in_file:
+  with open(path+filename, 'rb') as in_file:
       parser = PDFParser(in_file)
       doc = PDFDocument(parser)
       rsrcmgr = PDFResourceManager()
@@ -26,7 +26,7 @@ def get_cleaned_resume_text(filename):
   cleaned_text = raw_text.replace("\n\n", "")
   return cleaned_text.lower()
 
-def resume_to_dict(filename):
-  resume = open(filename, "rb")
+def resume_to_dict(filename, path="saved-resumes/"):
+  resume = open(path+filename, "rb")
   r = requests.post('https://jobs.lever.co/parseResume', files=dict(resume=resume))
   return r.json()

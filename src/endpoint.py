@@ -1,5 +1,6 @@
 import flask
 import os
+import resume_converter
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -16,8 +17,15 @@ def accept_resume():
     print(flask.request.files)
     file = flask.request.files['file']
     file.save(os.path.join("saved-resumes/",file.filename))
-    # parse resume and get results
     return flask.jsonify({"success": True})
+  return flask.jsonify({"code": 403, "message": "Invalid credentials"})
+
+@app.route("/getResumeDetails", methods=['GET'])
+def parse_resume():
+  if authenticate(flask.request.json):
+    filename = flask.request.args.get('filename')
+    parsed_resume = resume_converter.resume_to_dict(filename)
+    return flask.jsonify(parsed_resume)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
 def authenticate(data):
