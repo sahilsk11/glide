@@ -1,4 +1,5 @@
 from resume_converter import get_cleaned_resume_text, resume_to_dict
+import json 
 
 def calculate_points(cleaned_text):
   f = open("points.json")
