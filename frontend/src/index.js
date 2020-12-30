@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import "./index.css";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-//component imports
-import Dropzone from "./Dropzone/Dropzone";
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-function App() {
-  const [appState, updateAppState] = useState("landing");
-  const [filename, updateFilename] = useState("");
-  const [pageData, updatePageData] = useState({});
-  useEffect(() => {
-    if (appState === "submitted") {
-      console.log(filename);
-      const endpoint = "http://localhost:5000/getResumeDetails?filename=" + filename;
-      fetch(endpoint)
-        .then(response => response.json())
-        .then(data => {
-          updatePageData(data)
-          updateAppState("results")
-        });
-      updateAppState("loading");
-    }
-  }, [appState]);
-  if (appState == "landing") {
-    return (
-      <div className="dropzone-container">
-        <Dropzone updateAppState={updateAppState} updateFilename={updateFilename} />
-      </div>
-    );
-  } else if (appState === "loading") {
-    return <>loading</>;
-  } else if (appState === "results") {
-    return <>{JSON.stringify(pageData)}</>;
-  } else {
-    return <>fuck</>;
-  }
-}
+//import './App.css';
+import './assets/scss/style.scss';
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router history={history}>
     <App />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
