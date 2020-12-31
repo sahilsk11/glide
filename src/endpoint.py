@@ -24,7 +24,11 @@ def accept_resume():
 def parse_resume():
   if authenticate(flask.request.json):
     filename = flask.request.args.get('filename')
-    parsed_resume = resume_converter.resume_to_dict(filename)
+
+    #
+    # resume_data = saaniya.parse_resume(filename)
+    #
+
     return flask.jsonify(parsed_resume)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
