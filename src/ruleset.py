@@ -9,7 +9,7 @@ that will be sent as JSON to frontend
 def scan_resume(filename):
     missing_elements = checklist(filename)
     return {
-        "missingElements": []
+        "missingElements": missing_elements
     }
 
 def checklist(filename):
