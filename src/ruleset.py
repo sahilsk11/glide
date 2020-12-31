@@ -4,7 +4,6 @@ import json
 def checklist(filename):
     flag = 0
     d = resume_to_dict(filename, path="saved-resumes/")
-    #d = json.loads(j)
 
     if d.get("names") == None:
         print("You are missing your name!")                     #checks name
@@ -29,22 +28,19 @@ def checklist(filename):
 
     for time in d["positions"]:                                 #checks dates 
         if time.get("isCurrent") != None:
-            for begin in time["start"]:
-                if begin.get("year") == None:
-                    print("You are missing a start date year")
-                if begin.get("month") == None:
+            if time.get("start").get("year") == None:
+                print("You are missing a start date year")
+            if time.get("start").get("month") == None:
                     print("You are missing a start date month")
         else:
-            for block in time["start"]:
-                if block.get("year") == None:
-                    print("You are missing a start date year")
-                if block.get("month") == None:
-                    print("You are missing a start date month")
-            for end in time["end"]:
-                if end.get("year") == None:
-                    print("You are missing an end date year")
-                if end.get("month") == None:
-                    print("You are missing an end date month")
+            if time.get("start").get("year") == None:
+                print("You are missing a start date year")
+            if time.get("start").get("month") == None:
+                print("You are missing a start date month")
+            if time.get("end").get("year") == None:
+                print("You are missing an end date year")
+            if time.get("end").get("year") == None:
+                print("You are missing an end date month")
 
 
 
