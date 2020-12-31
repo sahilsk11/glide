@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import "./index.css";
+import "./file-manager.css";
 
 //component imports
 import Dropzone from "./Dropzone/Dropzone";
@@ -33,7 +33,7 @@ function App() {
   } else if (appState === "results") {
     return <>{JSON.stringify(pageData)}</>;
   } else {
-    return <>fuck</>;
+    return <>.</>;
   }
 }
 
