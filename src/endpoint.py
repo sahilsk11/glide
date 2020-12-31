@@ -29,7 +29,7 @@ def parse_resume():
     # resume_data = saaniya.parse_resume(filename)
     #
 
-    return flask.jsonify(parsed_resume)
+    return flask.jsonify({})
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
 def authenticate(data):
