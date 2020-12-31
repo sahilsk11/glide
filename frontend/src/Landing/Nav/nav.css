@@ -1,0 +1,42 @@
+.nav {
+  position: relative;
+  width: 90%;
+  margin: 0px auto;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.nav-email-signup-wrapper {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-form-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-email-input {
+  margin-right: 10px;
+  height: 34px;
+  width: 240px;
+  border: none;
+  background: rgba(241, 245, 248, 1);
+  border-radius: 4px;
+  outline: none;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.nav-email-btn {
+  background: rgba(0, 118, 241, 1);
+  border-radius: 4px;
+  color: rgba(253, 253, 253, 1);
+  height: 36px;
+  width: 160px;
+  font-size: 14px;
+  border: none;
+}

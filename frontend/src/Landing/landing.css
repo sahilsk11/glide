@@ -1,0 +1,31 @@
+.landing-text-container {
+  padding-top: 40px;
+  text-align: center;
+  width: 600px;
+  margin: 0px auto;
+}
+
+.landing-subtext {
+  max-width: 78%;
+  margin-top: 0px;
+  padding-top: 0px;
+  margin: 0px auto;
+  font-size: 14px;
+  color: rgba(120, 120, 120, 1)
+}
+
+.landing-dropzone-wrapper {
+  margin: 0px auto;
+  margin-top: 70px;
+  max-width: 700px;
+}
+
+.landing-value-props-wrapper {
+  margin-top: 100px;
+}
+
+.landing-value-props-container {
+  margin: 0px auto;
+  width: 550px;
+  color: rgba(120, 120, 120, 1)
+}

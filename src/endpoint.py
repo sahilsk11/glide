@@ -1,6 +1,6 @@
 import flask
 import os
-import resume_converter
+import ruleset
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -24,12 +24,8 @@ def accept_resume():
 def parse_resume():
   if authenticate(flask.request.json):
     filename = flask.request.args.get('filename')
-
-    #
-    # resume_data = saaniya.parse_resume(filename)
-    #
-
-    return flask.jsonify({})
+    scanned_data = ruleset.scan_resume(filename)
+    return flask.jsonify(scanned_data)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
 def authenticate(data):
