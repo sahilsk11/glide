@@ -27,7 +27,7 @@
   background: rgba(241, 245, 248, 1);
   border-radius: 4px;
   outline: none;
-  padding-left: 10px;
+  padding-left: 13px;
   font-size: 14px;
 }
 
@@ -36,7 +36,9 @@
   border-radius: 4px;
   color: rgba(253, 253, 253, 1);
   height: 36px;
-  width: 160px;
-  font-size: 14px;
+  width: 170px;
+  font-size: 13px;
   border: none;
+  padding-bottom: 2px;
+  font-family: 'Inter', sans-serif;
 }

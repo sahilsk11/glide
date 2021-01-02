@@ -3,15 +3,22 @@
   text-align: center;
   width: 600px;
   margin: 0px auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.landing-text-title {
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 15px;
 }
 
 .landing-subtext {
-  max-width: 78%;
+  max-width: 500px;
   margin-top: 0px;
   padding-top: 0px;
   margin: 0px auto;
   font-size: 14px;
-  color: rgba(120, 120, 120, 1)
+  color:rgba(158, 157, 173, 1);
 }
 
 .landing-dropzone-wrapper {
