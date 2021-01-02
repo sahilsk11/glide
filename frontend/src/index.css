@@ -18,3 +18,21 @@ body {
 .page-content {
   margin-bottom: 100px;
 }
+
+.loading-screen-container {
+  display: block;
+  margin-top: 17vh;
+}
+
+.loading-gif {
+  display: block;
+  margin: 0px auto;
+  width: 100px;
+}
+
+.loading-screen-text {
+  text-align: center;
+  padding-top: 0px;
+  margin-top: 0px;
+  font-family: 'Inter', sans-serif;
+}

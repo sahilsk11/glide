@@ -1,6 +1,7 @@
 import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader';
+import Dropzone, { getFilesFromEvent } from 'react-dropzone-uploader';
 import "./dropzone.css";
+import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 
 export default function FileDropzone({ updateAppState, updateFilename }) {
   // specify upload params and url for your files
@@ -23,6 +24,14 @@ export default function FileDropzone({ updateAppState, updateFilename }) {
     updateAppState("submitted");
   }
 
+  const getFilesFromEvent = e => {
+    return new Promise(resolve => {
+      getDroppedOrSelectedFiles(e).then(chosenFiles => {
+        resolve(chosenFiles.map(f => f.fileObject))
+      })
+    })
+  }
+
   return (
     <Dropzone
       getUploadParams={getUploadParams}
@@ -31,6 +40,7 @@ export default function FileDropzone({ updateAppState, updateFilename }) {
       accept=".pdf,.doc,.docx"
       maxFiles={1}
       InputComponent={Input}
+      getFilesFromEvent={getFilesFromEvent}
     />
   )
 }
