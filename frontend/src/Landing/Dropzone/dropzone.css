@@ -3,3 +3,26 @@
   flex-direction: column;
   font-family: sans-serif;
 }
+
+.dzu-dropzone {
+  border-color: #0076F1;
+  border-style: dashed;
+  border-radius: 12px;
+  height: 290px;
+  background-color: #E9F4FE;
+}
+
+.dropzone-input {
+  margin-top: 20px;
+}
+
+.dropzone-img {
+  margin: 0px auto;
+  display: block;
+  width: 150px;
+}
+
+.dropzone-input-text {
+  margin-top: 30px;
+  color: #83868c;
+}

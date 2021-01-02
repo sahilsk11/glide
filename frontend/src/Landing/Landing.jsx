@@ -3,7 +3,7 @@ import "./landing.css";
 
 import Nav from "./Nav/Nav";
 import FileDropzone from "./Dropzone/Dropzone";
-import Footer from "./Footer/Footer";
+import Footer from "../Footer/Footer";
 
 export default function Landing({ updateAppState, updateFilename }) {
   return (
@@ -16,7 +16,6 @@ export default function Landing({ updateAppState, updateFilename }) {
       <div className="landing-value-props-wrapper">
         <ValueProps />
       </div>
-      <Footer />
     </>
   );
 }

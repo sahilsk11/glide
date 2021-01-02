@@ -4,6 +4,7 @@ import "./index.css";
 
 //component imports
 import Landing from "./Landing/Landing";
+import Footer from "./Footer/Footer";
 
 function App() {
   const [appState, updateAppState] = useState("landing");
@@ -22,15 +23,35 @@ function App() {
       updateAppState("loading");
     }
   }, [appState]);
+  let pageContent;
   if (appState == "landing") {
-    return <Landing updateAppState={updateAppState} updateFilename={updateFilename} />;
+    pageContent = <Landing updateAppState={updateAppState} updateFilename={updateFilename} />;
   } else if (appState === "loading") {
-    return <>loading</>;
+    pageContent = <>loading</>;
   } else if (appState === "results") {
-    return <>{JSON.stringify(pageData)}</>;
+    pageContent = <>{JSON.stringify(pageData)}</>;
   } else {
-    return <>.</>;
+    pageContent = <>.</>;
   }
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet" />
+      <BackgroundWave />
+      <div className="page-content">
+        {pageContent}
+      </div>
+      <Footer />
+    </>
+  )
+}
+
+function BackgroundWave() {
+  return (
+    <div className="background-wave-container">
+      <img src="./img/wave-vector.svg" className="background-wave" />
+    </div>
+  )
 }
 
 ReactDOM.render(
