@@ -19,41 +19,41 @@ def checklist(filename):
     d = resume_to_dict(filename, path="saved-resumes/")
 
     if d.get("names") == None:
-        elements.append("Name")                     #checks name
+        elements.append("name")                     #checks name
     
     if d.get("emails") == None:
-        elements.append("Email")                    #checks email
+        elements.append("email")                    #checks email
     
     if d.get("phones") == None:
-        elements.append("Phone Number")             #checks phone number
+        elements.append("phoneNumber")             #checks phone number
     
     for add in d["links"]:
         if add.get("domain") == "linkedin.com":
             flag = flag + 1
     if flag == 0:
-        elements.append("Linkedin")            #checks linkedin account 
+        elements.append("linkedin")            #checks linkedin account 
 
     for edu in d["schools"]:
         if edu.get("degree") == None:
-            elements.append("Degree")               #checks degree
+            elements.append("degree")               #checks degree
         if edu.get("gpa") == None:
-            elements.append("GPA")                  #checks GPA
+            elements.append("gpa")                  #checks GPA
 
     for time in d["positions"]:                                 #checks dates 
         if time.get("isCurrent") != None:
             if time.get("start").get("year") == None:
-                elements.append("Start Year")
+                elements.append("startYear")
             if time.get("start").get("month") == None:
-                elements.append("Start Month")
+                elements.append("startMonth")
         else:
             if time.get("start").get("year") == None:
-                elements.append("Start Year")
+                elements.append("startYear")
             if time.get("start").get("month") == None:
-                elements.append("Start Month")
+                elements.append("startMonth")
             if time.get("end").get("year") == None:
-                elements.append("End Year")
+                elements.append("endYear")
             if time.get("end").get("month") == None:
-                elements.append("End Month")
+                elements.append("endMonth")
     
     return elements
 
