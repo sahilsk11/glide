@@ -1,11 +1,20 @@
 from resume_converter import resume_to_dict
 import json
+import PyPDF2
 
 """
 Top level function that will be called from API endpoint.
 Performs all checks on resume and returns a single dictionary
 that will be sent as JSON to frontend
 """
+def resume_format(filename):
+    try:
+        PyPDF2.PdfFileReader(open("saved-resumes/"+ filename, "rb"))
+    except PyPDF2.utils.PdfReadError:
+        print("invalid PDF file")
+    else:
+        return True
+    
 def scan_resume(filename):
     missing_elements = checklist(filename)
     return {
@@ -56,6 +65,9 @@ def checklist(filename):
                 elements.append("endMonth")
     
     return elements
+
+
+
 
 
 
