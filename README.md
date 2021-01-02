@@ -10,6 +10,8 @@ pip install -r requirements.txt
 deactivate
 ```
 
+##### Note that the backend uses Popper as a Python system dependency for [pdf2imagine](https://pypi.org/project/pdf2image/).
+
 ## Usage
 
 To activate the virtual environment, run the following from the root directory:
