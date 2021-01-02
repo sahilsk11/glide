@@ -20,9 +20,21 @@ def scannable(filename):
     
 def scan_resume(filename):
     missing_elements = checklist(filename)
+    is_pdf = is_resume_pdf(filename)
+    is_scannable = False
+    points = calculate_points(missing_elemnts, is_pdf, is_scannable)
     return {
-        "missingElements": missing_elements
+        "missingElements": missing_elements,
+        "isFilePDF": is_pdf
     }
+
+def calculate_points(missing_elements, is_pdf):
+    points = 100
+    points -= len(missing_elements)
+    if not is_pdf:
+        points -= 5
+    return points
+
 
 def checklist(filename):
     flag = 0
