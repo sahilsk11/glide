@@ -7,13 +7,16 @@ Top level function that will be called from API endpoint.
 Performs all checks on resume and returns a single dictionary
 that will be sent as JSON to frontend
 """
-def resume_format(filename):
+def is_resume_pdf(filename):
     try:
         PyPDF2.PdfFileReader(open("saved-resumes/"+ filename, "rb"))
     except PyPDF2.utils.PdfReadError:
-        print("invalid PDF file")
+        return False
     else:
         return True
+
+def scannable(filename):
+
     
 def scan_resume(filename):
     missing_elements = checklist(filename)
