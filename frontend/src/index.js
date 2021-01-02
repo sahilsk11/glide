@@ -25,9 +25,16 @@ function App() {
   }, [appState]);
   let pageContent;
   if (appState == "landing") {
-    pageContent = <Landing updateAppState={updateAppState} updateFilename={updateFilename} />;
+    pageContent = (
+      <>
+        <Landing
+          updateAppState={updateAppState}
+          updateFilename={updateFilename} />
+        <Footer />
+      </>
+    );
   } else if (appState === "loading") {
-    pageContent = <>loading</>;
+    pageContent = <LoadingScreen />
   } else if (appState === "results") {
     pageContent = <>{JSON.stringify(pageData)}</>;
   } else {
@@ -41,7 +48,7 @@ function App() {
       <div className="page-content">
         {pageContent}
       </div>
-      <Footer />
+
     </>
   )
 }
@@ -52,6 +59,15 @@ function BackgroundWave() {
       <img src="./img/wave-vector.svg" className="background-wave" />
     </div>
   )
+}
+
+function LoadingScreen() {
+  return (
+    <div className="loading-screen-container">
+      <img src="./img/loading.gif" className="loading-gif" />
+      <p className="loading-screen-text">Finding you a FAANG offer...</p>
+    </div>
+  );
 }
 
 ReactDOM.render(
