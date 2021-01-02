@@ -1,0 +1,37 @@
+.report-container {
+  width: 85%;
+  margin: 0px auto;
+  border: 1px solid red;
+}
+
+.report-summary-container {
+  border: 1px solid #DCDCDC;
+  width: 100%;
+  min-height: 60px;
+  background-color: #FCFCFD;
+  display: flex;
+  position: relative;
+}
+
+.report-graph-wrapper {
+  height: 100%;
+  width: 200px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.report-label {
+  width: 150px;
+  height: 35px;
+  background-color: #F7E8D2;
+  color: #F2A73B;
+  border-radius: 30px;
+  display: block;
+  margin: 0px auto;
+}
+
+.report-label-text {
+  text-align: center;
+  padding-top: 8px;
+  font-weight: 500;
+}
