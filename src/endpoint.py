@@ -34,10 +34,9 @@ def authenticate(data):
   return True
 
 def pdf_to_png(filename):
-  if __name__ == '__main__':
-    input1 = PyPDF2.PdfFileReader(open(filename, "rb"))
-    page0 = input1.getPage(0)
-    xObject = page0['/Resources']['/XObject'].getObject()
+    input1 = PyPDF2.PdfFileReader(open("saved-resumes/"+ filename, "rb"))
+    #page0 = input1.getPage(0)
+    #xObject = page0['/Resources']['/XObject'].getObject()
 
     for obj in xObject:
       if xObject[obj]['/Filter'] == '/DCTDecode':
