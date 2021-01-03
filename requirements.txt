@@ -9,6 +9,7 @@ idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
+pdf2image==1.14.0
 pdfminer.six==20201018
 Pillow==8.0.1
 pycparser==2.20
