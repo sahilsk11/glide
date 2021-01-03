@@ -1,7 +1,22 @@
 .report-container {
   width: 85%;
   margin: 0px auto;
-  border: 1px solid red;
+  margin-top: 90px;
+}
+
+.report-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0px;
+  font-size: 27px;
+}
+
+.report-subtitle {
+  color: rgba(158, 157, 173, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 16px;
 }
 
 .report-summary-container {
@@ -18,10 +33,11 @@
   width: 200px;
   padding-top: 30px;
   padding-bottom: 30px;
+  padding-left: 20px;
 }
 
 .report-label {
-  width: 150px;
+  min-width: 100px;
   height: 35px;
   background-color: #F7E8D2;
   color: #F2A73B;
@@ -33,5 +49,6 @@
 .report-label-text {
   text-align: center;
   padding-top: 8px;
+  font-size: 14px;
   font-weight: 500;
 }
