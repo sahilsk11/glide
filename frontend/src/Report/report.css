@@ -26,6 +26,7 @@
   background-color: #FCFCFD;
   display: flex;
   position: relative;
+  
 }
 
 .report-graph-wrapper {
@@ -52,3 +53,4 @@
   font-size: 14px;
   font-weight: 500;
 }
+

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./report-navigator.css";
 
 import ReportSwitcher from "./ReportSwitcher/ReportSwitcher";
 
 export default function ReportNavigator() {
+  const [activeFeedback, updateActiveFeedback] = useState("prechecks");
+
   return (
     <div className="report-navigator-container">
-      <ReportSwitcher />
-      <ReportContent />
+      <ReportSwitcher
+        activeFeedback={activeFeedback}
+        updateActiveFeedback={updateActiveFeedback}
+      />
+      <ReportContent activeFeedback={activeFeedback} />
       <ResumeImage />
     </div>
   );

@@ -1,5 +1,15 @@
 .report-nav {
-  width: 200px;
-  height: 50px;
-  border: 1px solid red;
+  width: 240px;
+  height: 47px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+.report-nav-label {
+  padding-left: 80px;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(83, 83, 95, 1);
+  padding-top: 15px;
 }
