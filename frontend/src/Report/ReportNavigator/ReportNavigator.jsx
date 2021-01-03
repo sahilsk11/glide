@@ -4,27 +4,44 @@ import "./report-navigator.css";
 import ReportSwitcher from "./ReportSwitcher/ReportSwitcher";
 
 export default function ReportNavigator() {
-  const [activeFeedback, updateActiveFeedback] = useState("prechecks");
+  const [activeFeedback, updateActiveFeedback] = useState("Prechecks");
 
   return (
-    <div className="report-navigator-container">
-      <ReportSwitcher
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
-      <ReportContent activeFeedback={activeFeedback} />
+    <div style={{ position: "relative" }}>
+      <div className="report-navigator-container">
+        <ReportSwitcher
+          activeFeedback={activeFeedback}
+          updateActiveFeedback={updateActiveFeedback}
+        />
+        <ReportContent activeFeedback={activeFeedback} />
+      </div>
       <ResumeImage />
     </div>
   );
 }
 
-function ReportContent() {
+function ReportContent({ activeFeedback }) {
+  const content = {
+    "Prechecks": [
+      "Great attention to naming!",
+      "File format is perfect!",
+      "Your Resume Scans!"
+    ],
+    "Required Information": [
+      "Good job on including basic info",
+      "Add a link to your LinkedIn profile"
+    ],
+    "Experience Valuation": [],
+    "Miscellaneous Tips": []
+  }
+  console.log(activeFeedback);
+  const feedbackList = content[activeFeedback];
+  const feedbackComponent = feedbackList.map(text => <p>{text}</p>);
   return (
-    <div>
-      <h2>Prechecks</h2>
+    <div className="report-content-container">
+      <h2>{activeFeedback}</h2>
       <div>
-        <p>Great attention to naming!</p>
-        <p>Great file naming. No errors are currently detected!</p>
+        {feedbackComponent}
       </div>
     </div>
   );

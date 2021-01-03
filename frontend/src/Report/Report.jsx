@@ -10,7 +10,7 @@ export default function Report() {
       <ReportTitle />
       <Summary score={90} />
       <ReportNavigator />
-      <EmailSignup />
+      {/* <EmailSignup /> */}
     </div>
   );
 }
@@ -27,12 +27,14 @@ function ReportTitle() {
 function Summary({ score }) {
   return (
     <div className="report-summary-container">
-      <div className="report-graph-wrapper">
-        <CircleGraph score={score} />
-        <Label score={score} />
-      </div>
-      <div className="report-summary-text-container">
-        <SummaryText />
+      <div className="report-summary-content">
+        <div className="report-graph-wrapper">
+          <CircleGraph score={score} />
+          <Label score={score} />
+        </div>
+        <div className="report-summary-text-container">
+          <SummaryText />
+        </div>
       </div>
     </div>
   )
@@ -65,10 +67,10 @@ function Label({ score }) {
 function SummaryText() {
   return (
     <div>
-      <h3>You’re on the right track to perfecting your resume...</h3>
-      <hr />
-      <h5>What employers see when you submit your resume:</h5>
-      <p>Sameer Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Marketing (mostly Digital). Sameer Kapur's experience appears to be lower-to-mid level, with about 5 years of experience, with 5 years of management experience, including a high-level position.</p>
+      <h3 className="report-summary-title">You’re on the right track to perfecting your resume...</h3>
+      <hr className="report-summary-hr" />
+      <h5 className="report-summary-subtitle">What employers see when you submit your resume:</h5>
+      <p className="report-summary-description">Sameer Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Marketing (mostly Digital). Sameer Kapur's experience appears to be lower-to-mid level, with about 5 years of experience, with 5 years of management experience, including a high-level position.</p>
     </div>
   )
 }

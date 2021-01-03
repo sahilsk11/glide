@@ -1,6 +1,17 @@
 .report-navigator-container {
+  margin-top: 20px;
   display: flex;
-  width: 100%;
-  border: 1px solid blue;
-  justify-content: space-between;
+  width: calc(100% - 300px);
+  justify-content: flex-start;
+}
+
+.report-resume-img {
+  width: 200px;
+  position: absolute;
+  top: 0px;
+  right: 0px
+}
+
+.report-content-container {
+  padding-left: 50px;
 }

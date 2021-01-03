@@ -24,9 +24,47 @@
   width: 100%;
   min-height: 60px;
   background-color: #FCFCFD;
+  position: relative;
+  flex-grow: 2;
+}
+
+.report-summary-content {
+  width: 90%;
+  margin: 0px auto;
+  height: 100%;
   display: flex;
   position: relative;
-  
+  align-items: flex-start;
+  vertical-align: top;
+  padding-top: 20px;
+}
+
+.report-summary-text-container {
+  padding-left: 10%;
+}
+
+.report-summary-title {
+  font-family: Inter;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.report-summary-subtitle {
+  font-family: Inter;
+  font-weight: 600;
+  color: rgb(92, 92, 92);
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.report-summary-description {
+  color: rgb(92, 92, 92);
+  font-size: 15px;
+  font-family: Inter;
+}
+
+.report-summary-hr {
+  border: 1px solid rgb(227, 227, 227);
 }
 
 .report-graph-wrapper {
@@ -35,6 +73,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 20px;
+  flex-grow: 1;
 }
 
 .report-label {
@@ -45,6 +84,7 @@
   border-radius: 30px;
   display: block;
   margin: 0px auto;
+  margin-top: 30px;
 }
 
 .report-label-text {
@@ -53,4 +93,3 @@
   font-size: 14px;
   font-weight: 500;
 }
-
