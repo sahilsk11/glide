@@ -2,7 +2,7 @@ import flask
 import os
 import ruleset
 import PyPDF2
-from PIL import Image
+from pdf2image import convert_from_path 
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -34,16 +34,11 @@ def authenticate(data):
   return True
 
 def pdf_to_png(filename):
-    input1 = PyPDF2.PdfFileReader(open("saved-resumes/"+ filename, "rb"))
-    #page0 = input1.getPage(0)
-    #xObject = page0['/Resources']['/XObject'].getObject()
-
-    for obj in xObject:
-      if xObject[obj]['/Filter'] == '/DCTDecode':
-        img = open(obj[1:] + ".jpg", "wb")
-        img.write(data)
-        img.save(filename + ".thumbnail", "JPEG")
-        img.close()
+  images = convert_from_path("saved-resumes/"+ filename) 
+  
+  for img in images: 
+    img.save("saved-images/"+ os.path.splitext(filename)[0] + ".jpg", 'JPEG')
+    
 
 if __name__ == "__main__":
   app.run(debug=True)
