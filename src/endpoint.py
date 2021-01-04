@@ -59,7 +59,7 @@ def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json, i
   db.add_entry(entry)
 
 def pdf_to_png(filename):
-  images = convert_from_path("saved-resumes/"+ filename) 
+  images = convert_from_path("saved-resumes/"+ filename,size = (300, None)) 
   img_filename = os.path.splitext(filename)[0]+".jpg"
   for img in images: 
     img.save("saved-images/"+ img_filename, 'JPEG')
