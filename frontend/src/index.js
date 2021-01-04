@@ -8,13 +8,13 @@ import Footer from "./Footer/Footer";
 import Report from "./Report/Report";
 
 function App() {
-  const [appState, updateAppState] = useState("results");
+  const [appState, updateAppState] = useState("landing");
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState({});
   useEffect(() => {
     if (appState === "submitted") {
       console.log(filename);
-      const endpoint = "http://localhost:5000/getResumeDetails?filename=" + filename;
+      const endpoint = "http://localhost:5000/getResumeDetails?filename=" + filename+"&optIn=true";
       fetch(endpoint)
         .then(response => response.json())
         .then(data => {
