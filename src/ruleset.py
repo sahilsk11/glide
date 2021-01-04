@@ -37,27 +37,27 @@ def scan_resume(filename, resume_as_dict):
 def calculate_points(missing_elements, is_pdf, is_scannable):
     
     points = 100
-    for x in missing_elements:
-        if x == "name":
-            points = points - 10
-        if x == "email":
-            points = points - 10
-        if x == "phoneNumber":
-            points = points - 2
-        if x == "linkedin":
-            points = points - 2
-        if x == "degree":
-            points = points - 10
-        if x == "gpa":
-            points = points - 5
-        if x == "startYear":
-            points = points - 3
-        if x == "startMonth":
-            points = points - 3
-        if x == "endYear":
-            points = points - 3
-        if x == "endMonth":
-            points = points - 3
+    
+    if missing_elements["name"] == False:
+        points = points - 10
+    if missing_elements["emails"] == False:
+        points = points - 10
+    if missing_elements["phoneNumber"] == False:
+        points = points - 2
+    if missing_elements["linkedin"] == False:
+        points = points - 2
+    if missing_elements["degree"] == False:
+        points = points - 10
+    if missing_elements["gpa"] == False:
+        points = points - 5
+    if missing_elements["startYear"] == False:
+        points = points - 3
+    if missing_elements["startMonth"] == False:
+        points = points - 3
+    if missing_elements["endYear"] == False:
+        points = points - 3
+    if missing_elements["endMonth"] == False:
+        points = points - 3
 
     if not is_pdf:
         points = points - 20
@@ -79,7 +79,7 @@ def checklist(filename, resume_as_dict):
     response["emails"] = not(d.get("emails") == None)   #checks email
     
 
-    response["phones"] = not(d.get("phones") == None)   #checks phone number
+    response["phoneNumber"] = not(d.get("phones") == None)   #checks phone number
     
     for add in d["links"]:
         if add.get("domain") == "linkedin.com":
@@ -130,6 +130,8 @@ def checklist(filename, resume_as_dict):
     
     return response
 
+def verb_usage(filename):
+     d = resume_as_dict
 
 
 
