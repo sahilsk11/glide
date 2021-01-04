@@ -70,47 +70,68 @@ def calculate_points(missing_elements, is_pdf, is_scannable):
 def checklist(filename, resume_as_dict):
     flag = 0
 
-    elements = []
     d = resume_as_dict
+    response = {}
 
-    if d.get("names") == None:
-        elements.append("name")                     #checks name
+    response["name"] = not(d.get("names") == None)      #checks name
     
-    if d.get("emails") == None:
-        elements.append("email")                    #checks email
+                      
+    response["emails"] = not(d.get("emails") == None)   #checks email
     
-    if d.get("phones") == None:
-        elements.append("phoneNumber")             #checks phone number
+
+    response["phones"] = not(d.get("phones") == None)   #checks phone number
     
     for add in d["links"]:
         if add.get("domain") == "linkedin.com":
             flag = flag + 1
     if flag == 0:
-        elements.append("linkedin")            #checks linkedin account 
+        response["linkedin"] = False           #checks linkedin account
+    else:
+        response["linkedin"] = True
 
     for edu in d["schools"]:
         if edu.get("degree") == None:
-            elements.append("degree")               #checks degree
+            response["degree"] = False               #checks degree
+        else:
+            response["degree"] = True 
+        
         if edu.get("gpa") == None:
-            elements.append("gpa")                  #checks GPA
+            response["gpa"] = False                   #checks GPA
+        else:
+            response["gpa"] = True 
 
     for time in d["positions"]:                                 #checks dates 
         if time.get("isCurrent") != None:
             if time.get("start").get("year") == None:
-                elements.append("startYear")
+                response["startYear"] = False
+            else:
+                response["startYear"] = True
             if time.get("start").get("month") == None:
-                elements.append("startMonth")
+                response["startMonth"] = False
+            else:
+                response["startMonth"] = True
         else:
             if time.get("start").get("year") == None:
-                elements.append("startYear")
+                response["startYear"] = False
+            else:
+                response["startYear"] = True
             if time.get("start").get("month") == None:
-                elements.append("startMonth")
+                response["startMonth"] = False
+            else:
+                response["startMonth"] = True
             if time.get("end").get("year") == None:
-                elements.append("endYear")
+                response["endYear"] = False
+            else:
+                response["endYear"] = True
             if time.get("end").get("month") == None:
-                elements.append("endMonth")
+                response["endMonth"] = False
+            else:
+                response["endMonth"] = True
     
-    return elements
+    return response
+
+
+
 
 
 
