@@ -3,9 +3,9 @@ import "./report-navigator.css";
 
 import ReportSwitcher from "./ReportSwitcher/ReportSwitcher";
 
-export default function ReportNavigator() {
+export default function ReportNavigator({ resumeImageSrc }) {
   const [activeFeedback, updateActiveFeedback] = useState("Prechecks");
-
+  alert(resumeImageSrc)
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">
@@ -15,7 +15,7 @@ export default function ReportNavigator() {
         />
         <ReportContent activeFeedback={activeFeedback} />
       </div>
-      <ResumeImage />
+      <ResumeImage resumeImageSrc={resumeImageSrc} />
     </div>
   );
 }
@@ -47,10 +47,10 @@ function ReportContent({ activeFeedback }) {
   );
 }
 
-function ResumeImage() {
+function ResumeImage({ resumeImageSrc }) {
   return (
     <div className="report-resume-img-container">
-      <img src="./img/sample-resume.png" className="report-resume-img" />
+      <img src={resumeImageSrc} className="report-resume-img" />
     </div>
   )
 }

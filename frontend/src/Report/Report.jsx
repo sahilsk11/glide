@@ -4,12 +4,24 @@ import "./report.css";
 import CircleGraph from "./CircleGraph/CircleGraph";
 import ReportNavigator from "./ReportNavigator/ReportNavigator"
 
-export default function Report() {
+export default function Report(
+  {
+    analysis: {
+      points,
+      isFilePDF,
+      isFileScannable,
+      missingElements,
+    },
+    resumeJSON,
+    resumeImageSrc
+  }
+) {
+
   return (
     <div className="report-container">
       <ReportTitle />
-      <Summary score={90} />
-      <ReportNavigator />
+      <Summary score={points} summaryText={resumeJSON.summary.experience} />
+      <ReportNavigator resumeImageSrc={resumeImageSrc} />
       {/* <EmailSignup /> */}
     </div>
   );
@@ -24,7 +36,7 @@ function ReportTitle() {
   );
 }
 
-function Summary({ score }) {
+function Summary({ score, summaryText }) {
   return (
     <div className="report-summary-container">
       <div className="report-summary-content">
@@ -33,7 +45,7 @@ function Summary({ score }) {
           <Label score={score} />
         </div>
         <div className="report-summary-text-container">
-          <SummaryText />
+          <SummaryText text={summaryText} />
         </div>
       </div>
     </div>
@@ -64,13 +76,13 @@ function Label({ score }) {
   )
 }
 
-function SummaryText() {
+function SummaryText({text}) {
   return (
     <div>
       <h3 className="report-summary-title">You’re on the right track to perfecting your resume...</h3>
       <hr className="report-summary-hr" />
       <h5 className="report-summary-subtitle">What employers see when you submit your resume:</h5>
-      <p className="report-summary-description">Sameer Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Marketing (mostly Digital). Sameer Kapur's experience appears to be lower-to-mid level, with about 5 years of experience, with 5 years of management experience, including a high-level position.</p>
+      <p className="report-summary-description">{text}</p>
     </div>
   )
 }

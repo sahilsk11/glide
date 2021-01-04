@@ -29,30 +29,42 @@ def parse_resume():
   if authenticate(flask.request.json):
     filename = flask.request.args.get('filename')
     did_user_opt_in = flask.request.args.get('optIn') == "true"
+    is_development = flask.request.args.get("isDev") != "production"
     resume_as_dict = resume_to_dict(filename)
     scanned_data = ruleset.scan_resume(filename, resume_as_dict)
-    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict)
-    return flask.jsonify(scanned_data)
+    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict, is_development)
+    img_filename = pdf_to_png(filename)
+    return flask.jsonify({
+      "analysis": scanned_data,
+      "resumeJSON": resume_as_dict,
+      "resumeImageSrc": "http://localhost:5000/getResumeImage?filename="+img_filename
+    })
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
+
+@app.route("/getResumeImage")
+def get_resume_jpg():
+  return flask.send_from_directory("saved-images/", flask.request.args.get("filename"))
 
 def authenticate(data):
   return True
 
-def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json):
+def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json, is_development):
   entry = {
     "optIn": did_user_opt_in,
     "analysis": scanned_data,
     "resumeJSON": resume_as_json,
-    "filename": filename
+    "filename": filename,
+    "isDev": is_development
   }
   db.add_entry(entry)
 
 def pdf_to_png(filename):
   images = convert_from_path("saved-resumes/"+ filename) 
-  
+  img_filename = os.path.splitext(filename)[0]+".jpg"
   for img in images: 
-    img.save("saved-images/"+ os.path.splitext(filename)[0] + ".jpg", 'JPEG')
-    
+    img.save("saved-images/"+ img_filename, 'JPEG')
+  return img_filename
+
 
 if __name__ == "__main__":
   app.run(debug=True)

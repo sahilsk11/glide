@@ -1,5 +1,5 @@
 import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone, { getFilesFromEvent } from 'react-dropzone-uploader';
+import Dropzone from 'react-dropzone-uploader';
 import "./dropzone.css";
 import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 
@@ -11,7 +11,6 @@ export default function FileDropzone({ updateAppState, updateFilename }) {
 
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
     if (status === "done") {
       updateFilename(file.name);
     }
@@ -19,7 +18,6 @@ export default function FileDropzone({ updateAppState, updateFilename }) {
 
   // receives array of files that are done uploading when submit button is clicked
   const handleSubmit = (files, allFiles) => {
-    console.log(files.map(f => f.meta));
     allFiles.forEach(f => f.remove());
     updateAppState("submitted");
   }
@@ -46,12 +44,12 @@ export default function FileDropzone({ updateAppState, updateFilename }) {
 }
 
 const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
-  const text = files.length > 0 ? 'Add more files' : 'Choose files'
+  // const text = files.length > 0 ? 'Add more files' : 'Choose files'
 
   return (
     <div className="dropzone-input">
       <label style={{ cursor: 'pointer' }}>
-        <img src="./img/resume-upload-img.png" className="dropzone-img" />
+        <img src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
         <p className="dropzone-input-text">
           Drag & drop your resume here, or
           <span style={{ color: "#0076F1" }}><strong> browse</strong></span>
