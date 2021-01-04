@@ -34,10 +34,15 @@ def parse_resume():
     scanned_data = ruleset.scan_resume(filename, resume_as_dict)
     save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict, is_development)
     img_filename = pdf_to_png(filename)
+    host = ""
+    if is_development:
+      host = "http://localhost:5000"
+    else:
+      host = "http://resume.sahilkapur.com/server"
     return flask.jsonify({
       "analysis": scanned_data,
       "resumeJSON": resume_as_dict,
-      "resumeImageSrc": "http://localhost:5000/getResumeImage?filename="+img_filename
+      "resumeImageSrc": host+"/getResumeImage?filename="+img_filename
     })
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
