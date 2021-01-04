@@ -23,40 +23,40 @@ def is_resume_scannable(filename):
         return True
     
 def scan_resume(filename, resume_as_dict):
-    missing_elements = checklist(filename, resume_as_dict)
+    checklist_list = checklist(filename, resume_as_dict)
     is_pdf = is_resume_pdf(filename)
     is_scannable = is_resume_scannable(filename)
-    points = calculate_points(missing_elements, is_pdf, is_scannable)
+    points = calculate_points(checklist_list, is_pdf, is_scannable)
     return {
-        "missingElements": missing_elements,
+        "checklist": checklist_list,
         "isFilePDF": is_pdf,
         "isFileScannable": is_scannable,
         "points": points
     }
 
-def calculate_points(missing_elements, is_pdf, is_scannable):
+def calculate_points(checklist_list, is_pdf, is_scannable):
     
     points = 100
     
-    if missing_elements["name"] == False:
+    if checklist_list["name"] == False:
         points = points - 10
-    if missing_elements["emails"] == False:
+    if checklist_list["emails"] == False:
         points = points - 10
-    if missing_elements["phoneNumber"] == False:
+    if checklist_list["phoneNumber"] == False:
         points = points - 2
-    if missing_elements["linkedin"] == False:
+    if checklist_list["linkedin"] == False:
         points = points - 2
-    if missing_elements["degree"] == False:
+    if checklist_list["degree"] == False:
         points = points - 10
-    if missing_elements["gpa"] == False:
+    if checklist_list["gpa"] == False:
         points = points - 5
-    if missing_elements["startYear"] == False:
+    if checklist_list["startYear"] == False:
         points = points - 3
-    if missing_elements["startMonth"] == False:
+    if checklist_list["startMonth"] == False:
         points = points - 3
-    if missing_elements["endYear"] == False:
+    if checklist_list["endYear"] == False:
         points = points - 3
-    if missing_elements["endMonth"] == False:
+    if checklist_list["endMonth"] == False:
         points = points - 3
 
     if not is_pdf:
@@ -130,8 +130,7 @@ def checklist(filename, resume_as_dict):
     
     return response
 
-def verb_usage(filename):
-     d = resume_as_dict
+
 
 
 
