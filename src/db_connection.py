@@ -1,6 +1,18 @@
 import pymongo
 import passwords
 
-client = pymongo.MongoClient("mongodb+srv://mac-dev:${db_password}@cluster0.i7jmt.mongodb.net/${dbName}?retryWrites=true&w=majority")
+client = pymongo.MongoClient(f"mongodb+srv://mac-dev:{passwords.mongo_password()}@cluster0.i7jmt.mongodb.net/resume-scanner?retryWrites=true&w=majority")
+db = client["resume-scanner"]
+collection = db["resumeCollection"]
 
-mydb = client["resume-scanner"]
+
+def get_all_entries():
+  elements = (collection.find({}))
+  return list(elements)
+
+def add_entry(entry):
+  return collection.insert_one(entry)
+
+if __name__ == "__main__":
+  print(get_all_entries())
+
