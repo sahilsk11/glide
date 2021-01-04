@@ -9,12 +9,13 @@ import Report from "./Report/Report";
 
 function App() {
   const [appState, updateAppState] = useState("landing");
+  const [sharingOptIn, updateSharingOptIn] = useState(false);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState({});
   useEffect(() => {
     if (appState === "submitted") {
       console.log(filename);
-      const endpoint = "http://localhost:5000/getResumeDetails?filename=" + filename+"&optIn=true";
+      const endpoint = "http://localhost:5000/getResumeDetails?filename=" + filename + "&optIn=" + sharingOptIn;
       fetch(endpoint)
         .then(response => response.json())
         .then(data => {

@@ -31,7 +31,7 @@ def parse_resume():
     did_user_opt_in = flask.request.args.get('optIn') == "true"
     resume_as_dict = resume_to_dict(filename)
     scanned_data = ruleset.scan_resume(filename, resume_as_dict)
-    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json)
+    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict)
     return flask.jsonify(scanned_data)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
