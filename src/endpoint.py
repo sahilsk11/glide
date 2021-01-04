@@ -4,6 +4,7 @@ import ruleset
 import PyPDF2
 from pdf2image import convert_from_path 
 import db_connection as db
+from resume_converter import resume_to_dict
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -28,9 +29,9 @@ def parse_resume():
   if authenticate(flask.request.json):
     filename = flask.request.args.get('filename')
     did_user_opt_in = flask.request.args.get('optIn') == "true"
-    scanned_data = ruleset.scan_resume(filename)
-    # resume_as_json = resume_converter.resume_to_dict(filename)
-    save_resume_to_db(filename, did_user_opt_in, scanned_data, {}) # add resume_to_json
+    resume_as_dict = resume_to_dict(filename)
+    scanned_data = ruleset.scan_resume(filename, resume_as_dict)
+    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json)
     return flask.jsonify(scanned_data)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 

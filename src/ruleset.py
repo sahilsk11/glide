@@ -1,4 +1,4 @@
-from resume_converter import resume_to_dict, resume_to_str
+from resume_converter import resume_to_str
 import json
 import PyPDF2
 
@@ -22,8 +22,8 @@ def is_resume_scannable(filename):
     else:
         return True
     
-def scan_resume(filename):
-    missing_elements = checklist(filename)
+def scan_resume(filename, resume_as_dict):
+    missing_elements = checklist(filename, resume_as_dict)
     is_pdf = is_resume_pdf(filename)
     is_scannable = is_resume_scannable(filename)
     points = calculate_points(missing_elements, is_pdf, is_scannable)
@@ -67,11 +67,11 @@ def calculate_points(missing_elements, is_pdf, is_scannable):
     return points
 
 
-def checklist(filename):
+def checklist(filename, resume_as_dict):
     flag = 0
 
     elements = []
-    d = resume_to_dict(filename, path="saved-resumes/")
+    d = resume_as_dict
 
     if d.get("names") == None:
         elements.append("name")                     #checks name
