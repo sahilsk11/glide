@@ -30,7 +30,7 @@ def parse_resume():
     did_user_opt_in = flask.request.args.get('optIn') == "true"
     scanned_data = ruleset.scan_resume(filename)
     # resume_as_json = resume_converter.resume_to_dict(filename)
-    save_resume_to_db(filename, did_user_opt_in, scanned_data) # add resume_to_json
+    save_resume_to_db(filename, did_user_opt_in, scanned_data, {}) # add resume_to_json
     return flask.jsonify(scanned_data)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
@@ -44,7 +44,7 @@ def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json):
     "resumeJSON": resume_as_json,
     "filename": filename
   }
-  db.addEntry(entry)
+  db.add_entry(entry)
 
 def pdf_to_png(filename):
   images = convert_from_path("saved-resumes/"+ filename) 
