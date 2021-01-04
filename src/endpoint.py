@@ -3,6 +3,7 @@ import os
 import ruleset
 import PyPDF2
 from pdf2image import convert_from_path 
+import db_connection as db
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -43,7 +44,7 @@ def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json):
     "resumeJSON": resume_as_json,
     "filename": filename
   }
-  # db.addEntry(entry)
+  db.addEntry(entry)
 
 def pdf_to_png(filename):
   images = convert_from_path("saved-resumes/"+ filename) 
