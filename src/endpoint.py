@@ -29,7 +29,7 @@ def parse_resume():
   if authenticate(flask.request.json):
     filename = flask.request.args.get('filename')
     did_user_opt_in = flask.request.args.get('optIn') == "true"
-    is_development = flask.request.args.get("isDev") != "production"
+    is_development = flask.request.args.get("isDev") == "true"
     resume_as_dict = resume_to_dict(filename)
     scanned_data = ruleset.scan_resume(filename, resume_as_dict)
     save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict, is_development)
