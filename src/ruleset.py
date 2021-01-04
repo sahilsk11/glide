@@ -130,6 +130,30 @@ def checklist(filename, resume_as_dict):
     
     return response
 
+def verb_usage(filename,resume_as_dict):
+    a = resume_as_dict
+    words = {}
+    with open("resume_verbs.json") as jsonFile:
+        jsonObject = json.load(jsonFile)
+    
+    for w in a["positions"]:
+        e = w.get("summary")
+        e_string = e.strip()
+        e_split = e_string.split(' ', 1)[0]
+        flag_1 = 0
+        for v in jsonObject["good"]:
+            if v == e_split:
+                flag_1 = flag_1 + 1
+        if flag_1 == 0:
+            words[e_split] = False
+        else:
+            words[e_split] = True
+    
+    return words
+
+    
+
+
 
 
 
