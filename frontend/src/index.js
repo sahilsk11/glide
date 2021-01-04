@@ -12,8 +12,8 @@ function App() {
   const [sharingOptIn, updateSharingOptIn] = useState(false);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState({});
-
-  const isDev = process.env.NODE_ENV !== "production";
+  const simulateProd = true;
+  const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
   useEffect(() => {
     if (appState === "submitted") {
