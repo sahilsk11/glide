@@ -5,7 +5,6 @@ import ReportSwitcher from "./ReportSwitcher/ReportSwitcher";
 
 export default function ReportNavigator({ resumeImageSrc }) {
   const [activeFeedback, updateActiveFeedback] = useState("Prechecks");
-  alert(resumeImageSrc)
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">
