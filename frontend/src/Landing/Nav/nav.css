@@ -32,13 +32,20 @@
 }
 
 .nav-email-btn {
-  background: rgba(0, 118, 241, 1);
+  background: #FFDB2A;
   border-radius: 4px;
-  color: rgba(253, 253, 253, 1);
+  color: #182C45;
   height: 36px;
   width: 170px;
-  font-size: 13px;
+  font-size: 15px;
   border: none;
-  padding-bottom: 2px;
-  font-family: 'Inter', sans-serif;
+  padding-bottom: 5px;
+  font-family: Karla;
+  font-weight: 700;
+  transition-duration: 0.3s;
+  outline: none;
+}
+
+.nav-email-btn:hover {
+  box-shadow: 3px 3px 2px #aaaaaa;
 }

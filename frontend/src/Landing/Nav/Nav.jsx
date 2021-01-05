@@ -15,7 +15,9 @@ export default function Nav() {
 }
 
 function Icon() {
-  return <></>;
+  return <>
+    
+  </>;
 }
 
 function EmailSignup() {
