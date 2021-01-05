@@ -1,6 +1,6 @@
 from resume_converter import get_cleaned_resume_text, resume_to_dict
 import json 
-from ruleset import checklist, is_resume_pdf, is_resume_scannable, scan_resume, calculate_points
+import ruleset
 import endpoint
 
 
@@ -21,13 +21,10 @@ def interpret_points(points):
   return "you in homie"
 
 if __name__ == "__main__":
-  resume_text = get_cleaned_resume_text("sahil_kapur_resume.pdf")
-  points = calculate_points(resume_text)
-  #print(interpret_points(points), "("+str(points)+" points)")
-  #print(json.dumps(resume_to_dict('Kapur_Saaniya.pdf')))
-  print(checklist("Kapur_Saaniya.pdf"))
-  print(is_resume_scannable("Kapur_Saaniya.pdf"))
-  print(scan_resume("Kapur_Saaniya.pdf"))
-  endpoint.pdf_to_png("Kapur_Saaniya.pdf")
+  resume_name = "blank.pdf"
+  d = resume_to_dict(resume_name)
+  #print(d)
+  print(ruleset.scan_resume(resume_name, d))
+
   
   

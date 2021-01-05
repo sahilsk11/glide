@@ -107,7 +107,7 @@ def checklist(filename, resume_as_dict):
                 response["gpa"] = True 
     else:
         response["gpa"] = False
-        reponse["degree"] = False
+        response["degree"] = False
 
     if d.get("positions") != None:
         for time in d["positions"]:                                 #checks dates 
@@ -138,7 +138,7 @@ def checklist(filename, resume_as_dict):
                 else:
                     response["endMonth"] = True
     else:
-        reponse["startMonth"] = False
+        response["startMonth"] = False
         response["startYear"] = False
         response["endMonth"] = False
         response["endYear"] = False

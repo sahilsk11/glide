@@ -29,4 +29,8 @@ def get_cleaned_resume_text(filename):
 def resume_to_dict(filename, path="saved-resumes/"):
   resume = open(path+filename, "rb")
   r = requests.post('https://jobs.lever.co/parseResume', files=dict(resume=resume))
-  return r.json()
+  try:
+    return r.json()
+  except json.JSONDecodeError:
+    print("invalid JSON response: " + r.text)
+    return {}
