@@ -34,7 +34,7 @@ function LandingText() {
     <div className="landing-text-container">
       <h1 className="landing-text-title">Resume Feedback in One Click</h1>
       <p className="landing-subtext">
-        You spent weeks refining your resume, but still can’t land an interview. Omni helps you refine and catch mistakes using pro algos. Now you’ll land an interview at your dream company.
+        You’ve spent weeks refining your resume, but still can’t land an interview. Glide helps you refine and catch mistakes using the same parsing API used by companies like Netflix and Twitch. Now you’ll land an interview at your dream company.
       </p>
     </div>
   );
