@@ -1,6 +1,7 @@
 from resume_converter import resume_to_str
 import json
 import PyPDF2
+import re
 
 """
 Top level function that will be called from API endpoint.
@@ -35,6 +36,10 @@ def scan_resume(filename, resume_as_dict):
         "points": points,
         "goodVerbs": good_verbs_list
     }
+
+def filename_formatting(filename):
+    return re.match("[a-zA-Z]+_[a-zA-Z]+_resume", filename) != None
+
 
 def calculate_points(checklist_list, is_pdf, is_scannable):
     
