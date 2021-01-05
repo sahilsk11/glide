@@ -8,41 +8,51 @@ Top level function that will be called from API endpoint.
 Performs all checks on resume and returns a single dictionary
 that will be sent as JSON to frontend
 """
+
+
 def is_resume_pdf(filename):
     try:
-        PyPDF2.PdfFileReader(open("saved-resumes/"+ filename, "rb"))
+        PyPDF2.PdfFileReader(open("saved-resumes/" + filename, "rb"))
     except PyPDF2.utils.PdfReadError:
         return False
     else:
         return True
 
+
 def is_resume_scannable(filename):
     string = resume_to_str(filename, path="saved-resumes/")
     return bool(string and string.strip())
-    
-    
+
+
 def scan_resume(filename, resume_as_dict):
     checklist_list = checklist(filename, resume_as_dict)
     is_pdf = is_resume_pdf(filename)
     is_scannable = is_resume_scannable(filename)
     good_verbs_list = verb_usage(filename, resume_as_dict)
+    follow_naming = filename_formatting(filename)
     points = calculate_points(checklist_list, is_pdf, is_scannable)
     return {
-        "checklist": checklist_list,
-        "isFilePDF": is_pdf,
-        "isFileScannable": is_scannable,
+        "Prechecks": {
+            "isFilePDF": is_pdf,
+            "isFileScannable": is_scannable,
+            "doesFollowNaming": follow_naming
+        },
+        "Required Information": {
+            "checklist": checklist_list
+        },
         "points": points,
-        "goodVerbs": good_verbs_list
+        "goodVerbs": good_verbs_list,
     }
+
 
 def filename_formatting(filename):
     return re.match("[a-zA-Z]+_[a-zA-Z]+_resume", filename) != None
 
 
 def calculate_points(checklist_list, is_pdf, is_scannable):
-    
+
     points = 100
-    
+
     if checklist_list["name"] == False:
         points = points - 10
     if checklist_list["emails"] == False:
@@ -68,7 +78,7 @@ def calculate_points(checklist_list, is_pdf, is_scannable):
         points = points - 20
     if not is_scannable:
         points = points - 15
-    
+
     return points
 
 
@@ -78,20 +88,19 @@ def checklist(filename, resume_as_dict):
     d = resume_as_dict
     response = {}
 
-    response["name"] = not(d.get("names") == None)      #checks name
-    
-                      
-    response["emails"] = not(d.get("emails") == None)   #checks email
-    
+    response["name"] = not(d.get("names") == None)  # checks name
 
-    response["phoneNumber"] = not(d.get("phones") == None)   #checks phone number
-    
+    response["emails"] = not(d.get("emails") == None)  # checks email
+
+    response["phoneNumber"] = not(
+        d.get("phones") == None)  # checks phone number
+
     if d.get("links") != None:
         for add in d["links"]:
             if add.get("domain") == "linkedin.com":
                 flag = flag + 1
         if flag == 0:
-            response["linkedin"] = False           #checks linkedin account
+            response["linkedin"] = False  # checks linkedin account
         else:
             response["linkedin"] = True
     else:
@@ -100,20 +109,20 @@ def checklist(filename, resume_as_dict):
     if d.get("schools") != None:
         for edu in d["schools"]:
             if edu.get("degree") == None:
-                response["degree"] = False               #checks degree
+                response["degree"] = False  # checks degree
             else:
-                response["degree"] = True 
-        
+                response["degree"] = True
+
             if edu.get("gpa") == None:
-                response["gpa"] = False                   #checks GPA
+                response["gpa"] = False  # checks GPA
             else:
-                response["gpa"] = True 
+                response["gpa"] = True
     else:
         response["gpa"] = False
         response["degree"] = False
 
     if d.get("positions") != None:
-        for time in d["positions"]:                                 #checks dates 
+        for time in d["positions"]:  # checks dates
             if time.get("isCurrent") != None:
                 if time.get("start").get("year") == None:
                     response["startYear"] = False
@@ -145,14 +154,15 @@ def checklist(filename, resume_as_dict):
         response["startYear"] = False
         response["endMonth"] = False
         response["endYear"] = False
-    
+
     return response
 
-def verb_usage(filename,resume_as_dict):
+
+def verb_usage(filename, resume_as_dict):
     words = []
     with open("resume_verbs.json") as jsonFile:
         jsonObject = json.load(jsonFile)
-    
+
     if "positions" in resume_as_dict:
         for work_description in resume_as_dict["positions"]:
             if work_description.get("summary") != None:
@@ -165,28 +175,3 @@ def verb_usage(filename,resume_as_dict):
                             words.append(index)
 
     return list(set(words))
-    
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-

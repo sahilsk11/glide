@@ -42,7 +42,8 @@ def parse_resume():
     return flask.jsonify({
       "analysis": scanned_data,
       "resumeJSON": resume_as_dict,
-      "resumeImageSrc": host+"/getResumeImage?filename="+img_filename
+      "resumeImageSrc": host+"/getResumeImage?filename="+img_filename,
+      "success": True
     })
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
