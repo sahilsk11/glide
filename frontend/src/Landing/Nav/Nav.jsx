@@ -15,9 +15,12 @@ export default function Nav() {
 }
 
 function Icon() {
-  return <>
-    
-  </>;
+  return (
+    <div className="nav-icon-container">
+      <img src="./img/icon.svg" className="nav-icon" alt="" />
+      <h1 className="nav-title">Glide</h1>
+    </div>
+  );
 }
 
 function EmailSignup() {
