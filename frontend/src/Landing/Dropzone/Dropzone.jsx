@@ -3,10 +3,16 @@ import Dropzone from 'react-dropzone-uploader';
 import "./dropzone.css";
 import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 
-export default function FileDropzone({ updateAppState, updateFilename, isDev }) {
+export default function FileDropzone({
+  updateAppState,
+  updateFilename,
+  isDev,
+  sharingOptIn,
+  updateSharingOptIn
+}) {
   // specify upload params and url for your files
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
-  const getUploadParams = ({ meta }) => { return { url: host+"/postResume" } }
+  const getUploadParams = ({ meta }) => { return { url: host + "/postResume" } }
 
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file }, status) => {
@@ -37,8 +43,37 @@ export default function FileDropzone({ updateAppState, updateFilename, isDev }) 
       accept=".pdf,.doc,.docx"
       maxFiles={1}
       InputComponent={Input}
+      SubmitButtonComponent={Submit}
       getFilesFromEvent={getFilesFromEvent}
     />
+  )
+}
+
+function Submit({ files, onSubmit }) {
+  const handleSubmit = () => {
+    onSubmit(files.filter(f => ['headers_received', 'done'].includes(f.meta.status)))
+  }
+  return (
+    <div>
+      <OptIn />
+      <button onClick={handleSubmit} className="dropzone-submit-btn">Get me a job</button>
+    </div>
+  )
+}
+
+function OptIn({ sharingOptIn, updateSharingOptIn }) {
+  return (
+    <div className="opt-in-container">
+      <input
+        type="checkbox"
+        className="landing-opt-in-checkbox"
+        checked={sharingOptIn}
+        onClick={() => {
+          // updateSharingOptIn(!sharingOptIn)
+        }}
+      />
+      <label>Share my resume with recruiters & the Glide team (<a>privacy policy</a>)</label>
+    </div>
   )
 }
 
@@ -50,8 +85,7 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
       <label style={{ cursor: 'pointer' }}>
         <img src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
         <p className="dropzone-input-text">
-          Drag & drop your resume here, or
-          <span style={{ color: "#0076F1" }}><strong> browse</strong></span>
+          Drag & drop your resume here, or&nbsp;<span style={{ color: "black" }}><u><strong>browse</strong></u></span>
           .
         </p>
         <input
@@ -69,3 +103,4 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
     </div >
   )
 }
+

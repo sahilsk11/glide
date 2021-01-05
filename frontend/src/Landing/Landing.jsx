@@ -13,12 +13,15 @@ export default function Landing({
 }) {
   return (
     <>
-      <Nav />
-      <LandingText />
-      <div className="landing-dropzone-wrapper">
-        {FileDropzone({ updateAppState, updateFilename, isDev })}
+      <div className="landing-wrapper">
+        <div className="landing-backdrop" />
+        <img src="./img/wave.svg" className="landing-wave" />
+        <Nav />
+        <LandingText />
+        <div className="landing-dropzone-wrapper">
+          {FileDropzone({ updateAppState, updateFilename, isDev, sharingOptIn, updateSharingOptIn })}
+        </div>
       </div>
-      <OptIn sharingOptIn={sharingOptIn} updateSharingOptIn={updateSharingOptIn} />
       <div className="landing-value-props-wrapper">
         <ValueProps />
       </div>
@@ -40,23 +43,34 @@ function LandingText() {
 function ValueProps() {
   return (
     <div className="landing-value-props-container">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <h1 className="landing-props-title">Things you can do with Glide ✨</h1>
+      <table className="prop-table">
+        <tr>
+          <td><Prop text="See how emploers really see your resume" /></td>
+          <td><Prop text="Evaluate your experience and compare with other students" /></td>
+        </tr>
+        <tr>
+          <td><Prop text="Check for weak and strong verb usage" /></td>
+          <td><Prop text="Ensure dates are read correctly" /></td>
+        </tr>
+        <tr>
+          <td><Prop text="Ensure you have required information" /></td>
+          <td><Prop text="See how emploers really see your resume" /></td>
+        </tr>
+        <tr>
+          <td><Prop text="Confirm resume is scannable" /></td>
+          <td><Prop text="Quick tips for applying" /></td>
+        </tr>
+      </table>
     </div>
   )
 }
 
-function OptIn({ sharingOptIn, updateSharingOptIn }) {
+function Prop({ text }) {
   return (
-    <div className="landing-opt-in-container">
-      <input
-        type="checkbox"
-        className="landing-opt-in-checkbox"
-        checked={sharingOptIn}
-        onClick={() => {
-          updateSharingOptIn(!sharingOptIn)
-        }}
-      />
-      <label>Share my resume with recruiters & the Glide team (<a>privacy policy</a>)</label>
+    <div className="landing-props-container">
+      <img src="./img/prop-check.png" className="prop-check" />
+      <p className="prop-text">{text}</p>
     </div>
   )
 }

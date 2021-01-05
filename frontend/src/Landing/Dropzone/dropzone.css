@@ -5,11 +5,11 @@
 }
 
 .dzu-dropzone {
-  border-color: #0076F1;
+  border-color: black;
   border-style: dashed;
   border-radius: 12px;
   height: 290px;
-  background-color: #E9F4FE;
+  background-color: #FBF3D4;
 }
 
 .dropzone-input {
@@ -25,4 +25,29 @@
 .dropzone-input-text {
   margin-top: 30px;
   color: #83868c;
+}
+
+.opt-in-container {
+  margin-top: 20px;
+}
+
+.dropzone-submit-btn {
+  text-align: center;
+  display: block;
+  margin: 0px auto;
+  margin-top: 40px;
+  border: none;
+  background-color: #FFDB2A;
+  width: 160px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Inter;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  outline: none;
+}
+
+.dropzone-submit-btn:hover {
+  background-color: #f8e32a;
 }
