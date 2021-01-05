@@ -1,7 +1,6 @@
 .landing-text-container {
   padding-top: 40px;
   text-align: center;
-  width: 600px;
   margin: 0px auto;
   font-family: 'Inter', sans-serif;
   position: relative;
@@ -15,11 +14,11 @@
 }
 
 .landing-subtext {
-  max-width: 500px;
+  max-width: 700px;
   margin-top: 0px;
   padding-top: 0px;
   margin: 0px auto;
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(24, 44, 69, 1)
 }
 
