@@ -1,7 +1,7 @@
 import React from "react";
 import "./landing.css";
 
-import Nav from "./Nav/Nav";
+import Nav from "../Nav/Nav";
 import FileDropzone from "./Dropzone/Dropzone";
 
 export default function Landing({

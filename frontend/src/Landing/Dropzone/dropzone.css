@@ -27,8 +27,14 @@
   color: #83868c;
 }
 
+.opt-in-link {
+  color: black;
+  text-decoration: underline;
+}
+
 .opt-in-container {
   margin-top: 20px;
+  font-family: Karla;
 }
 
 .dropzone-submit-btn {
@@ -39,15 +45,16 @@
   border: none;
   background-color: #FFDB2A;
   width: 160px;
-  height: 50px;
+  height: 40px;
   border-radius: 10px;
   font-size: 15px;
   font-family: Inter;
   font-weight: 600;
   transition-duration: 0.3s;
   outline: none;
+  cursor: pointer;
 }
 
 .dropzone-submit-btn:hover {
-  background-color: #f8e32a;
+  box-shadow: 2px 2px 1px #aaaaaa;
 }

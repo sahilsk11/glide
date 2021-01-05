@@ -56,7 +56,7 @@ function Submit({ files, onSubmit }) {
   return (
     <div>
       <OptIn />
-      <button onClick={handleSubmit} className="dropzone-submit-btn">Get me a job</button>
+      <button onClick={handleSubmit} className="dropzone-submit-btn">Scan My Resume</button>
     </div>
   )
 }
@@ -66,13 +66,13 @@ function OptIn({ sharingOptIn, updateSharingOptIn }) {
     <div className="opt-in-container">
       <input
         type="checkbox"
-        className="landing-opt-in-checkbox"
+        className="opt-in-checkbox"
         checked={sharingOptIn}
         onClick={() => {
           // updateSharingOptIn(!sharingOptIn)
         }}
       />
-      <label>Share my resume with recruiters & the Glide team (<a>privacy policy</a>)</label>
+      <label className="opt-in-text">Share my resume with recruiters & the Glide team (<a href="#" className="opt-in-link" target="_blank">privacy policy</a>)</label>
     </div>
   )
 }

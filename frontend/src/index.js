@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "./index.css";
 
 //component imports
+import Nav from "./Nav/Nav";
 import Landing from "./Landing/Landing";
 import Footer from "./Footer/Footer";
 import Report from "./Report/Report";
@@ -248,6 +249,7 @@ function App() {
   } else if (appState === "results") {
     pageContent = (
       <div className="page-content">
+        <Nav />
         <Report
           analysis={pageData.analysis}
           resumeJSON={pageData.resumeJSON}

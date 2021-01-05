@@ -5,19 +5,18 @@
   height: 50px;
   margin-top: 20px;
   display: flex;
-  padding-top: 5px;
 }
 
 .nav-icon {
   position: absolute;
   width: 50px;
-  top: 5px;
+  top: 7px;
 }
 
 .nav-title {
   padding-left: 59px;
   font-size: 27px;
-  margin-top: 0px;
+  margin-top: 7px;
 }
 
 .nav-email-signup-wrapper {
@@ -58,6 +57,7 @@
   font-weight: 700;
   transition-duration: 0.3s;
   outline: none;
+  cursor: pointer;
 }
 
 .nav-email-btn:hover {
