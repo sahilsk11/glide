@@ -32,7 +32,8 @@ function Text() {
       <Pair keyName="Makers" value={makerComponent} />
       <Pair keyName="How we Made This" value="X, y, Z" />
       <Pair keyName="Fine Print" value="X, y, Z" />
-      <Pair keyName="System Status" value="X, y, Z" />
+      <Pair keyName="Resumes Processed" value="10,000,000" />
+      <em><p style={{ fontFamily: "Inter" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
     </div>
   );
 }

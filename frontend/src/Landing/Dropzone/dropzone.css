@@ -8,12 +8,12 @@
   border-color: black;
   border-style: dashed;
   border-radius: 12px;
-  height: 290px;
+  height: 280px;
   background-color: #FBF3D4;
 }
 
 .dropzone-input {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .dropzone-img {
