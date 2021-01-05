@@ -4,19 +4,31 @@ const copy = {
       "true": {
         "title": "File format is perfect!",
         "subtitle": "PDFs are acceptable."
-      }
+      },
+      "false": {
+        "title": "File format is perfect!",
+        "subtitle": "PDFs are acceptable."
+      },
     },
     "isFileScannable": {
       "true": {
         "title": "Your Resume Scans!",
         "subtitle": "Looks good on the employers end."
-      }
+      },
+      "false": {
+        "title": "File format is perfect!",
+        "subtitle": "PDFs are acceptable."
+      },
     },
     "doesFollowNaming": {
       "true": {
         "title": "Your resume is titled appropriately.",
         "subtitle": "nice"
-      }
+      },
+      "false": {
+        "title": "File format is perfect!",
+        "subtitle": "PDFs are acceptable."
+      },
     }
   },
   "Required Information": {
