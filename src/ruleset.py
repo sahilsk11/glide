@@ -136,20 +136,24 @@ def verb_usage(filename,resume_as_dict):
     with open("resume_verbs.json") as jsonFile:
         jsonObject = json.load(jsonFile)
     
+
     for w in a["positions"]:
+        string_split = []
         e = w.get("summary")
         e_string = e.strip()
-        e_split = e_string.split(' ', 1)[0]
-        flag_1 = 0
+        e_split = e_string.split()
+        string_split.append(e_split)
+        flag = 0
         for v in jsonObject["good"]:
-            if v == e_split:
-                flag_1 = flag_1 + 1
-        if flag_1 == 0:
-            words[e_split] = False
-        else:
-            words[e_split] = True
+            for i in string_split:
+                if v == i:
+                    words[i] = True
+        return words
     
-    return words
+
+
+
+
 
     
 
