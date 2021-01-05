@@ -1,0 +1,45 @@
+.report-navigator-container {
+  margin-top: 20px;
+  display: flex;
+  width: calc(100% - 300px);
+  justify-content: flex-start;
+}
+
+.report-resume-img {
+  width: 200px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.report-content-container {
+  padding-left: 50px;
+}
+
+.feedback-active-title {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.feedback-component-container {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 30px;
+}
+
+.feedback-component-check {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  width: 15px;
+}
+
+.feedback-component-title {
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.feedback-component-subtitle {
+  margin-top: 10px;
+}

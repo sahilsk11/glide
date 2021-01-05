@@ -1,10 +1,15 @@
 .report-nav {
   width: 245px;
-  height: 47px;
-  margin-bottom: 10px;
+  height: 55px;
+  margin-bottom: 25px;
   border-radius: 3px;
   cursor: pointer;
+  position: relative;
   transition-duration: 0.3s;
+}
+
+.report-nav:hover {
+  background-color: rgba(241, 241, 244, 0.7);
 }
 
 .report-nav-label {
@@ -13,6 +18,13 @@
   font-weight: 600;
   font-size: 15px;
   color: rgba(83, 83, 95, 1);
-  padding-top: 15px;
+  padding-top: 18px;
   user-select: none;
+}
+
+.report-nav-icon {
+  position: absolute;
+  width: 30px;
+  top: 13px;
+  left: 23px;
 }

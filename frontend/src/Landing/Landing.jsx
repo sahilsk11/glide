@@ -5,13 +5,13 @@ import Nav from "./Nav/Nav";
 import FileDropzone from "./Dropzone/Dropzone";
 import Footer from "../Footer/Footer";
 
-export default function Landing({ updateAppState, updateFilename }) {
+export default function Landing({ updateAppState, updateFilename, isDev }) {
   return (
     <>
       <Nav />
       <LandingText />
       <div className="landing-dropzone-wrapper">
-        {FileDropzone({ updateAppState, updateFilename })}
+        {FileDropzone({ updateAppState, updateFilename, isDev })}
       </div>
       <div className="landing-value-props-wrapper">
         <ValueProps />

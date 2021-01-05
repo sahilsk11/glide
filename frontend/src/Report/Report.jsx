@@ -2,26 +2,29 @@ import React from "react";
 import "./report.css";
 
 import CircleGraph from "./CircleGraph/CircleGraph";
-import ReportNavigator from "./ReportNavigator/ReportNavigator"
+import ReportNavigator from "./Feedback/Feedback"
 
 export default function Report(
   {
-    analysis: {
-      points,
-      isFilePDF,
-      isFileScannable,
-      missingElements,
-    },
+    analysis,
     resumeJSON,
-    resumeImageSrc
+    resumeImageSrc,
+    success
   }
 ) {
-
+  if (!success) {
+    console.log(analysis);
+    return <p>error</p>
+  }
   return (
     <div className="report-container">
       <ReportTitle />
-      <Summary score={points} summaryText={resumeJSON.summary.experience} />
-      <ReportNavigator resumeImageSrc={resumeImageSrc} />
+      <Summary score={analysis.points} summaryText={resumeJSON.summary.experience} />
+      <ReportNavigator
+        resumeImageSrc={resumeImageSrc}
+        content={analysis}
+        resumeAsJSON={resumeJSON}
+      />
       {/* <EmailSignup /> */}
     </div>
   );
@@ -76,7 +79,7 @@ function Label({ score }) {
   )
 }
 
-function SummaryText({text}) {
+function SummaryText({ text }) {
   return (
     <div>
       <h3 className="report-summary-title">You’re on the right track to perfecting your resume...</h3>

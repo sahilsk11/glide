@@ -3,10 +3,8 @@ import Dropzone from 'react-dropzone-uploader';
 import "./dropzone.css";
 import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 
-export default function FileDropzone({ updateAppState, updateFilename }) {
+export default function FileDropzone({ updateAppState, updateFilename, isDev }) {
   // specify upload params and url for your files
-  const simulateProd = true;
-  const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
   const getUploadParams = ({ meta }) => { return { url: host+"/postResume" } }
 

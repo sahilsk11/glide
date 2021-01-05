@@ -25,21 +25,19 @@ def is_resume_scannable(filename):
 
 
 def scan_resume(filename, resume_as_dict):
-    checklist_list = checklist(filename, resume_as_dict)
+    checklist_dict = checklist(filename, resume_as_dict)
     is_pdf = is_resume_pdf(filename)
     is_scannable = is_resume_scannable(filename)
     good_verbs_list = verb_usage(filename, resume_as_dict)
     follow_naming = filename_formatting(filename)
-    points = calculate_points(checklist_list, is_pdf, is_scannable)
+    points = calculate_points(checklist_dict, is_pdf, is_scannable)
     return {
         "Prechecks": {
             "isFilePDF": is_pdf,
             "isFileScannable": is_scannable,
             "doesFollowNaming": follow_naming
         },
-        "Required Information": {
-            "checklist": checklist_list
-        },
+        "Required Information": checklist_dict,
         "points": points,
         "goodVerbs": good_verbs_list,
     }

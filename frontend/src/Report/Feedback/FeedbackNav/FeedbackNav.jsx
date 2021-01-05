@@ -20,6 +20,10 @@ export default function ReportSwitcher({ activeFeedback, updateActiveFeedback })
         activeFeedback={activeFeedback}
         updateActiveFeedback={updateActiveFeedback}
       />
+      <ReportNav title={"Formatting"}
+        activeFeedback={activeFeedback}
+        updateActiveFeedback={updateActiveFeedback}
+      />
     </div>
   );
 }
@@ -31,8 +35,10 @@ function ReportNav({ title, activeFeedback, updateActiveFeedback }) {
       backgroundColor: "rgba(241, 241, 244, 1)"
     }
   }
+  const imgName = title.replace(" ", "-").toLowerCase();
   return (
     <div className="report-nav" style={activeStyle} onClick={() => { updateActiveFeedback(title) }}>
+      <img src={`./img/${imgName}.svg`} className="report-nav-icon" />
       <p className="report-nav-label">{title}</p>
     </div>
   );
