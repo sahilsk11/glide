@@ -36,3 +36,9 @@
   width: 550px;
   color: rgba(120, 120, 120, 1)
 }
+
+.landing-opt-in-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

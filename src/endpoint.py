@@ -30,8 +30,11 @@ def parse_resume():
     filename = flask.request.args.get('filename')
     did_user_opt_in = flask.request.args.get('optIn') == "true"
     is_development = flask.request.args.get("isDev") == "true"
-    resume_as_dict = resume_to_dict(filename)
-    scanned_data = ruleset.scan_resume(filename, resume_as_dict)
+    try:
+      resume_as_dict = resume_to_dict(filename)
+      scanned_data = ruleset.scan_resume(filename, resume_as_dict)
+    except:
+      return flask.jsonify({"success": False, "message": "There was an error in the request"})
     save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict, is_development)
     img_filename = pdf_to_png(filename)
     host = ""

@@ -206,7 +206,7 @@ function App() {
 
 
   const [appState, updateAppState] = useState("landing");
-  const [sharingOptIn, updateSharingOptIn] = useState(false);
+  const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState({});
   const simulateProd = false;
@@ -236,6 +236,8 @@ function App() {
             updateAppState={updateAppState}
             updateFilename={updateFilename}
             isDev={isDev}
+            sharingOptIn={sharingOptIn}
+            updateSharingOptIn={updateSharingOptIn}
           />
         </div>
         <Footer />
