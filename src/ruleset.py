@@ -17,10 +17,8 @@ def is_resume_pdf(filename):
 
 def is_resume_scannable(filename):
     string = resume_to_str(filename, path="saved-resumes/")
-    if string == "":
-        return False
-    else:
-        return True
+    return bool(string and string.strip())
+    
     
 def scan_resume(filename, resume_as_dict):
     checklist_list = checklist(filename, resume_as_dict)
