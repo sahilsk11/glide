@@ -26,12 +26,14 @@ def scan_resume(filename, resume_as_dict):
     checklist_list = checklist(filename, resume_as_dict)
     is_pdf = is_resume_pdf(filename)
     is_scannable = is_resume_scannable(filename)
+    good_verbs_list = verb_usage(filename, resume_as_dict)
     points = calculate_points(checklist_list, is_pdf, is_scannable)
     return {
         "checklist": checklist_list,
         "isFilePDF": is_pdf,
         "isFileScannable": is_scannable,
-        "points": points
+        "points": points,
+        "goodVerbs": good_verbs_list
     }
 
 def calculate_points(checklist_list, is_pdf, is_scannable):
@@ -81,52 +83,65 @@ def checklist(filename, resume_as_dict):
 
     response["phoneNumber"] = not(d.get("phones") == None)   #checks phone number
     
-    for add in d["links"]:
-        if add.get("domain") == "linkedin.com":
-            flag = flag + 1
-    if flag == 0:
-        response["linkedin"] = False           #checks linkedin account
+    if d.get("links") != None:
+        for add in d["links"]:
+            if add.get("domain") == "linkedin.com":
+                flag = flag + 1
+        if flag == 0:
+            response["linkedin"] = False           #checks linkedin account
+        else:
+            response["linkedin"] = True
     else:
-        response["linkedin"] = True
+        response["linkedin"] = False
 
-    for edu in d["schools"]:
-        if edu.get("degree") == None:
-            response["degree"] = False               #checks degree
-        else:
-            response["degree"] = True 
+    if d.get("schools") != None:
+        for edu in d["schools"]:
+            if edu.get("degree") == None:
+                response["degree"] = False               #checks degree
+            else:
+                response["degree"] = True 
         
-        if edu.get("gpa") == None:
-            response["gpa"] = False                   #checks GPA
-        else:
-            response["gpa"] = True 
+            if edu.get("gpa") == None:
+                response["gpa"] = False                   #checks GPA
+            else:
+                response["gpa"] = True 
+    else:
+        response["gpa"] = False
+        reponse["degree"] = False
 
-    for time in d["positions"]:                                 #checks dates 
-        if time.get("isCurrent") != None:
-            if time.get("start").get("year") == None:
-                response["startYear"] = False
+    if d.get("positions") != None:
+        for time in d["positions"]:                                 #checks dates 
+            if time.get("isCurrent") != None:
+                if time.get("start").get("year") == None:
+                    response["startYear"] = False
+                else:
+                    response["startYear"] = True
+                if time.get("start").get("month") == None:
+                    response["startMonth"] = False
+                else:
+                    response["startMonth"] = True
             else:
-                response["startYear"] = True
-            if time.get("start").get("month") == None:
-                response["startMonth"] = False
-            else:
-                response["startMonth"] = True
-        else:
-            if time.get("start").get("year") == None:
-                response["startYear"] = False
-            else:
-                response["startYear"] = True
-            if time.get("start").get("month") == None:
-                response["startMonth"] = False
-            else:
-                response["startMonth"] = True
-            if time.get("end").get("year") == None:
-                response["endYear"] = False
-            else:
-                response["endYear"] = True
-            if time.get("end").get("month") == None:
-                response["endMonth"] = False
-            else:
-                response["endMonth"] = True
+                if time.get("start").get("year") == None:
+                    response["startYear"] = False
+                else:
+                    response["startYear"] = True
+                if time.get("start").get("month") == None:
+                    response["startMonth"] = False
+                else:
+                    response["startMonth"] = True
+                if time.get("end").get("year") == None:
+                    response["endYear"] = False
+                else:
+                    response["endYear"] = True
+                if time.get("end").get("month") == None:
+                    response["endMonth"] = False
+                else:
+                    response["endMonth"] = True
+    else:
+        reponse["startMonth"] = False
+        response["startYear"] = False
+        response["endMonth"] = False
+        response["endYear"] = False
     
     return response
 
