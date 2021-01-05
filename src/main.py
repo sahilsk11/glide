@@ -22,10 +22,11 @@ def interpret_points(points):
 
 if __name__ == "__main__":
   resume_name = "blank.pdf"
-  s = get_cleaned_resume_text(resume_name)
+  #s = get_cleaned_resume_text(resume_name)
   #print(d)
-  # print(ruleset.scan_resume(resume_name, d))
-  print(s)
+  d = resume_to_dict("blank.pdf")
+  print(ruleset.scan_resume(resume_name, d))
+  #print(s)
 
   
   

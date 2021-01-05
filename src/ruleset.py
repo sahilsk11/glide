@@ -155,17 +155,16 @@ def verb_usage(filename,resume_as_dict):
     
     if "positions" in resume_as_dict:
         for work_description in resume_as_dict["positions"]:
-            string = work_description.get("summary")
-            string_strip = string.strip()
-            string_split = string_strip.split()
-            flag = 0
-            for verb in jsonObject["good"]:
-                print(verb)
-                for index in string_split:
-                    if verb == index:
-                        words.append(index)
+            if work_description.get("summary") != None:
+                string = work_description.get("summary")
+                string_strip = string.strip()
+                string_split = string_strip.split()
+                for verb in jsonObject["good"]:
+                    for index in string_split:
+                        if verb == index:
+                            words.append(index)
 
-    return words
+    return list(set(words))
     
 
 
