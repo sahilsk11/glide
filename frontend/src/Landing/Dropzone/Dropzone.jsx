@@ -45,6 +45,7 @@ export default function FileDropzone({
       InputComponent={Input}
       SubmitButtonComponent={Submit}
       getFilesFromEvent={getFilesFromEvent}
+      maxSizeBytes={1048576}
     />
   )
 }
@@ -92,6 +93,7 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
           style={{ display: 'none' }}
           type="file"
           accept={accept}
+
           multiple
           onChange={e => {
             getFilesFromEvent(e).then(chosenFiles => {

@@ -21,6 +21,10 @@ def accept_resume():
     print(flask.request.files)
     file = flask.request.files['file']
     file.save(os.path.join("saved-resumes/",file.filename))
+    size = os.stat('saved-resumes/'+file.filename).st_size
+    if (size > 1048576):
+      os.remove("saved-resumes/"+file.filename)
+      return flask.jsonify({"code": 400, "message": "File rejected - too big"})
     return flask.jsonify({"success": True})
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
