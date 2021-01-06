@@ -50,7 +50,6 @@ function Prechecks({ activeContent }) {
   let components = [];
   componentNames.forEach(key => {
     const checked = activeContent[key];
-    console.log(checked);
     components.push(
       <FeedbackComponent
         checked={checked}
@@ -59,7 +58,6 @@ function Prechecks({ activeContent }) {
       />
     );
   });
-  console.log(components);
   return (
     <div>
       {components}
@@ -73,7 +71,6 @@ function RequiredInfo({ activeContent }) {
   let components = [];
   componentNames.forEach(key => {
     const checked = activeContent[key];
-    console.log(checked);
     components.push(
       <FeedbackComponent
         checked={checked}
@@ -82,7 +79,6 @@ function RequiredInfo({ activeContent }) {
       />
     );
   });
-  console.log(components);
   return (
     <div>
       {components}

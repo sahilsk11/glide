@@ -14,7 +14,6 @@ export default function Report(
   }
 ) {
   if (!success) {
-    console.log(analysis);
     return <p>error</p>
   }
   let summary = "We couldn't create a summary from this resume.";

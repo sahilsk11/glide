@@ -7,6 +7,7 @@ import db_connection as db
 from resume_converter import resume_to_dict
 import string
 import random
+import re
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -22,12 +23,18 @@ def accept_resume():
     # save resume as file
     print(flask.request.files)
     file = flask.request.files['file']
-    file.save(os.path.join("saved-resumes/",file.filename))
-    size = os.stat('saved-resumes/'+file.filename).st_size
+    glide_rename_index = 0 #value to put in filename
+    new_filename = file.filename
+    while os.path.exists("saved-resumes/"+new_filename):
+      print("file found")
+      new_filename = new_filename.replace(".", "[GLIDE_"+str(glide_rename_index)+"].")
+      glide_rename_index += 1
+    file.save(os.path.join("saved-resumes/",new_filename))
+    size = os.stat('saved-resumes/'+new_filename).st_size
     if (size > 1048576):
-      os.remove("saved-resumes/"+file.filename)
+      os.remove("saved-resumes/"+new_filename)
       return flask.jsonify({"code": 400, "message": "File rejected - too big"})
-    return flask.jsonify({"success": True})
+    return flask.jsonify({"success": True, "filename": new_filename})
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
 @app.route("/getResumeDetails", methods=['GET'])
@@ -38,13 +45,14 @@ def parse_resume():
     is_development = flask.request.args.get("isDev") == "true"
     try:
       resume_as_dict = resume_to_dict(filename)
-      scanned_data = ruleset.scan_resume(filename, resume_as_dict)
+      original_filename = remove_glide_index(filename)
+      scanned_data = ruleset.scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
     except:
       return flask.jsonify({"success": False, "message": "There was an error in the request"})
     save_resume_to_db(
-      filename,
+      original_filename,
       new_filename,
       did_user_opt_in,
       scanned_data,
@@ -61,7 +69,7 @@ def parse_resume():
       "analysis": scanned_data,
       "resumeJSON": resume_as_dict,
       "resumeImageSrc": host+"/getResumeImage?filename="+img_filename,
-      "filename": filename,
+      "filename": original_filename,
       "success": True
     })
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
@@ -95,6 +103,12 @@ def pdf_to_png(filename):
     img.save("saved-images/"+ img_filename, 'JPEG')
   return img_filename
 
+def remove_glide_index(filename):
+  if re.search("\[GLIDE_[0-9]+\]", filename) != None:
+    return re.sub("\[GLIDE_[0-9]+\]", "", filename)
+  else:
+    return filename
+
 def generate_filename(filename):
   original_extension = filename[filename.find("."):]
   letters = string.ascii_uppercase
@@ -111,7 +125,7 @@ def generate_filename(filename):
   return out
 
 def rename_file(original_filename, new_filename):
-  os.rename("saved-resumes/"+original_filename, "saved-resumes/"+new_filename)
+  os.replace("saved-resumes/"+original_filename, "saved-resumes/"+new_filename)
 
 
 if __name__ == "__main__":

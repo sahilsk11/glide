@@ -217,7 +217,6 @@ function App() {
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
   useEffect(() => {
     if (appState === "submitted") {
-      console.log(filename);
       const endpoint = host + "/getResumeDetails?filename=" + filename + "&optIn=" + sharingOptIn + "&isDev=" + isDev;
       fetch(endpoint)
         .then(response => response.json())

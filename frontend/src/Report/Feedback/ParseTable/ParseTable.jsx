@@ -2,7 +2,6 @@ import React from "react";
 import "./parse-table.css";
 
 export default function ParseTable({ resumeAsJSON }) {
-  console.log(resumeAsJSON);
   return (
     <>
       <h2>Summary</h2>
@@ -18,7 +17,6 @@ function Summary({ resumeAsJSON }) {
     if (!list) {
       return "null";
     }
-    console.log(list);
     let out = "";
     for (let i = 0; i < list.length; i++) {
       out += list[i];

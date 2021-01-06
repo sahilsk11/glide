@@ -14,9 +14,10 @@ export default function FileDropzone({
   const getUploadParams = ({ meta }) => { return { url: host + "/postResume" } }
 
   // called every time a file's `status` changes
-  const handleChangeStatus = ({ meta, file }, status) => {
+  const handleChangeStatus = ({ meta, file, xhr }, status) => {
     if (status === "done") {
-      updateFilename(file.name);
+      const response = JSON.parse(xhr.response);
+      updateFilename(response.filename);
     }
   }
 
