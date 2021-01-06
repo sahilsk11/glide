@@ -206,7 +206,7 @@ function App() {
   }
 
 
-  const [appState, updateAppState] = useState("results");
+  const [appState, updateAppState] = useState("landing");
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState(d);
