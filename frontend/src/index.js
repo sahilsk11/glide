@@ -207,8 +207,8 @@ function App() {
 
   }
 
-
-  const [appState, updateAppState] = useState("results");
+  const initialState = process.env.NODE_ENV !== "production" ? "landing" : "results";
+  const [appState, updateAppState] = useState(initialState);
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState(d);
