@@ -9,6 +9,7 @@
   border-style: dashed;
   border-radius: 12px;
   height: 320px;
+  max-width: 90%;
   background-color: #fbf3d4;
 }
 

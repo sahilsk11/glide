@@ -67,3 +67,32 @@
 .nav-email-btn:hover {
   box-shadow: 3px 3px 2px #aaaaaa;
 }
+
+@media only screen and (max-width: 714px) {
+  .nav {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .nav {
+    margin-top: 5px;
+  }
+  .nav-icon-container {
+    margin-top: 12px;
+  }
+  .nav-icon {
+    width: 40px;
+    top: 10px;
+  }
+  .nav-title {
+    font-size: 20px;
+    padding-left: 44px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-form-container {
+    display: none;
+  }
+}

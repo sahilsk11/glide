@@ -1,7 +1,8 @@
 .report-navigator-container {
   margin-top: 20px;
   display: flex;
-  width: calc(100% - 300px);
+  width: calc(100% - 250px);
+  max-width: 1500px;
   justify-content: flex-start;
 }
 
@@ -55,4 +56,13 @@
 
 .feedback-component-subtitle {
   margin-top: 10px;
+}
+
+@media only screen and (max-width: 1265px) {
+  .report-resume-img-container {
+    display: none;
+  }
+  .report-navigator-container {
+    width: 100%;
+  }
 }

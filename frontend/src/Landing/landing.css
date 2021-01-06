@@ -14,7 +14,8 @@
 }
 
 .landing-subtext {
-  max-width: 700px;
+  width: 700px;
+  max-width: 90%;
   margin-top: 0px;
   padding-top: 0px;
   margin: 0px auto;
@@ -94,4 +95,26 @@
 
 .prop-td {
   width: 50%;
+}
+
+@media only screen and (max-width: 829px) {
+  .prop-table {
+    width: 80%;
+    padding-left: 0px;
+  }
+  .landing-value-props-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .landing-text-container {
+    padding-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 529px) {
+  .landing-subtext {
+    font-size: 14px;
+  }
 }

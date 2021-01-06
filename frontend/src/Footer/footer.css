@@ -6,7 +6,6 @@
   padding-bottom: 50px;
   display: flex;
   align-items: center;
-  
 }
 
 .footer-content {
@@ -14,6 +13,12 @@
   width: 900px;
   display: flex;
   position: relative;
+}
+
+@media only screen and (max-width: 960px) {
+  .footer-content {
+    width: 90%;
+  }
 }
 
 .footer-text-col {
@@ -41,4 +46,21 @@
 .maker-link {
   text-decoration: underline;
   color: black;
+}
+
+@media only screen and (max-width: 617px) {
+  .footer-content {
+    display: block;
+  }
+  .footer-text-col {
+    width: 100%;
+    margin: 0px auto;
+  }
+  .footer-img-col {
+    width: 100%;
+  }
+  .footer-icon {
+    margin-top: 40px;
+    max-width: 150px;
+  }
 }

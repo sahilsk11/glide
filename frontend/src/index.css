@@ -37,3 +37,9 @@ body {
   margin-top: 0px;
   font-family: 'Inter', sans-serif;
 }
+
+@media only screen and (max-width: 522px) {
+  h1 {
+    font-size: 25px;
+  }
+}
