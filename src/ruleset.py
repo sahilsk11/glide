@@ -44,7 +44,7 @@ def scan_resume(filename, resume_as_dict):
 
 
 def filename_formatting(filename):
-    return re.match("[a-zA-Z]+_[a-zA-Z]+_resume", filename) != None
+    return re.match("[a-zA-Z]+_[a-zA-Z]+_resume\.", filename) != None
 
 
 def calculate_points(checklist_list, is_pdf, is_scannable):
