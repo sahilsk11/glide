@@ -251,17 +251,19 @@ function App() {
   } else if (appState === "results") {
 
     pageContent = (
-      <div className="page-content">
-        <Nav />
-        <Report
-          analysis={pageData.analysis}
-          resumeJSON={pageData.resumeJSON}
-          resumeImageSrc={pageData.resumeImageSrc}
-          filename={pageData.filename}
-          success={pageData.success}
-        />
+      <>
+        <div className="page-content">
+          <Nav />
+          <Report
+            analysis={pageData.analysis}
+            resumeJSON={pageData.resumeJSON}
+            resumeImageSrc={pageData.resumeImageSrc}
+            filename={pageData.filename}
+            success={pageData.success}
+          />
+        </div>
         <Footer host={host} />
-      </div>
+      </>
     );
   } else {
     pageContent = <>.</>;
