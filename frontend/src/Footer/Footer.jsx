@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./footer.css";
 
 export default function Footer() {
+  const [numDocuments, updateNumDocuments] = useState("?");
+  fetch("http://localhost:5000/countDocuments")
+    .then(r => r.json())
+    .then(data => {
+      updateNumDocuments(data.numDocuments)
+    })
   return (
     <div className="footer-container">
       <div className="footer-content">
         <div className="footer-text-col">
-          <Text />
+          <Text numDocuments={numDocuments} />
         </div>
         <div className="footer-img-col">
           <img src="./img/icon.svg" className="footer-icon" />
@@ -16,7 +22,7 @@ export default function Footer() {
   );
 }
 
-function Text() {
+function Text({ numDocuments }) {
   const makerComponent = (
     <>
       <MakerLink name="Sahil" link="https://twitter.com/sahil_sk11" />
@@ -32,7 +38,7 @@ function Text() {
       <Pair keyName="Makers" value={makerComponent} />
       <Pair keyName="How we Made This" value="X, y, Z" />
       <Pair keyName="Fine Print" value="X, y, Z" />
-      <Pair keyName="Resumes Processed" value="10,000,000" />
+      <Pair keyName="Resumes Processed" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
       <em><p style={{ fontFamily: "Inter" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
     </div>
   );

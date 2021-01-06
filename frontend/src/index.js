@@ -256,6 +256,7 @@ function App() {
           resumeImageSrc={pageData.resumeImageSrc}
           success={pageData.success}
         />
+        <Footer />
       </div>
     );
   } else {
