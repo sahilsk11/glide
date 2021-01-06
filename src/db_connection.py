@@ -13,6 +13,10 @@ def get_all_entries():
 def add_entry(entry):
   return collection.insert_one(entry)
 
+def count_documents():
+  return collection.count_documents({})
+
 if __name__ == "__main__":
-  print(get_all_entries())
+  #print(get_all_entries())
+  print(count_documents())
 

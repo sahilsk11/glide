@@ -54,6 +54,10 @@ def parse_resume():
 def get_resume_jpg():
   return flask.send_from_directory("saved-images/", flask.request.args.get("filename"))
 
+@app.route("/countDocuments")
+def count_documents():
+  return flask.jsonify({"numDocuments": db.count_documents()})
+
 def authenticate(data):
   return True
 
