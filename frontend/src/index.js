@@ -214,11 +214,12 @@ function App() {
   const pathName = location.pathname.replace("/", "");
 
   const initialState = pathName === "report" ? "results" : "landing";
+  const initialData = process.env.NODE_ENV !== "production" ? d : { success: false };
 
   const [appState, updateAppState] = useState(initialState);
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
-  const [pageData, updatePageData] = useState(d);
+  const [pageData, updatePageData] = useState(initialData);
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";

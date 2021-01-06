@@ -8,6 +8,10 @@ from resume_converter import resume_to_dict
 import string
 import random
 import re
+import sys
+
+if '/usr/bin' not in os.environ:
+  os.environ['PATH'] = '/usr/bin'
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -129,4 +133,8 @@ def rename_file(original_filename, new_filename):
 
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  if (len(sys.argv) > 1 and sys.argv[1] == "dev"):
+    debug=True
+  else:
+    debug=False
+  app.run(debug=debug)

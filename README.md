@@ -12,6 +12,10 @@ deactivate
 
 ##### Note that the backend uses Popper as a Python system dependency for [pdf2imagine](https://pypi.org/project/pdf2image/).
 
+```
+sudo apt-get install poppler-utils
+```
+
 ## Usage
 
 To activate the virtual environment, run the following from the root directory:
