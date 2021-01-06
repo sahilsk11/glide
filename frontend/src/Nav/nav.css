@@ -1,6 +1,6 @@
 .nav {
   position: relative;
-  width: calc(89% - 50px);
+  width: 85%;
   margin: 0px auto;
   height: 50px;
   margin-top: 20px;
@@ -70,12 +70,6 @@
 
 @media only screen and (max-width: 714px) {
   .nav {
-    width: 90%;
-  }
-}
-
-@media only screen and (max-width: 630px) {
-  .nav {
     margin-top: 5px;
   }
   .nav-icon-container {
@@ -88,6 +82,12 @@
   .nav-title {
     font-size: 20px;
     padding-left: 44px;
+  }
+}
+
+@media only screen and (max-width: 641px) {
+  .nav-form-container {
+    display: none;
   }
 }
 
