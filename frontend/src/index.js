@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, useLocation, useHistory } from "react-router-dom";
 import "./index.css";
+
 
 //component imports
 import Nav from "./Nav/Nav";
 import Landing from "./Landing/Landing";
 import Footer from "./Footer/Footer";
 import Report from "./Report/Report";
+
 
 function App() {
   const d = {
@@ -206,15 +209,32 @@ function App() {
     "filename": "sahil_kapur_resumesahil_kapur_resumesahil_kapur_resumesahil_kapur_resume.pdf",
 
   }
+  let history = useHistory();
+  const location = useLocation();
+  const pathName = location.pathname.replace("/", "");
 
-  const initialState = process.env.NODE_ENV === "production" ? "landing" : "results";
+  const initialState = pathName === "report" ? "results" : "landing";
+
   const [appState, updateAppState] = useState(initialState);
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
-  const [pageData, updatePageData] = useState(d);
+  const [pageData, updatePageData] = useState({ success: false });
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
+
+  function redirect(path) {
+    history.push(path);
+  }
+
+  useEffect(() => {
+    if (pathName == "report") {
+      updateAppState("results");
+    } else if (pathName == "") {
+      updateAppState("landing");
+    }
+  }, [pathName]);
+
   useEffect(() => {
     if (appState === "submitted") {
       const endpoint = host + "/getResumeDetails?filename=" + filename + "&optIn=" + sharingOptIn + "&isDev=" + isDev;
@@ -222,7 +242,7 @@ function App() {
         .then(response => response.json())
         .then(data => {
           updatePageData(data)
-          updateAppState("results")
+          redirect("report");
         }).catch((e) => {
           updatePageData({ success: false })
         });
@@ -248,7 +268,6 @@ function App() {
   } else if (appState === "loading") {
     pageContent = <LoadingScreen />
   } else if (appState === "results") {
-
     pageContent = (
       <>
         <div className="page-content">
@@ -264,17 +283,11 @@ function App() {
         <Footer host={host} />
       </>
     );
+
   } else {
     pageContent = <>.</>;
   }
-  return (
-    <div className="index">
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Karla:wght@700&display=swap" rel="stylesheet" />
-      <BackgroundWave />
-      {pageContent}
-    </div>
-  )
+  return pageContent;
 }
 
 function BackgroundWave() {
@@ -294,9 +307,17 @@ function LoadingScreen() {
   );
 }
 
+function AppWrapper() {
+  return (
+    <Router>
+      <Route path="/" component={App} />
+    </Router>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppWrapper />
   </React.StrictMode>,
   document.getElementById('root')
 );
