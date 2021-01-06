@@ -236,12 +236,12 @@ function App() {
           <Landing
             updateAppState={updateAppState}
             updateFilename={updateFilename}
-            isDev={isDev}
+            host={host}
             sharingOptIn={sharingOptIn}
             updateSharingOptIn={updateSharingOptIn}
           />
         </div>
-        <Footer />
+        <Footer host={host} />
       </>
     );
   } else if (appState === "loading") {
@@ -256,7 +256,7 @@ function App() {
           resumeImageSrc={pageData.resumeImageSrc}
           success={pageData.success}
         />
-        <Footer />
+        <Footer host={host} />
       </div>
     );
   } else {

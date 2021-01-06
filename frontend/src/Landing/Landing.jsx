@@ -7,7 +7,7 @@ import FileDropzone from "./Dropzone/Dropzone";
 export default function Landing({
   updateAppState,
   updateFilename,
-  isDev,
+  host,
   sharingOptIn,
   updateSharingOptIn
 }) {
@@ -19,7 +19,7 @@ export default function Landing({
         <Nav />
         <LandingText />
         <div className="landing-dropzone-wrapper">
-          {FileDropzone({ updateAppState, updateFilename, isDev, sharingOptIn, updateSharingOptIn })}
+          {FileDropzone({ updateAppState, updateFilename, host, sharingOptIn, updateSharingOptIn })}
         </div>
       </div>
       <div className="landing-value-props-wrapper">

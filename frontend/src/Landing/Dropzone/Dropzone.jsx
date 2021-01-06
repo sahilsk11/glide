@@ -6,12 +6,11 @@ import { getDroppedOrSelectedFiles } from 'html5-file-selector'
 export default function FileDropzone({
   updateAppState,
   updateFilename,
-  isDev,
+  host,
   sharingOptIn,
   updateSharingOptIn
 }) {
   // specify upload params and url for your files
-  const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
   const getUploadParams = ({ meta }) => { return { url: host + "/postResume" } }
 
   // called every time a file's `status` changes

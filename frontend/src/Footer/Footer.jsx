@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./footer.css";
 
-export default function Footer() {
+export default function Footer({ host }) {
   const [numDocuments, updateNumDocuments] = useState("?");
-  fetch("http://localhost:5000/countDocuments")
+  fetch(host+"/countDocuments")
     .then(r => r.json())
     .then(data => {
       updateNumDocuments(data.numDocuments)
