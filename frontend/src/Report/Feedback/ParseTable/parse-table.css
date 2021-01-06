@@ -1,4 +1,27 @@
-.table {
-  border: 1px solid black;
+table {
   width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .15);
+}
+
+table, th, td {
+  border: 1px solid rgba(0, 0, 0, .1);
+}
+
+td, th {
+  padding: 10px;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+.indented-li {
+  margin-left: 20px;
+}
+
+.school-title {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-weight: 700;
 }

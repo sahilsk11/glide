@@ -6,7 +6,7 @@ import ReportSwitcher from "./FeedbackNav/FeedbackNav";
 import ParseTable from "./ParseTable/ParseTable";
 
 export default function ReportNavigator({ resumeImageSrc, content, resumeAsJSON }) {
-  const [activeFeedback, updateActiveFeedback] = useState("Prechecks");
+  const [activeFeedback, updateActiveFeedback] = useState("Formatting");
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">

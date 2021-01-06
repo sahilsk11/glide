@@ -206,10 +206,10 @@ function App() {
   }
 
 
-  const [appState, updateAppState] = useState("landing");
+  const [appState, updateAppState] = useState("results");
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
-  const [pageData, updatePageData] = useState({});
+  const [pageData, updatePageData] = useState(d);
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
