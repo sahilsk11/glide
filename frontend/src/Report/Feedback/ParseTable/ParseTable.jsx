@@ -15,6 +15,9 @@ export default function ParseTable({ resumeAsJSON }) {
 
 function Summary({ resumeAsJSON }) {
   function listToString(list) {
+    if (!list) {
+      return "null";
+    }
     console.log(list);
     let out = "";
     for (let i = 0; i < list.length; i++) {
@@ -39,34 +42,34 @@ function Summary({ resumeAsJSON }) {
   }
   let links = getKeyIfExists("links", "url");
   return (
-    <table className="table">
+    <table className="parse-table">
       <tr>
-        <th>Information</th>
-        <th>Parsed</th>
+        <th className="parse-table-th">Information</th>
+        <th className="parse-table-th">Parsed</th>
       </tr>
       <tr>
-        <td>Name(s)</td>
-        <td>{listToString(resumeAsJSON.names)}</td>
+        <td className="parse-table-td">Name(s)</td>
+        <td className="parse-table-td">{listToString(resumeAsJSON.names)}</td>
       </tr>
       <tr>
-        <td>Email</td>
-        <td>{emails}</td>
+        <td className="parse-table-td">Email</td>
+        <td className="parse-table-td">{emails}</td>
       </tr>
       <tr>
-        <td>Phone</td>
-        <td>{phones}</td>
+        <td className="parse-table-td">Phone</td>
+        <td className="parse-table-td">{phones}</td>
       </tr>
       <tr>
-        <td>Schools</td>
-        <td>{schools}</td>
+        <td className="parse-table-td">Schools</td>
+        <td className="parse-table-td">{schools}</td>
       </tr>
       <tr>
-        <td>Links</td>
-        <td>{links}</td>
+        <td className="parse-table-td">Links</td>
+        <td className="parse-table-td">{links}</td>
       </tr>
       <tr>
-        <td>Skills</td>
-        <td>{resumeAsJSON.summary.skills || "null"}</td>
+        <td className="parse-table-td">Skills</td>
+        <td className="parse-table-td">{(resumeAsJSON.summary && resumeAsJSON.summary.skills) || "null"}</td>
       </tr>
     </table>
   )
@@ -78,7 +81,7 @@ function School(school) {
     gpa = school.gpa.toString() + "/" + school.gpaMax.toString();
   }
   return (
-    <ul>
+    <ul className="parse-table-ul">
       <p className="school-title">{school.org}</p>
       <li className="indented-li">{school.degree} {school.field}</li>
       <li className="indented-li">Attendance: {parseStartEndString(school)}</li>
@@ -105,24 +108,33 @@ function parseStartEndString(position) {
 
 function WorkExperience({ positions }) {
   let rows = [];
-  positions.forEach(position => {
-    const dateStr = parseStartEndString(position)
-    rows.push(
-      <ExperienceRow
-        company={position.org}
-        position={position.title}
-        dates={dateStr}
-        summary={position.summary || "null"}
-      />
-    )
-  })
+  if (!positions) {
+    rows = [<tr>
+      <td className="parse-table-td">null</td>
+      <td className="parse-table-td">null</td>
+      <td className="parse-table-td">null</td>
+      <td className="parse-table-td">null</td>
+    </tr>];
+  } else {
+    positions.forEach(position => {
+      const dateStr = parseStartEndString(position)
+      rows.push(
+        <ExperienceRow
+          company={position.org}
+          position={position.title}
+          dates={dateStr}
+          summary={position.summary || "null"}
+        />
+      )
+    })
+  }
   return (
-    <table>
+    <table className="parse-table">
       <tr>
-        <th>Company</th>
-        <th>Position</th>
-        <th>Dates</th>
-        <th>Summary</th>
+        <th className="parse-table-th">Company</th>
+        <th className="parse-table-th">Position</th>
+        <th className="parse-table-th">Dates</th>
+        <th className="parse-table-th">Summary</th>
       </tr>
       {rows}
     </table>
@@ -132,10 +144,10 @@ function WorkExperience({ positions }) {
 function ExperienceRow({ company, position, dates, summary }) {
   return (
     <tr>
-      <td>{company}</td>
-      <td>{position}</td>
-      <td>{dates}</td>
-      <td>{summary}</td>
+      <td className="parse-table-td">{company}</td>
+      <td className="parse-table-td">{position}</td>
+      <td className="parse-table-td">{dates}</td>
+      <td className="parse-table-td">{summary}</td>
     </tr>
   )
 }

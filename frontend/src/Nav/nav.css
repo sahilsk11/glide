@@ -7,6 +7,10 @@
   display: flex;
 }
 
+.nav-icon-container {
+  cursor: pointer;
+}
+
 .nav-icon {
   position: absolute;
   width: 50px;

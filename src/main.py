@@ -24,8 +24,8 @@ if __name__ == "__main__":
   resume_name = "blank.pdf"
   #s = get_cleaned_resume_text(resume_name)
   #print(d)
-  d = resume_to_dict("blank.pdf")
-  print(ruleset.scan_resume(resume_name, d))
+  d = resume_to_dict("Parth_Patel_Resume__V1_ (7).pdf")
+  print(json.dumps(d))
   #print(s)
 
   

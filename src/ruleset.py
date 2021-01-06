@@ -156,6 +156,20 @@ def checklist(filename, resume_as_dict):
     return response
 
 
+a = {
+    "linkedin": True,
+    "email": True,
+    "schools": [
+        {
+            "gpa": True,
+            "startDate": False
+        },
+        {
+            "gpa": False
+        }
+    ]
+}
+
 def verb_usage(filename, resume_as_dict):
     words = []
     with open("resume_verbs.json") as jsonFile:

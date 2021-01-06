@@ -16,7 +16,7 @@ export default function Nav() {
 
 function Icon() {
   return (
-    <div className="nav-icon-container">
+    <div className="nav-icon-container" onClick={() => window.location.href="."}>
       <img src="./img/icon.svg" className="nav-icon" alt="" />
       <h1 className="nav-title">Glide</h1>
     </div>

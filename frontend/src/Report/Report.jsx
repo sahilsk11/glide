@@ -16,10 +16,14 @@ export default function Report(
     console.log(analysis);
     return <p>error</p>
   }
+  let summary = "We couldn't create a summary from this resume.";
+  if (resumeJSON.summary) {
+    summary = resumeJSON.summary.experience;
+  }
   return (
     <div className="report-container">
       <ReportTitle />
-      <Summary score={analysis.points} summaryText={resumeJSON.summary.experience} />
+      <Summary score={analysis.points} summaryText={summary} />
       <ReportNavigator
         resumeImageSrc={resumeImageSrc}
         content={analysis}
