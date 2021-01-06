@@ -5,12 +5,23 @@
   justify-content: flex-start;
 }
 
-.report-resume-img {
+.report-resume-img-container {
   width: 200px;
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+.report-resume-img {
+  width: 100%;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.report-resume-filename {
+  text-align: center;
+  color: grey;
+  font-family: Inter;
+  font-size: 14px;
 }
 
 .report-content-container {

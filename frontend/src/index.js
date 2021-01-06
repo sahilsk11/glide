@@ -202,11 +202,13 @@ function App() {
         }
       }
     },
-    "success": true
+    "success": true,
+    "filename": "sahil_kapur_resume.pdf",
+
   }
 
 
-  const [appState, updateAppState] = useState("landing");
+  const [appState, updateAppState] = useState("results");
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState(d);
@@ -247,6 +249,7 @@ function App() {
   } else if (appState === "loading") {
     pageContent = <LoadingScreen />
   } else if (appState === "results") {
+
     pageContent = (
       <div className="page-content">
         <Nav />
@@ -254,6 +257,7 @@ function App() {
           analysis={pageData.analysis}
           resumeJSON={pageData.resumeJSON}
           resumeImageSrc={pageData.resumeImageSrc}
+          filename={pageData.filename}
           success={pageData.success}
         />
         <Footer host={host} />

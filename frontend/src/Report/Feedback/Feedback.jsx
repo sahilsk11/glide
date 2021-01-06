@@ -5,7 +5,7 @@ import copy from "./copy";
 import ReportSwitcher from "./FeedbackNav/FeedbackNav";
 import ParseTable from "./ParseTable/ParseTable";
 
-export default function ReportNavigator({ resumeImageSrc, content, resumeAsJSON }) {
+export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
   const [activeFeedback, updateActiveFeedback] = useState("Formatting");
   return (
     <div style={{ position: "relative" }}>
@@ -20,7 +20,7 @@ export default function ReportNavigator({ resumeImageSrc, content, resumeAsJSON 
           resumeAsJSON={resumeAsJSON}
         />
       </div>
-      <ResumeImage resumeImageSrc={resumeImageSrc} />
+      <ResumeImage filename={filename} resumeImageSrc={resumeImageSrc} />
     </div>
   );
 }
@@ -106,10 +106,11 @@ function FeedbackComponent({ checked, title, subtitle }) {
   )
 }
 
-function ResumeImage({ resumeImageSrc }) {
+function ResumeImage({ filename, resumeImageSrc }) {
   return (
     <div className="report-resume-img-container">
       <img src={resumeImageSrc} className="report-resume-img" />
+      <p className="report-resume-filename">{filename}</p>
     </div>
   )
 }

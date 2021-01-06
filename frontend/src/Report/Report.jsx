@@ -2,13 +2,14 @@ import React from "react";
 import "./report.css";
 
 import CircleGraph from "./CircleGraph/CircleGraph";
-import ReportNavigator from "./Feedback/Feedback"
+import Feedback from "./Feedback/Feedback"
 
 export default function Report(
   {
     analysis,
     resumeJSON,
     resumeImageSrc,
+    filename,
     success
   }
 ) {
@@ -24,10 +25,11 @@ export default function Report(
     <div className="report-container">
       <ReportTitle />
       <Summary score={analysis.points} summaryText={summary} />
-      <ReportNavigator
+      <Feedback
         resumeImageSrc={resumeImageSrc}
         content={analysis}
         resumeAsJSON={resumeJSON}
+        filename={filename}
       />
       {/* <EmailSignup /> */}
     </div>
