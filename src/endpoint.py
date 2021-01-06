@@ -5,6 +5,8 @@ import PyPDF2
 from pdf2image import convert_from_path 
 import db_connection as db
 from resume_converter import resume_to_dict
+import string
+import random
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -37,10 +39,19 @@ def parse_resume():
     try:
       resume_as_dict = resume_to_dict(filename)
       scanned_data = ruleset.scan_resume(filename, resume_as_dict)
+      new_filename = generate_filename(filename)
+      rename_file(filename, new_filename)
     except:
       return flask.jsonify({"success": False, "message": "There was an error in the request"})
-    save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_dict, is_development)
-    img_filename = pdf_to_png(filename)
+    save_resume_to_db(
+      filename,
+      new_filename,
+      did_user_opt_in,
+      scanned_data,
+      resume_as_dict,
+      is_development
+    )
+    img_filename = pdf_to_png(new_filename)
     host = ""
     if is_development:
       host = "http://localhost:5000"
@@ -66,12 +77,13 @@ def count_documents():
 def authenticate(data):
   return True
 
-def save_resume_to_db(filename, did_user_opt_in, scanned_data, resume_as_json, is_development):
+def save_resume_to_db(filename, new_filename, did_user_opt_in, scanned_data, resume_as_json, is_development):
   entry = {
     "optIn": did_user_opt_in,
     "analysis": scanned_data,
     "resumeJSON": resume_as_json,
-    "filename": filename,
+    "original_filename": filename,
+    "saved_filename": new_filename,
     "isDev": is_development
   }
   db.add_entry(entry)
@@ -82,6 +94,24 @@ def pdf_to_png(filename):
   for img in images: 
     img.save("saved-images/"+ img_filename, 'JPEG')
   return img_filename
+
+def generate_filename(filename):
+  original_extension = filename[filename.find("."):]
+  letters = string.ascii_uppercase
+  nums = string.digits
+  out = ""
+  for i in range(10):
+    if i % 2:
+      out += random.choice(letters)
+    else:
+      out += random.choice(nums)
+  out += original_extension
+  if os.path.exists("saved-resumes/"+out):
+    out = generate_filename(filename)
+  return out
+
+def rename_file(original_filename, new_filename):
+  os.rename("saved-resumes/"+original_filename, "saved-resumes/"+new_filename)
 
 
 if __name__ == "__main__":
