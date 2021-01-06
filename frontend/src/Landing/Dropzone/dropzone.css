@@ -5,26 +5,28 @@
 }
 
 .dzu-dropzone {
-  border-color: black;
+  border-color: rgb(196, 196, 180);
   border-style: dashed;
   border-radius: 12px;
-  height: 280px;
-  background-color: #FBF3D4;
+  height: 320px;
+  background-color: #fbf3d4;
 }
 
 .dropzone-input {
-  margin-top: 25px;
+  margin-top: 22px;
 }
 
 .dropzone-img {
   margin: 0px auto;
   display: block;
-  width: 150px;
+  width: 120px;
+  cursor: pointer;
 }
 
 .dropzone-input-text {
   margin-top: 30px;
-  color: #83868c;
+  color: rgba(75, 77, 81, 1);
+  text-align: center;
 }
 
 .opt-in-link {
@@ -37,11 +39,10 @@
   font-family: Karla;
 }
 
-.dropzone-submit-btn {
+.dropzone-btn {
   text-align: center;
-  display: block;
   margin: 0px auto;
-  margin-top: 40px;
+  margin-top: 20px;
   border: none;
   background-color: #FFDB2A;
   width: 160px;
@@ -55,6 +56,30 @@
   cursor: pointer;
 }
 
-.dropzone-submit-btn:hover {
+.dropzone-btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone-submit-btn {
+  text-align: center;
+  display: block;
+  margin: 0px auto;
+  margin-top: 20px;
+  border: none;
+  background-color: #FFDB2A;
+  width: 160px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Inter;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  outline: none;
+  cursor: pointer;
+}
+
+.dropzone-btn:hover {
   box-shadow: 2px 2px 1px #aaaaaa;
 }

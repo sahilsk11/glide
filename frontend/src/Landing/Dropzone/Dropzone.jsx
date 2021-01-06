@@ -56,7 +56,7 @@ function Submit({ files, onSubmit }) {
   return (
     <div>
       <OptIn />
-      <button onClick={handleSubmit} className="dropzone-submit-btn">Scan My Resume</button>
+      <button onClick={handleSubmit} className="dropzone-submit-btn dropzone-btn">Scan My Resume</button>
     </div>
   )
 }
@@ -82,18 +82,18 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
 
   return (
     <div className="dropzone-input">
-      <label style={{ cursor: 'pointer' }}>
+      <label>
         <img src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
         <p className="dropzone-input-text">
-          Drag & drop your resume here, or&nbsp;<span style={{ color: "black" }}><u><strong>browse</strong></u></span>
-          .
+          Drag & drop your resume here
+          <br/><br/>
+          OR
         </p>
+        <p className="dropzone-btn dropzone-btn-text">Browse</p>
         <input
           style={{ display: 'none' }}
           type="file"
           accept={accept}
-
-          multiple
           onChange={e => {
             getFilesFromEvent(e).then(chosenFiles => {
               onFiles(chosenFiles)

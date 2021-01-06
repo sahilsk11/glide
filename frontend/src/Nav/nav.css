@@ -1,10 +1,11 @@
 .nav {
   position: relative;
-  width: 90%;
+  width: calc(89% - 50px);
   margin: 0px auto;
   height: 50px;
   margin-top: 20px;
   display: flex;
+  justify-content: space-between;
 }
 
 .nav-icon-container {
@@ -24,8 +25,6 @@
 }
 
 .nav-email-signup-wrapper {
-  position: absolute;
-  right: 20px;
   display: flex;
   align-items: center;
   height: 100%;

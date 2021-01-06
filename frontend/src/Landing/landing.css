@@ -43,13 +43,13 @@
   height: 100%;
   padding-bottom: 10%;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .landing-backdrop {
-  height: 80%;
-  border-radius: 0px 0px 60% 60%;
-  padding-bottom: 10%;
+  height: 100%;
+  border-radius: 0px 0px 40% 40%;
+  padding-bottom: 0px;
   background: linear-gradient(265.15deg, #FAF7F1 1.86%, #FAF7F1 94.95%);
   position: absolute;
   width: 130%;
