@@ -22,6 +22,8 @@
   color: grey;
   font-family: Inter;
   font-size: 14px;
+  max-width: 200px;
+  word-break: break-all
 }
 
 .report-content-container {
