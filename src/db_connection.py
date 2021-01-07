@@ -1,5 +1,6 @@
 import pymongo
 import passwords
+import datetime
 
 client = pymongo.MongoClient(f"mongodb+srv://mac-dev:{passwords.mongo_password()}@cluster0.i7jmt.mongodb.net/resume-scanner?retryWrites=true&w=majority")
 db = client["resume-scanner"]
@@ -11,6 +12,7 @@ def get_all_entries():
   return list(elements)
 
 def add_entry(entry):
+  entry["timestamp"] = datetime.datetime.now()
   return collection.insert_one(entry)
 
 def count_documents():
