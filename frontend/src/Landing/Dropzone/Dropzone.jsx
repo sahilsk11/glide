@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader';
 import "./dropzone.css";
@@ -10,21 +11,30 @@ export default function FileDropzone({
   sharingOptIn,
   updateSharingOptIn
 }) {
+  const [allowSubmit, updateAllowSubmit] = useState(false);
   // specify upload params and url for your files
   const getUploadParams = ({ meta }) => { return { url: host + "/postResume" } }
-
+  console.log('hi');
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file, xhr }, status) => {
+    console.log(status);
     if (status === "done") {
       const response = JSON.parse(xhr.response);
       updateFilename(response.filename);
+      updateAllowSubmit(true);
+    } else if (status === "exception_upload") {
+      updateAllowSubmit(false);
     }
   }
 
   // receives array of files that are done uploading when submit button is clicked
   const handleSubmit = (files, allFiles) => {
-    allFiles.forEach(f => f.remove());
-    updateAppState("submitted");
+    if (allowSubmit) {
+      allFiles.forEach(f => f.remove());
+      updateAppState("submitted");
+    } else {
+      alert("Unable to submit - Check Upload Message");
+    }
   }
 
   const getFilesFromEvent = e => {
@@ -87,7 +97,7 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
         <img src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
         <p className="dropzone-input-text">
           Drag & drop your resume here
-          <br/><br/>
+          <br /><br />
           OR
         </p>
         <p className="dropzone-btn dropzone-btn-text">Browse</p>
