@@ -9,6 +9,7 @@ import Nav from "./Nav/Nav";
 import Landing from "./Landing/Landing";
 import Footer from "./Footer/Footer";
 import Report from "./Report/Report";
+import Error from "./Error/Error";
 
 
 function App() {
@@ -233,6 +234,10 @@ function App() {
       updateAppState("results");
     } else if (pathName == "") {
       updateAppState("landing");
+    } else if (pathName != "error") {
+      redirect("error");
+    } else {
+      updateAppState("error");
     }
   }, [pathName]);
 
@@ -245,7 +250,9 @@ function App() {
           updatePageData(data)
           redirect("report");
         }).catch((e) => {
-          updatePageData({ success: false })
+          console.error(e);
+          updatePageData({ success: false });
+          redirect("error");
         });
       updateAppState("loading");
     }
@@ -284,9 +291,8 @@ function App() {
         <Footer host={host} />
       </>
     );
-
   } else {
-    pageContent = <>.</>;
+    pageContent = Error();
   }
   return pageContent;
 }
