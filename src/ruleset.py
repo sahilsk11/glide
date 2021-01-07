@@ -1,6 +1,7 @@
 from resume_converter import resume_to_str
 import json
 import PyPDF2
+from PyPDF2 import PdfFileReader 
 import re
 from collections import defaultdict
 
@@ -24,6 +25,14 @@ def is_resume_scannable(filename):
     string = resume_to_str(filename, path="saved-resumes/")
     return bool(string and string.strip())
 
+def is_resume_a_page(filename):
+    num_pages = PdfFileReader(open("saved-resumes/" + filename, "rb")).getNumPages() 
+    if num_pages != 1:
+        return False
+    else:
+        return True
+     
+
 
 def scan_resume(filename, resume_as_dict):
     checklist_dict = checklist(filename, resume_as_dict)
@@ -31,15 +40,17 @@ def scan_resume(filename, resume_as_dict):
     is_scannable = is_resume_scannable(filename)
     good_verbs_list = verb_usage(filename, resume_as_dict)
     follow_naming = filename_formatting(filename)
-    points = calculate_points(checklist_list, is_pdf, is_scannable,filename_formatting)
+    number_pages = is_resume_a_page(filename)
+    #points = calculate_points(checklist_list, is_pdf, is_scannable,filename_formatting)
     return {
         "Prechecks": {
             "isFilePDF": is_pdf,
             "isFileScannable": is_scannable,
-            "doesFollowNaming": follow_naming
+            "doesFollowNaming": follow_naming,
+            "isAPage": number_pages
         },
         "Required Information": checklist_dict,
-        "points": points,
+        #"points": points,
         "goodVerbs": good_verbs_list,
     }
 
