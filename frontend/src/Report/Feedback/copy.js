@@ -2,134 +2,134 @@ const copy = {
   "Prechecks": {
     "isFilePDF": {
       "true": {
-        "title": "File format is perfect!",
-        "subtitle": "PDFs are acceptable."
+        "title": "Your file format is perfect!",
+        "subtitle": "PDF documents are the standard for submitting resumes."
       },
       "false": {
-        "title": "File format is perfect!",
-        "subtitle": "PDFs are acceptable."
+        "title": "Wrong file format.",
+        "subtitle": "Use a PDF document format for your resume."
       },
     },
     "isFileScannable": {
       "true": {
-        "title": "Your Resume Scans!",
-        "subtitle": "Looks good on the employers end."
+        "title": "Your resume scans!",
+        "subtitle": "Employers are able to parse your resume. Please check the formatting tab to ensure data is being read correctly."
       },
       "false": {
-        "title": "File format is perfect!",
-        "subtitle": "PDFs are acceptable."
+        "title": "Error scanning resume.",
+        "subtitle": "Please double check the contents of your resume before scanning."
       },
     },
     "doesFollowNaming": {
       "true": {
         "title": "Your resume is titled appropriately.",
-        "subtitle": "nice"
+        "subtitle": "Great work using the 'FirstName_LastName_Resume.pdf' format!"
       },
       "false": {
-        "title": "File format is perfect!",
-        "subtitle": "PDFs are acceptable."
+        "title": "Please use standard resume naming conventions.",
+        "subtitle": "Rename your resume as 'FirstName_LastName_Resume.pdf'"
       },
     }
   },
   "Required Information": {
     "degree": {
       "true": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your degree was listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your degree has not been found.",
+        "subtitle": "Please ensure your degree information is listed properly."
       }
     },
     "emails": {
       "true": {
-        "title": "emails listed",
-        "subtitle": "good job"
+        "title": "Your email was listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your email has not been found.",
+        "subtitle": "Please confirm your email is added to your resume."
       }
     },
     "endMonth": {
       "true": {
-        "title": "endMonth listed",
-        "subtitle": "good job"
+        "title": "All position end months were listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "One or more position end months have not been found.",
+        "subtitle": "Please confirm all positions include an end month."
       }
     },
     "endYear": {
       "true": {
-        "title": "endYear listed",
-        "subtitle": "good job"
+        "title": "All position end years were listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "One or more position end years have not been found.",
+        "subtitle": "Please confirm all positions include an end year."
       }
     },
     "gpa": {
       "true": {
-        "title": "gpa listed",
-        "subtitle": "good job"
+        "title": "Your GPA was listed and found",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your GPA has not been found.",
+        "subtitle": "Add you GPA to your resume if it is above 3.00."
       }
     },
     "linkedin": {
       "true": {
-        "title": "linkedin listed",
-        "subtitle": "good job"
+        "title": "Your Linkedin profile link was listed and found",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your Linkedin profile link has not been found.",
+        "subtitle": "Add your Linkedin profile link to give employers digital context."
       }
     },
     "name": {
       "true": {
-        "title": "name listed",
-        "subtitle": "good job"
+        "title": "Your name was listed and found",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your name has not been found.",
+        "subtitle": "Please confirm your first and last name is added."
       }
     },
     "phoneNumber": {
       "true": {
-        "title": "phoneNumber listed",
-        "subtitle": "good job"
+        "title": "Your phone number was listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "Your phone number has not been found.",
+        "subtitle": "Please confirm your phone number has been listed."
       }
     },
     "startMonth": {
       "true": {
-        "title": "startMonth listed",
-        "subtitle": "good job"
+        "title": "All position start months were listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "One or more position start months have not been found.",
+        "subtitle": "Please confirm all positions include a start month."
       }
     },
     "startYear": {
       "true": {
-        "title": "startYear listed",
-        "subtitle": "good job"
+        "title": "All position start years were listed and found.",
+        "subtitle": "Good work including essential information."
       },
       "false": {
-        "title": "Degree listed",
-        "subtitle": "good job"
+        "title": "One or more position start years have not been found.",
+        "subtitle": "Please confirm all positions include a start year."
       }
     }
   }
