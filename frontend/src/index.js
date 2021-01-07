@@ -230,10 +230,6 @@ function App() {
   }
 
   useEffect(() => {
-    alert(sharingOptIn);
-  }, [sharingOptIn])
-
-  useEffect(() => {
     if (pathName == "report") {
       updateAppState("results");
     } else if (pathName == "") {
