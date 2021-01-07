@@ -247,8 +247,12 @@ function App() {
       fetch(endpoint)
         .then(response => response.json())
         .then(data => {
-          updatePageData(data)
-          redirect("report");
+          updatePageData(data);
+          if (!data.success) {
+            redirect("error");
+          } else {
+            redirect("report");
+          }
         }).catch((e) => {
           console.error(e);
           updatePageData({ success: false });

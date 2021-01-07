@@ -1,0 +1,36 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  height: calc(90vh - 100px);
+  align-items: center;
+  width: 100%;
+}
+
+.error-content {
+  width: 100%;
+}
+
+.error-icon {
+  display: block;
+  margin: 0px auto;
+  width: 30%;
+  max-width: 300px;
+  min-width: 200px;
+  padding-left: 2%;
+}
+
+.error-title {
+  text-align: center;
+}
+
+.error-subtitle {
+  display: block;
+  margin: 0px auto;
+  width: 600px;
+  text-align: center;
+  max-width: 70%;
+}
+
+.error-back-btn {
+  margin-top: 40px;
+}
