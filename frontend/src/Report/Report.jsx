@@ -10,11 +10,12 @@ export default function Report(
     resumeJSON,
     resumeImageSrc,
     filename,
-    success
+    success,
+    redirect
   }
 ) {
   if (!success) {
-    return <p>error</p>
+    redirect("error");
   }
   let summary = "We couldn't create a summary from this resume.";
   if (resumeJSON.summary) {

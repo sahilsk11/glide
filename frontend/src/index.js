@@ -290,6 +290,7 @@ function App() {
             resumeImageSrc={pageData.resumeImageSrc}
             filename={pageData.filename}
             success={pageData.success}
+            redirect={redirect}
           />
         </div>
         <Footer host={host} />
