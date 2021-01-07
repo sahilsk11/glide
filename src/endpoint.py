@@ -9,9 +9,10 @@ import string
 import random
 import re
 import sys
+import traceback
 
-if '/usr/bin' not in os.environ:
-  os.environ['PATH'] = '/usr/bin'
+# if '/usr/bin' not in os.environ:
+#   os.environ['PATH'] = '/usr/bin'
 
 app = flask.Flask(__name__)
 from flask_cors import CORS
@@ -53,7 +54,8 @@ def parse_resume():
       scanned_data = ruleset.scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
-    except:
+    except Exception as e:
+      print(traceback.print_exc())
       return flask.jsonify({"success": False, "message": "There was an error in the request"})
     save_resume_to_db(
       original_filename,
@@ -133,8 +135,4 @@ def rename_file(original_filename, new_filename):
 
 
 if __name__ == "__main__":
-  if (len(sys.argv) > 1 and sys.argv[1] == "dev"):
-    debug=True
-  else:
-    debug=False
-  app.run(debug=debug)
+  app.run(debug=True)

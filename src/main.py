@@ -21,11 +21,11 @@ def interpret_points(points):
   return "you in homie"
 
 if __name__ == "__main__":
-  resume_name = "blank.pdf"
+  resume_name = "sahil_kapur_resume.pdf"
   #s = get_cleaned_resume_text(resume_name)
   #print(d)
-  d = resume_to_dict("Kapur_Saaniya.pdf")
-  print(ruleset.checklist("Kapur_Saaniya.pdf",d))
+  d = resume_to_dict(resume_name)
+  print(ruleset.scan_resume(resume_name, d))
   #print(ruleset.scan_resume(resume_name, d))
   #print(s)
 
