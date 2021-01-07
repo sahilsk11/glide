@@ -24,20 +24,17 @@ export default function ReportSwitcher({ activeFeedback, updateActiveFeedback })
 
 function ReportNav({ title, activeFeedback, updateActiveFeedback }) {
   let containerActiveStyle = {};
-  let textActiveStyle = {};
   if (activeFeedback == title) {
     containerActiveStyle = {
       backgroundColor: "rgba(241, 241, 244, 1)"
     }
-    textActiveStyle = {
-      
-    }
   }
-  const imgName = title.replace(" ", "-").toLowerCase();
+  let imgName = title.replace(" ", "-").toLowerCase();
+  imgName += imgName === "helpful-tips" ? ".png" : ".svg";
   return (
     <div className="report-nav" style={containerActiveStyle} onClick={() => { updateActiveFeedback(title) }}>
-      <img src={`./img/${imgName}.svg`} className="report-nav-icon" />
-      <p style={{textActiveStyle}} className="report-nav-label">{title}</p>
+      <img src={`./img/${imgName}`} className="report-nav-icon" />
+      <p className="report-nav-label">{title}</p>
     </div>
   );
 }
