@@ -2,6 +2,7 @@ from resume_converter import resume_to_str
 import json
 import PyPDF2
 import re
+from collections import defaultdict
 
 """
 Top level function that will be called from API endpoint.
@@ -30,7 +31,7 @@ def scan_resume(filename, resume_as_dict):
     is_scannable = is_resume_scannable(filename)
     good_verbs_list = verb_usage(filename, resume_as_dict)
     follow_naming = filename_formatting(filename)
-    points = calculate_points(checklist_dict, is_pdf, is_scannable)
+    points = calculate_points(checklist_list, is_pdf, is_scannable,filename_formatting)
     return {
         "Prechecks": {
             "isFilePDF": is_pdf,
@@ -47,7 +48,7 @@ def filename_formatting(filename):
     return re.match("[a-zA-Z]+_[a-zA-Z]+_resume\.", filename) != None
 
 
-def calculate_points(checklist_list, is_pdf, is_scannable):
+def calculate_points(checklist_list, is_pdf, is_scannable,filename_formatting):
 
     points = 100
 
@@ -76,6 +77,8 @@ def calculate_points(checklist_list, is_pdf, is_scannable):
         points = points - 20
     if not is_scannable:
         points = points - 15
+    if filename_formatting:
+        points = points - 14
 
     return points
 
@@ -105,19 +108,22 @@ def checklist(filename, resume_as_dict):
         response["linkedin"] = False
 
     if d.get("schools") != None:
+        response["schools"] = {}
         for edu in d["schools"]:
+            response["schools"][edu.get("org")] = {}
             if edu.get("degree") == None:
-                response["degree"] = False  # checks degree
+                response["schools"][edu.get("org")]["degree"] = False  # checks degree
             else:
-                response["degree"] = True
+                response["schools"][edu.get("org")]["degree"] = True
 
             if edu.get("gpa") == None:
-                response["gpa"] = False  # checks GPA
+                response["schools"][edu.get("org")]["gpa"] = False  # checks GPA
             else:
-                response["gpa"] = True
+                response["schools"][edu.get("org")]["gpa"] = True
     else:
         response["gpa"] = False
         response["degree"] = False
+
 
     if d.get("positions") != None:
         for time in d["positions"]:  # checks dates
