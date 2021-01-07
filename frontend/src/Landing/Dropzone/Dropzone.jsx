@@ -14,10 +14,8 @@ export default function FileDropzone({
   const [allowSubmit, updateAllowSubmit] = useState(false);
   // specify upload params and url for your files
   const getUploadParams = ({ meta }) => { return { url: host + "/postResume" } }
-  console.log('hi');
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file, xhr }, status) => {
-    console.log(status);
     if (status === "done") {
       const response = JSON.parse(xhr.response);
       updateFilename(response.filename);
@@ -53,20 +51,23 @@ export default function FileDropzone({
       accept=".pdf,.doc,.docx"
       maxFiles={1}
       InputComponent={Input}
-      SubmitButtonComponent={Submit}
+      SubmitButtonComponent={(props) => Submit({ ...props, sharingOptIn, updateSharingOptIn })}
       getFilesFromEvent={getFilesFromEvent}
       maxSizeBytes={1048576}
     />
   )
 }
 
-function Submit({ files, onSubmit }) {
+function Submit({ files, onSubmit, sharingOptIn, updateSharingOptIn }) {
   const handleSubmit = () => {
     onSubmit(files.filter(f => ['headers_received', 'done'].includes(f.meta.status)))
   }
   return (
     <div>
-      <OptIn />
+      <OptIn
+        sharingOptIn={sharingOptIn}
+        updateSharingOptIn={updateSharingOptIn}
+      />
       <button onClick={handleSubmit} className="dropzone-submit-btn dropzone-btn">Scan My Resume</button>
     </div>
   )
@@ -79,8 +80,8 @@ function OptIn({ sharingOptIn, updateSharingOptIn }) {
         type="checkbox"
         className="opt-in-checkbox"
         checked={sharingOptIn}
-        onClick={() => {
-          // updateSharingOptIn(!sharingOptIn)
+        onChange={() => {
+          updateSharingOptIn(!sharingOptIn)
         }}
       />
       <label className="opt-in-text">Share my resume with recruiters & the Glide team (<a href="#" className="opt-in-link" target="_blank">privacy policy</a>)</label>
