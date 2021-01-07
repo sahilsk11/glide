@@ -42,12 +42,11 @@ body {
   text-align: center;
   display: block;
   margin: 0px auto;
-  margin-top: 20px;
   border: none;
   background-color: #FFDB2A;
   width: 160px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 7px;
   font-size: 15px;
   font-family: Inter;
   font-weight: 600;
@@ -57,7 +56,7 @@ body {
 }
 
 .glide-btn:hover {
-  box-shadow: 2px 2px 1px #aaaaaa;
+  background-color: #EECF36;
 }
 
 @media only screen and (max-width: 522px) {

@@ -41,34 +41,36 @@ function Summary({ resumeAsJSON }) {
   let links = getKeyIfExists("links", "url");
   return (
     <table className="parse-table">
-      <tr>
+      <tr className="heading-tr">
         <th className="parse-table-th">Information</th>
         <th className="parse-table-th">Parsed</th>
       </tr>
-      <tr>
-        <td className="parse-table-td">Name(s)</td>
-        <td className="parse-table-td">{listToString(resumeAsJSON.names)}</td>
-      </tr>
-      <tr>
-        <td className="parse-table-td">Email</td>
-        <td className="parse-table-td">{emails}</td>
-      </tr>
-      <tr>
-        <td className="parse-table-td">Phone</td>
-        <td className="parse-table-td">{phones}</td>
-      </tr>
-      <tr>
-        <td className="parse-table-td">Schools</td>
-        <td className="parse-table-td">{schools}</td>
-      </tr>
-      <tr>
-        <td className="parse-table-td">Links</td>
-        <td className="parse-table-td">{links}</td>
-      </tr>
-      <tr>
-        <td className="parse-table-td">Skills</td>
-        <td className="parse-table-td">{(resumeAsJSON.summary && resumeAsJSON.summary.skills) || "null"}</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td className="parse-table-td">Name(s)</td>
+          <td className="parse-table-td">{listToString(resumeAsJSON.names)}</td>
+        </tr>
+        <tr>
+          <td className="parse-table-td">Email</td>
+          <td className="parse-table-td">{emails}</td>
+        </tr>
+        <tr>
+          <td className="parse-table-td">Phone</td>
+          <td className="parse-table-td">{phones}</td>
+        </tr>
+        <tr>
+          <td className="parse-table-td">Schools</td>
+          <td className="parse-table-td">{schools}</td>
+        </tr>
+        <tr>
+          <td className="parse-table-td">Links</td>
+          <td className="parse-table-td">{links}</td>
+        </tr>
+        <tr>
+          <td className="parse-table-td">Skills</td>
+          <td className="parse-table-td">{(resumeAsJSON.summary && resumeAsJSON.summary.skills) || "null"}</td>
+        </tr>
+      </tbody>
     </table>
   )
 }
@@ -134,7 +136,9 @@ function WorkExperience({ positions }) {
         <th className="parse-table-th">Dates</th>
         <th className="parse-table-th">Summary</th>
       </tr>
-      {rows}
+      <tbody>
+        {rows}
+      </tbody>
     </table>
   )
 }

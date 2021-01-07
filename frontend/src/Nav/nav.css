@@ -49,23 +49,13 @@
 }
 
 .nav-email-btn {
-  background: #FFDB2A;
-  border-radius: 4px;
-  color: #182C45;
   height: 36px;
   width: 175px;
   font-size: 15px;
   border: none;
-  padding-bottom: 3px;
+  padding-bottom: 5px;
   font-family: Karla;
   font-weight: 700;
-  transition-duration: 0.3s;
-  outline: none;
-  cursor: pointer;
-}
-
-.nav-email-btn:hover {
-  box-shadow: 3px 3px 2px #aaaaaa;
 }
 
 @media only screen and (max-width: 714px) {

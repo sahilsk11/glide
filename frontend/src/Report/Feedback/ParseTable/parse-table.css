@@ -1,15 +1,17 @@
 .parse-table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .15);
-}
-
-.parse-table, .parse-table-th, .parse-table-td {
   border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 10px;
+  font-family: Inter;
 }
 
 .parse-table-td, .parse-table-th {
   padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f3fa;
 }
 
 .parse-table-ul {

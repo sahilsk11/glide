@@ -68,7 +68,7 @@ function Submit({ files, onSubmit, sharingOptIn, updateSharingOptIn }) {
         sharingOptIn={sharingOptIn}
         updateSharingOptIn={updateSharingOptIn}
       />
-      <button onClick={handleSubmit} className="dropzone-submit-btn dropzone-btn">Scan My Resume</button>
+      <button onClick={handleSubmit} className="glide-btn dropzone-submit-btn">Scan My Resume</button>
     </div>
   )
 }
@@ -101,7 +101,7 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
           <br /><br />
           OR
         </p>
-        <p className="dropzone-btn dropzone-btn-text">Browse</p>
+        <p className="glide-btn dropzone-btn-text">Browse</p>
         <input
           style={{ display: 'none' }}
           type="file"

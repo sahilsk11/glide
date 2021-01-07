@@ -40,22 +40,6 @@
   font-family: Karla;
 }
 
-.dropzone-btn {
-  text-align: center;
-  margin: 0px auto;
-  margin-top: 20px;
-  border: none;
-  background-color: #FFDB2A;
-  width: 160px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-family: Inter;
-  font-weight: 600;
-  transition-duration: 0.3s;
-  outline: none;
-  cursor: pointer;
-}
 
 .dropzone-btn-text {
   display: flex;
@@ -64,23 +48,5 @@
 }
 
 .dropzone-submit-btn {
-  text-align: center;
-  display: block;
-  margin: 0px auto;
-  margin-top: 20px;
-  border: none;
-  background-color: #FFDB2A;
-  width: 160px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-family: Inter;
-  font-weight: 600;
-  transition-duration: 0.3s;
-  outline: none;
-  cursor: pointer;
-}
-
-.dropzone-btn:hover {
-  box-shadow: 2px 2px 1px #aaaaaa;
+  margin-top: 30px;
 }

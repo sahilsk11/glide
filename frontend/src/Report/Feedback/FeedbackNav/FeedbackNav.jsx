@@ -2,44 +2,42 @@ import React from "react";
 import "./report-switcher.css";
 
 export default function ReportSwitcher({ activeFeedback, updateActiveFeedback }) {
+  const tabs = [
+    "ATS Scan",
+    "Prechecks",
+    "Required Information",
+    "Experience",
+    "Helpful Tips"
+  ];
+  const tabComponents = tabs.map(tabName => (
+    <ReportNav title={tabName}
+      activeFeedback={activeFeedback}
+      updateActiveFeedback={updateActiveFeedback}
+    />
+  ));
   return (
     <div className="report-nav-container">
-      <ReportNav title={"Prechecks"}
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
-      <ReportNav title={"Required Information"}
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
-      <ReportNav title={"Experience Valuation"}
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
-      <ReportNav title={"Miscellaneous Tips"}
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
-      <ReportNav title={"Formatting"}
-        activeFeedback={activeFeedback}
-        updateActiveFeedback={updateActiveFeedback}
-      />
+      {tabComponents}
     </div>
   );
 }
 
 function ReportNav({ title, activeFeedback, updateActiveFeedback }) {
-  let activeStyle = {};
+  let containerActiveStyle = {};
+  let textActiveStyle = {};
   if (activeFeedback == title) {
-    activeStyle = {
+    containerActiveStyle = {
       backgroundColor: "rgba(241, 241, 244, 1)"
+    }
+    textActiveStyle = {
+      
     }
   }
   const imgName = title.replace(" ", "-").toLowerCase();
   return (
-    <div className="report-nav" style={activeStyle} onClick={() => { updateActiveFeedback(title) }}>
+    <div className="report-nav" style={containerActiveStyle} onClick={() => { updateActiveFeedback(title) }}>
       <img src={`./img/${imgName}.svg`} className="report-nav-icon" />
-      <p className="report-nav-label">{title}</p>
+      <p style={{textActiveStyle}} className="report-nav-label">{title}</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import ReportSwitcher from "./FeedbackNav/FeedbackNav";
 import ParseTable from "./ParseTable/ParseTable";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
-  const [activeFeedback, updateActiveFeedback] = useState("Formatting");
+  const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">
@@ -31,7 +31,7 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
     feedbackComponent = Prechecks({ activeContent });
   } else if (activeFeedback == "Required Information") {
     feedbackComponent = RequiredInfo({ activeContent });
-  } else if (activeFeedback == "Formatting") {
+  } else if (activeFeedback == "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
   }
   return (

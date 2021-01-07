@@ -31,7 +31,7 @@ function EmailSignup() {
           className="nav-email-input"
           placeholder="Get one resume tip every week"
         />
-        <button className="nav-email-btn">Get Resume Tips 🔑</button>
+        <button className="glide-btn nav-email-btn">Get Resume Tips 🔑</button>
       </form>
     </div>
   )
