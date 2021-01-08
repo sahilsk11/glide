@@ -3,7 +3,7 @@ import json
 import PyPDF2
 from PyPDF2 import PdfFileReader 
 import re
-from collections import defaultdict
+import collections
 
 """
 Top level function that will be called from API endpoint.
@@ -188,19 +188,21 @@ a = {
 }
 
 def verb_usage(filename, resume_as_dict):
-    words = []
+    position_dict = {}
     with open("resume_verbs.json") as jsonFile:
         jsonObject = json.load(jsonFile)
 
     if "positions" in resume_as_dict:
         for work_description in resume_as_dict["positions"]:
-            if work_description.get("summary") != None:
-                string = work_description.get("summary")
-                string_strip = string.strip()
-                string_split = string_strip.split()
-                for verb in jsonObject["good"]:
-                    for index in string_split:
-                        if verb == index:
-                            words.append(index)
-
-    return list(set(words))
+            if work_description.get("org") != None:
+                position_dict[work_description.get("org")] = []
+                if work_description.get("summary") != None:
+                    string = work_description.get("summary")
+                    string_strip = string.strip()
+                    string_split = string_strip.split()
+                    for verb in jsonObject["good"]:
+                        for index in string_split:
+                            if verb == index:
+                             position_dict[work_description.get("org")].append(index)
+                            
+    return position_dict
