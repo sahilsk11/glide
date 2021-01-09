@@ -16,7 +16,7 @@ def evaluate_all_experiences(resume_as_dict):
   threads = []
   for position_dict in resume_as_dict["positions"]:
     start = time.time()
-    t = threading.Thread(target=evaluate_single_experience, args=(resume_as_dict, valuations))
+    t = threading.Thread(target=evaluate_single_experience, args=(position_dict, valuations))
     t.start()
     threads.append(t)
     end = time.time()
@@ -39,8 +39,8 @@ def evaluate_single_experience(postion_dict, valuations=None):
   summary_score = get_summary_score(summary)
   # define weights for each component
   company_weight = 0.2
-  role_weight = 0.4
-  summary_weight = 0.4
+  role_weight = 0.3
+  summary_weight = 0.5
   score = (company_score * company_weight) + (role_score * role_weight) + (summary_score * summary_weight)
   # what else would we want to report?
   report = {
@@ -76,7 +76,9 @@ def get_summary_score(experience_summary):
   total_score = 0
   keyword_point_tuples = airtable.get_rows("skills")
   for (skill, score) in keyword_point_tuples:
-    if skill in experience_summary:
+    if skill.upper() in experience_summary:
+      total_score += score
+    elif skill.lower() in experience_summary.lower():
       total_score += score
   return total_score
 

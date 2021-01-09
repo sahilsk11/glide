@@ -29,7 +29,9 @@ def is_table_valid(table_name):
 def get_score_from_key(queried_key, table_name):
   key_value_tuples = get_rows(table_name)
   for (key, score) in key_value_tuples:
-    if key == queried_key:
+    if table_name == "roles" and key in queried_key.lower() or key in queried_key:
+      return score
+    elif table_name != "roles" and key.lower() in queried_key.lower():
       return score
   return None
 
