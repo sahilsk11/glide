@@ -1,0 +1,29 @@
+.warning-container {
+  width: 95%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.flag-suggestion {
+  width: 97%;
+  height: 100%;
+  padding: 10px;
+  background: #F5F8FB;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.flag-suggestion-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.suggestion-message {
+  padding-left: 60px;
+  font-family: Inter;
+  font-size: 14px;
+}
