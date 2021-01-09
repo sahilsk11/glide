@@ -20,11 +20,18 @@ def get_rows(table_name):
   return out
 
 def is_table_valid(table_name):
-  valid_table_names = ['skills', 'companies']
+  valid_table_names = ['skills', 'companies', 'roles']
   if table_name not in valid_table_names:
-    print("invalid table name")
+    print("invalid table name - " + table_name)
     return False
   return True
+
+def get_score_from_key(queried_key, table_name):
+  key_value_tuples = get_rows(table_name)
+  for (key, score) in key_value_tuples:
+    if key == queried_key:
+      return score
+  return None
 
 if __name__ == "__main__":
   print(get_rows("skills"))  # returns [('Java', 10), ('Python', 8)]

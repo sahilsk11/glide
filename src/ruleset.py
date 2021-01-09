@@ -4,6 +4,7 @@ import PyPDF2
 from PyPDF2 import PdfFileReader 
 import re
 import collections
+import experience_valuation
 
 """
 Top level function that will be called from API endpoint.
@@ -41,6 +42,8 @@ def scan_resume(filename, resume_as_dict):
     good_verbs_list = verb_usage(filename, resume_as_dict)
     follow_naming = filename_formatting(filename)
     number_pages = is_resume_a_page(filename)
+    exp_valuation = experience_valuation.evaluate_all_experiences(resume_as_dict)
+    skill_valuation = experience_valuation.evaluate_summary_skills(resume_as_dict)
     #points = calculate_points(checklist_list, is_pdf, is_scannable,filename_formatting)
     return {
         "Prechecks": {
@@ -52,6 +55,10 @@ def scan_resume(filename, resume_as_dict):
         "Required Information": checklist_dict,
         #"points": points,
         "goodVerbs": good_verbs_list,
+        "Experience": {
+            "skills": skill_valuation,
+            "positions": exp_valuation
+        }
     }
 
 
