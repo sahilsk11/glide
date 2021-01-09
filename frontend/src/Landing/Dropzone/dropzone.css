@@ -11,6 +11,7 @@
   height: 320px;
   max-width: 90%;
   background-color: #fbf3d4;
+  overflow: hidden;
 }
 
 .dropzone-input {
@@ -39,7 +40,6 @@
   margin-top: 20px;
   font-family: Karla;
 }
-
 
 .dropzone-btn-text {
   display: flex;
