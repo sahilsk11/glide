@@ -5,7 +5,7 @@ export default function ReportSwitcher({ activeFeedback, updateActiveFeedback })
   const tabs = [
     "ATS Scan",
     "Prechecks",
-    "Required Information",
+    "Required Info",
     "Experience",
     "Helpful Tips"
   ];

@@ -31,7 +31,7 @@ const copy = {
       },
     }
   },
-  "Required Information": {
+  "Required Info": {
     "degree": {
       "true": {
         "title": "Your degree was listed and found.",

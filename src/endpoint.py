@@ -1,6 +1,6 @@
 import flask
 import os
-import ruleset
+from overall_points import scan_resume
 import PyPDF2
 from pdf2image import convert_from_path 
 import db_connection as db
@@ -51,7 +51,7 @@ def parse_resume():
     try:
       resume_as_dict = resume_to_dict(filename)
       original_filename = remove_glide_index(filename)
-      scanned_data = ruleset.scan_resume(original_filename, resume_as_dict)
+      scanned_data = scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
     except Exception as e:
@@ -70,7 +70,7 @@ def parse_resume():
     if is_development:
       host = "http://localhost:5000"
     else:
-      host = "http://resume.sahilkapur.com/server"
+      host = "http://glidecv.com/server"
     return flask.jsonify({
       "analysis": scanned_data,
       "resumeJSON": resume_as_dict,

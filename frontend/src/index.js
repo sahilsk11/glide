@@ -15,37 +15,140 @@ import Error from "./Error/Error";
 function App() {
   const d = {
     "analysis": {
-      "Prechecks": {
-        "doesFollowNaming": true,
+      "experience": {
+        "positions": [
+          {
+            "org": "Sym",
+            "reason": {
+              "company_score": 3,
+              "role_score": 7,
+              "summary_score": 0
+            },
+            "score": 2.7,
+            "title": "Freelance Web Developer"
+          },
+          {
+            "org": "Delta Mu Kappa",
+            "reason": {
+              "company_score": 3,
+              "role_score": 3,
+              "summary_score": 0
+            },
+            "score": 1.5,
+            "title": "President"
+          },
+          {
+            "org": "Ultron",
+            "reason": {
+              "company_score": 3,
+              "role_score": 3,
+              "summary_score": 9
+            },
+            "score": 6.0,
+            "title": "Intent-based voice assistant"
+          },
+          {
+            "org": "HeadSpin",
+            "reason": {
+              "company_score": 3,
+              "role_score": 9,
+              "summary_score": 25
+            },
+            "score": 15.8,
+            "title": "Software Engr Intern"
+          },
+          {
+            "org": "Prudential Financial",
+            "reason": {
+              "company_score": 3,
+              "role_score": 9,
+              "summary_score": 0
+            },
+            "score": 3.3,
+            "title": "Software Engr Intern"
+          },
+          {
+            "org": "ThinkTwice",
+            "reason": {
+              "company_score": 3,
+              "role_score": 3,
+              "summary_score": 0
+            },
+            "score": 1.5,
+            "title": ""
+          },
+          {
+            "org": "Cratus",
+            "reason": {
+              "company_score": 3,
+              "role_score": 3,
+              "summary_score": 54
+            },
+            "score": 28.5,
+            "title": ""
+          },
+          {
+            "org": "First Tee",
+            "reason": {
+              "company_score": 3,
+              "role_score": 3,
+              "summary_score": 8
+            },
+            "score": 5.5,
+            "title": "Golf Coach"
+          }
+        ],
+        "skills": null
+      },
+      "goodVerbs": {
+        "Cratus": [
+          "Created",
+          "Developed"
+        ],
+        "Delta Mu Kappa": [],
+        "First Tee": [
+          "Built"
+        ],
+        "HeadSpin": [],
+        "Prudential Financial": [
+          "Implemented",
+          "Focused",
+          "Created"
+        ],
+        "Sym": [
+          "Collaborated"
+        ],
+        "ThinkTwice": [],
+        "Ultron": [
+          "Developed",
+          "Developed"
+        ]
+      },
+      "prechecks": {
+        "doesFollowNaming": false,
+        "isAPage": true,
         "isFilePDF": true,
         "isFileScannable": true
       },
-      "Required Information": {
-        "degree": true,
+      "requiredInfo": {
         "emails": false,
-        "endMonth": true,
-        "endYear": true,
-        "gpa": false,
         "linkedin": false,
         "name": true,
         "phoneNumber": false,
-        "startMonth": true,
-        "startYear": true
-      },
-      "goodVerbs": [
-        "Created",
-        "Implemented",
-        "Developed",
-        "Focused",
-        "Built",
-        "Collaborated"
-      ],
-      "points": 81
+        "positions": {},
+        "schools": {
+          "Purdue University": {
+            "degree": true,
+            "gpa": false
+          }
+        }
+      }
     },
-    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=sahil_kapur_resume.jpg",
+    "filename": "1D8D2C0O6F.pdf",
+    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=4X7T0S9D9K.jpg",
     "resumeJSON": {
-      "createdAt": 1609838126043,
-      "lastStoryAt": 1609838126043,
+      "createdAt": 1610180271332,
+      "lastStoryAt": 1610180271332,
       "links": [
         {
           "domain": "symops.com",
@@ -206,10 +309,9 @@ function App() {
         }
       }
     },
-    "success": true,
-    "filename": "sahil_kapur_resumesahil_kapur_resumesahil_kapur_resumesahil_kapur_resume.pdf",
-
+    "success": true
   }
+
   let history = useHistory();
   const location = useLocation();
   const pathName = location.pathname.replace("/", "");
@@ -223,7 +325,7 @@ function App() {
   const [pageData, updatePageData] = useState(initialData);
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
-  const host = isDev ? "http://localhost:5000" : "http://resume.sahilkapur.com/server";
+  const host = isDev ? "http://localhost:5000" : "http://glidecv.com/server";
 
   function redirect(path) {
     history.push(path);

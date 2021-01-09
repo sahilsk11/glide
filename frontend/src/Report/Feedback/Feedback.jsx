@@ -7,6 +7,7 @@ import ParseTable from "./ParseTable/ParseTable";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
   const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
+  console.log(activeFeedback);
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">
@@ -16,7 +17,7 @@ export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filena
         />
         <ReportContent
           activeFeedback={activeFeedback}
-          activeContent={content[activeFeedback]}
+          activeContent={content[toLowerCamelCase(activeFeedback)]}
           resumeAsJSON={resumeAsJSON}
         />
       </div>
@@ -25,11 +26,17 @@ export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filena
   );
 }
 
+const toLowerCamelCase = (str) => {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+/g, '');
+}
+
 function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
   let feedbackComponent;
   if (activeFeedback == "Prechecks") {
     feedbackComponent = Prechecks({ activeContent });
-  } else if (activeFeedback == "Required Information") {
+  } else if (activeFeedback == "Required Info") {
     feedbackComponent = RequiredInfo({ activeContent });
   } else if (activeFeedback == "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
@@ -66,7 +73,7 @@ function Prechecks({ activeContent }) {
 }
 
 function RequiredInfo({ activeContent }) {
-  const options = copy["Required Information"];
+  const options = copy["Required Info"];
   const componentNames = ["degree", "emails", "endMonth", "endYear", "gpa", "linkedin", "name", "phoneNumber", "startMonth", "startYear"];
   let components = [];
   componentNames.forEach(key => {

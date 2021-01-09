@@ -76,9 +76,7 @@ def get_summary_score(experience_summary):
   total_score = 0
   keyword_point_tuples = airtable.get_rows("skills")
   for (skill, score) in keyword_point_tuples:
-    if skill.upper() in experience_summary:
-      total_score += score
-    elif skill.lower() in experience_summary.lower():
+    if skill.lower() in experience_summary.lower():
       total_score += score
   return total_score
 
