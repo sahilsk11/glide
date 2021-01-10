@@ -70,7 +70,7 @@ def parse_resume():
     if is_development:
       host = "http://localhost:5000"
     else:
-      host = "http://glidecv.com/server"
+      host = "https://glidecv.com/server"
     return flask.jsonify({
       "analysis": scanned_data,
       "resumeJSON": resume_as_dict,
