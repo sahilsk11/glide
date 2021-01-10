@@ -5,6 +5,7 @@ import PyPDF2
 from PyPDF2 import PdfFileReader 
 import re
 import collections
+
 def good_verbs(filename, resume_as_dict):
     position_dict = {}
     with open("resume_verbs.json") as jsonFile:
@@ -20,7 +21,7 @@ def good_verbs(filename, resume_as_dict):
                     string_split = string_strip.split()
                     for verb in jsonObject["good"]:
                         for index in string_split:
-                            if verb == index:
+                            if verb.lower() == index.lower():  #SAHIL CHECK 
                              position_dict[work_description.get("org")].append(index)
                             
     return position_dict

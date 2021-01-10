@@ -1,4 +1,4 @@
-from resume_converter import resume_to_str
+from resume_converter import resume_to_str, resume_to_dict
 import prechecks
 import json
 import PyPDF2
@@ -58,34 +58,34 @@ def checklist(filename, resume_as_dict):
     if d.get("positions") != None:
         response["positions"] = {}
         for time in d["positions"]: 
-            if d.get("org") != None:
-                response["positions"][d.get("org")] = {}
+            if time.get("org") != None:
+                response["positions"][time.get("org")] = {}
                 if time.get("isCurrent") != None:
                     if time.get("start").get("year") == None:
-                        response["positions"][d.get("org")]["startYear"] = False
+                        response["positions"][time.get("org")]["startYear"] = False
                     else:
-                        response["positions"][d.get("org")]["startYear"] = True
+                        response["positions"][time.get("org")]["startYear"] = True
                     if time.get("start").get("month") == None:
-                        response["positions"][d.get("org")]["startMonth"] = False   
+                        response["positions"][time.get("org")]["startMonth"] = False   
                     else:
-                        response["positions"][d.get("org")]["startMonth"] = True
+                        response["positions"][time.get("org")]["startMonth"] = True
                 else:
                     if time.get("start").get("year") == None:
-                        response["positions"][d.get("org")]["startYear"] = False
+                        response["positions"][time.get("org")]["startYear"] = False
                     else:
-                        response["positions"][d.get("org")]["startYear"] = True
+                        response["positions"][time.get("org")]["startYear"] = True
                     if time.get("start").get("month") == None:
-                        response["positions"][d.get("org")]["startMonth"] = False
+                        response["positions"][time.get("org")]["startMonth"] = False
                     else:
-                        response["positions"][d.get("org")]["startMonth"] = True
+                        response["positions"][time.get("org")]["startMonth"] = True
                     if time.get("end").get("year") == None:
-                        response["positions"][d.get("org")]["endYear"] = False
+                        response["positions"][time.get("org")]["endYear"] = False
                     else:
-                        response["positions"][d.get("org")]["endYear"] = True
+                        response["positions"][time.get("org")]["endYear"] = True
                     if time.get("end").get("month") == None:
-                        response["positions"][d.get("org")]["endMonth"] = False
+                        response["positions"][time.get("org")]["endMonth"] = False
                     else:
-                        response["positions"][d.get("org")]["endMonth"] = True
+                        response["positions"][time.get("org")]["endMonth"] = True
     else:
         response["startMonth"] = False
         response["startYear"] = False
@@ -129,10 +129,11 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
 
     if resume_as_dict.get("schools") != None:
         for school_name in resume_as_dict["schools"]:
-            if checklist["schools"][school_name.get("org")]["degree"] == False:
-                ruleset_points = ruleset_points - 20
-            if checklist["schools"][school_name.get("org")]["gpa"] == False:
-                ruleset_points = ruleset_points - 10
+            if school_name.get("org") != None:
+                if checklist["schools"][school_name.get("org")]["degree"] == False:
+                    ruleset_points = ruleset_points - 20
+                if checklist["schools"][school_name.get("org")]["gpa"] == False:
+                    ruleset_points = ruleset_points - 10
     else:
         if checklist["degree"] == False:
             ruleset_points = ruleset_points - 20
@@ -141,14 +142,17 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
     
     if resume_as_dict.get("positions") != None:
         for company_name in resume_as_dict["positions"]:
-            if checklist["positions"][company_name.get("org")]["startYear"] == False:
-                ruleset_points = ruleset_points - 4
-            if checklist["positions"][company_name.get("org")]["startMonth"] == False:
-                ruleset_points - ruleset_points - 4
-            if checklist["positions"][company_name.get("org")]["endYear"] == False:
-                ruleset_points = ruleset_points - 4
-            if checklist["positions"][company_name.get("org")]["endMonth"] == False:
-                ruleset_points = ruleset_points - 4
+            if company_name.get("org") == "Sym":
+                print(checklist["positions"][company_name.get("org")])
+            if company_name.get("org") != None:
+                if checklist["positions"][company_name.get("org")]["startYear"] == False:
+                    ruleset_points = ruleset_points - 4
+                if checklist["positions"][company_name.get("org")]["startMonth"] == False:
+                    ruleset_points - ruleset_points - 4
+                if checklist["positions"][company_name.get("org")]["endYear"] == False:
+                    ruleset_points = ruleset_points - 4
+                if checklist["positions"][company_name.get("org")]["endMonth"] == False:
+                    ruleset_points = ruleset_points - 4
     else:
         if checklist["startYear"] == False:
             ruleset_points = ruleset_points - 4
@@ -162,4 +166,7 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
     return ruleset_points
     
 if __name__ == "__main__":
-    print()
+    d = resume_to_dict("sahil_kapur_resume.pdf")
+    c = checklist("sahil_kapur_resume.pdf", d)
+    v = verb_usage("sahil_kapur_resume.pdf", d)
+    ruleset_score(c, v, d)
