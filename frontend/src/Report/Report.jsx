@@ -4,7 +4,7 @@ import "./report.css";
 import CircleGraph from "./ScoreVisual/CircleGraph";
 import Feedback from "./Feedback/Feedback"
 
-export default function Report({ pageData, redirect }) {
+export default function Report({ pageData, redirect, experienceVisible, updateExperienceVisibility }) {
   if (!pageData.success) {
     redirect("error");
   }
@@ -12,6 +12,7 @@ export default function Report({ pageData, redirect }) {
   if (pageData.resumeJSON.summary) {
     summary = pageData.resumeJSON.summary.experience;
   }
+
   return (
     <div className="report-container">
       <ReportTitle />
@@ -21,6 +22,8 @@ export default function Report({ pageData, redirect }) {
         content={pageData}
         resumeAsJSON={pageData.resumeJSON}
         filename={pageData.filename}
+        experienceVisible={experienceVisible}
+        updateExperienceVisibility={updateExperienceVisibility}
       />
       {/* <EmailSignup /> */}
     </div>
