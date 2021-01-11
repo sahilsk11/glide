@@ -21,6 +21,7 @@ CORS(app)
 
 @app.route("/")
 def healthcheck():
+  print("i am printing to stdout")
   return flask.jsonify({"status": 200, "message": "application is running"})
 
 @app.route("/postResume", methods=['POST'])
