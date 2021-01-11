@@ -7,24 +7,24 @@ import re
 import collections
 
 def good_verbs(filename, resume_as_dict):
-    position_dict = {}
+    pos_dict = {}
     with open("resume_verbs.json") as jsonFile:
         jsonObject = json.load(jsonFile)
 
     if "positions" in resume_as_dict:
         for work_description in resume_as_dict["positions"]:
             if work_description.get("org") != None:
-                position_dict[work_description.get("org")] = []
+                pos_dict[work_description.get("org")] = []
                 if work_description.get("summary") != None:
                     string = work_description.get("summary")
                     string_strip = string.strip()
                     string_split = string_strip.split()
                     for verb in jsonObject["good"]:
                         for index in string_split:
-                            if verb.lower() == index.lower() and not(index.lower() in position_dict[work_description.get("org")]):
-                             position_dict[work_description.get("org")].append(index.lower())
+                            if verb.lower() == index.lower() and not(index.lower() in pos_dict[work_description.get("org")]):
+                             pos_dict[work_description.get("org")].append(index.lower())
                             
-    return position_dict
+    return pos_dict
 
 def verb_score(good_verbs, resume_as_dict):
     verb_points = 0

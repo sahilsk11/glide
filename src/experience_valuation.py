@@ -1,4 +1,5 @@
 from resume_converter import resume_to_dict
+from verb_usage import good_verbs
 import airtable
 import pprint
 import time
@@ -10,14 +11,14 @@ def evaluate_summary_skills(resume_as_dict):
     points_tuples = airtable.get_rows("skills") # [("PL", score), ...]
   return None
 
-def evaluate_all_experiences(resume_as_dict):
+def evaluate_all_experiences(resume_as_dict, pos_dict):
   valuations = []
   func_start = time.time()
   threads = []
   if resume_as_dict.get("positions") != None:
     for position_dict in resume_as_dict["positions"]:
       start = time.time()
-      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, valuations))
+      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, pos_dict, valuations))
       t.start()
       threads.append(t)
       end = time.time()
@@ -29,9 +30,11 @@ def evaluate_all_experiences(resume_as_dict):
   return valuations
 
 
-def evaluate_single_experience(postion_dict, valuations=None):
+def evaluate_single_experience(postion_dict, pos_dict, valuations=None):
   company = postion_dict.get("org") or ""
   company_score = get_company_score(company)
+
+  verb_list = pos_dict[company]
 
   role = postion_dict.get("title") or ""
   role_score = get_role_score(role)
@@ -43,11 +46,13 @@ def evaluate_single_experience(postion_dict, valuations=None):
   role_weight = 0.3
   summary_weight = 0.5
   score = (company_score * company_weight) + (role_score * role_weight) + (summary_score * summary_weight)
+
   # what else would we want to report?
   report = {
     "score": score,
     "title": role,
     "org": company,
+    "verbs": verb_list,
     "reason": { # do NOT include these in production
       "company_score": company_score,
       "role_score": role_score,
@@ -83,7 +88,9 @@ def get_summary_score(experience_summary):
 
 if __name__ == "__main__":
   start = time.time()
+  filename = "sahil_kapur_resume.pdf"
   d = resume_to_dict("sahil_kapur_resume.pdf")
   end = time.time()
+  p = good_verbs(filename,d)
   print(f"resume dict received in {end - start}s ...")
-  pprint.pprint(evaluate_all_experiences(d))
+  pprint.pprint(evaluate_all_experiences(d,p))
