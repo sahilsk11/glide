@@ -12,9 +12,6 @@ import sys
 import traceback
 import logging
 
-if '/usr/bin' not in os.environ:
-  os.environ['PATH'] = '/usr/bin'
-
 app = flask.Flask(__name__)
 from flask_cors import CORS
 CORS(app)
@@ -73,13 +70,14 @@ def parse_resume():
       host = "http://localhost:5000"
     else:
       host = "https://glidecv.com/server"
-    return flask.jsonify({
-      "analysis": scanned_data,
+    response = {
       "resumeJSON": resume_as_dict,
       "resumeImageSrc": host+"/getResumeImage?filename="+img_filename,
       "filename": original_filename,
       "success": True
-    })
+    }
+    response.update(scanned_data) # deconstruct scanned data and add to response
+    return flask.jsonify(response)
   return flask.jsonify({"code": 403, "message": "Invalid credentials"})
 
 @app.route("/getResumeImage")
@@ -137,4 +135,7 @@ def rename_file(original_filename, new_filename):
 
 
 if __name__ == "__main__":
+  if len(sys.argv) < 2:
+    if '/usr/bin' not in os.environ:
+      os.environ['PATH'] = '/usr/bin'
   app.run(debug=True)

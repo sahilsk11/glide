@@ -88,6 +88,70 @@ function RequiredInfo({ activeContent }) {
       />
     );
   });
+  let allDegreesPresent = true;
+  let allGPAPresent = true;
+  Object.keys(checklist.schools).forEach(schoolName => {
+    const school = checklist.schools[schoolName];
+    if (!school.degree) {
+      allDegreesPresent = false;
+      components.push(
+        <FeedbackComponent
+          checked={false}
+          title={"Missing degree name from " + schoolName}
+          subtitle={"Double check that your degree from " + schoolName + " is present, and can be parsed by an ATS."}
+        />
+      );
+    }
+    if (!school.gpa) {
+      allGPAPresent = false;
+      components.push(
+        <FeedbackComponent
+          checked={false}
+          title={"Missing GPA name from " + schoolName}
+          subtitle={"Double check that your GPA from " + schoolName + " is present (if it's over 3.0), and can be parsed by an ATS."}
+        />
+      );
+    }
+  });
+  if (allDegreesPresent) {
+    components.push(
+      <FeedbackComponent
+        checked={true}
+        title={"Your degree was listed and found."}
+        subtitle={"Good work including essential information."}
+      />
+    );
+  }
+  if (allGPAPresent) {
+    components.push(
+      <FeedbackComponent
+        checked={true}
+        title={"Your GPA was listed and found"}
+        subtitle={"Good work including essential information."}
+      />
+    );
+  }
+  Object.keys(checklist.positions).forEach(positionName => {
+    const position = checklist.positions[positionName];
+    if (!position.endMonth) {
+      components.push(
+        <FeedbackComponent
+          checked={false}
+          title={"Missing end date for position " + positionName}
+          subtitle={"Missing end date for position " + positionName}
+        />
+      );
+    }
+    if (!position.endYear) {
+
+    }
+    if (!position.startMonth) {
+
+    }
+    if (!position.startYear) {
+
+    }
+  });
   return (
     <div>
       {components}
