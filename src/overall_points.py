@@ -44,7 +44,7 @@ def scan_resume(filename, resume_as_dict,):
             "skills": skill_valuation,
             "positions": exp_valuation  # [{report}, ....]
         },
-        "score": 10
+        "score": over_points
     }
 
 
