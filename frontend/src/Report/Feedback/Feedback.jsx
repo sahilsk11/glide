@@ -88,6 +88,7 @@ function RequiredInfo({ activeContent }) {
       />
     );
   });
+  //these checks are nested
   let allDegreesPresent = true;
   let allGPAPresent = true;
   Object.keys(checklist.schools).forEach(schoolName => {
@@ -131,6 +132,7 @@ function RequiredInfo({ activeContent }) {
       />
     );
   }
+
   Object.keys(checklist.positions).forEach(positionName => {
     const position = checklist.positions[positionName];
     if (!position.endMonth) {
@@ -162,9 +164,9 @@ function RequiredInfo({ activeContent }) {
 function FeedbackComponent({ checked, title, subtitle }) {
   let img;
   if (checked) {
-    img = <img alt="" src="./img/check.png" className="feedback-component-check" />
+    img = <img alt="✓" src="./img/check.png" className="feedback-component-check" />
   } else {
-    img = <img alt="" src="./img/dot.png" className="feedback-component-check" />
+    img = <img alt="x" src="./img/dot.png" className="feedback-component-check" />
   }
   return (
     <div className="feedback-component-container">
