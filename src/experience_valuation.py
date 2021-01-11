@@ -53,11 +53,11 @@ def evaluate_single_experience(postion_dict, pos_dict, valuations=None):
     "title": role,
     "org": company,
     "verbs": verb_list,
-    "reason": { # do NOT include these in production
-      "company_score": company_score,
-      "role_score": role_score,
-      "summary_score": summary_score
-    }
+    # "reason": { # do NOT include these in production
+    #   "company_score": company_score,
+    #   "role_score": role_score,
+    #   "summary_score": summary_score
+    # }
   }
   if valuations is None:
     return report
