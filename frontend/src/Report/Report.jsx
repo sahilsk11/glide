@@ -1,7 +1,7 @@
 import React from "react";
 import "./report.css";
 
-import CircleGraph from "./CircleGraph/CircleGraph";
+import CircleGraph from "./ScoreVisual/CircleGraph";
 import Feedback from "./Feedback/Feedback"
 
 export default function Report({ pageData, redirect }) {

@@ -14,8 +14,94 @@ import Error from "./Error/Error";
 
 function App() {
   const d = {
+    "experience": {
+      "positions": [
+        {
+          "org": "ThinkTwice",
+          "score": 1.5,
+          "title": "",
+          "verbs": []
+        },
+        {
+          "org": "Sym",
+          "score": 2.7,
+          "title": "Freelance Web Developer",
+          "verbs": [
+            "collaborated"
+          ]
+        },
+        {
+          "org": "First Tee",
+          "score": 5.5,
+          "title": "Golf Coach",
+          "verbs": [
+            "built",
+            "customized"
+          ]
+        },
+        {
+          "org": "Ultron",
+          "score": 6.0,
+          "title": "Intent-based voice assistant",
+          "verbs": [
+            "developed"
+          ]
+        },
+        {
+          "org": "Prudential Financial",
+          "score": 3.3,
+          "title": "Software Engr Intern",
+          "verbs": [
+            "implemented",
+            "focused",
+            "created"
+          ]
+        },
+        {
+          "org": "HeadSpin",
+          "score": 15.8,
+          "title": "Software Engr Intern",
+          "verbs": [
+            "built"
+          ]
+        },
+        {
+          "org": "Cratus",
+          "score": 28.5,
+          "title": "",
+          "verbs": [
+            "created",
+            "developed"
+          ]
+        },
+        {
+          "org": "Delta Mu Kappa",
+          "score": 1.5,
+          "title": "President",
+          "verbs": []
+        }
+      ],
+      "skills": null,
+      "verbScore": {
+        "Cratus": 100,
+        "Delta Mu Kappa": 0,
+        "First Tee": 100,
+        "HeadSpin": 100,
+        "Prudential Financial": 100,
+        "Sym": 100,
+        "ThinkTwice": 0,
+        "Ultron": 100
+      }
+    },
+    "filename": "2K2P6E4P5X.pdf",
+    "prechecks": {
+      "doesFollowNaming": false,
+      "isAPage": true,
+      "isFilePDF": true,
+      "isFileScannable": true,
+      "score": 85
+    },
     "requiredInfo": {
-      "checklistScore": 59,
       "checklist": {
         "emails": false,
         "linkedin": false,
@@ -77,142 +163,13 @@ function App() {
             "gpa": false
           }
         }
-      }
-    },
-    "experience": {
-      "goodVerbs": {
-        "Cratus": [
-          "Created",
-          "Developed"
-        ],
-        "Delta Mu Kappa": [],
-        "First Tee": [
-          "Built",
-          "customized"
-        ],
-        "HeadSpin": [
-          "built"
-        ],
-        "Prudential Financial": [
-          "Implemented",
-          "Focused",
-          "Created"
-        ],
-        "Sym": [
-          "Collaborated"
-        ],
-        "ThinkTwice": [],
-        "Ultron": [
-          "Developed",
-          "Developed"
-        ]
       },
-      "positions": [
-        {
-          "org": "HeadSpin",
-          "reason": {
-            "company_score": 3,
-            "role_score": 9,
-            "summary_score": 25
-          },
-          "score": 15.8,
-          "title": "Software Engr Intern"
-        },
-        {
-          "org": "Prudential Financial",
-          "reason": {
-            "company_score": 3,
-            "role_score": 9,
-            "summary_score": 0
-          },
-          "score": 3.3,
-          "title": "Software Engr Intern"
-        },
-        {
-          "org": "ThinkTwice",
-          "reason": {
-            "company_score": 3,
-            "role_score": 3,
-            "summary_score": 0
-          },
-          "score": 1.5,
-          "title": ""
-        },
-        {
-          "org": "Sym",
-          "reason": {
-            "company_score": 3,
-            "role_score": 7,
-            "summary_score": 0
-          },
-          "score": 2.7,
-          "title": "Freelance Web Developer"
-        },
-        {
-          "org": "Ultron",
-          "reason": {
-            "company_score": 3,
-            "role_score": 3,
-            "summary_score": 9
-          },
-          "score": 6.0,
-          "title": "Intent-based voice assistant"
-        },
-        {
-          "org": "Cratus",
-          "reason": {
-            "company_score": 3,
-            "role_score": 3,
-            "summary_score": 54
-          },
-          "score": 28.5,
-          "title": ""
-        },
-        {
-          "org": "First Tee",
-          "reason": {
-            "company_score": 3,
-            "role_score": 3,
-            "summary_score": 8
-          },
-          "score": 5.5,
-          "title": "Golf Coach"
-        },
-        {
-          "org": "Delta Mu Kappa",
-          "reason": {
-            "company_score": 3,
-            "role_score": 3,
-            "summary_score": 0
-          },
-          "score": 1.5,
-          "title": "President"
-        }
-      ],
-      "skills": null,
-      "verbScore": {
-        "Cratus": 100,
-        "Delta Mu Kappa": 0,
-        "First Tee": 100,
-        "HeadSpin": 100,
-        "Prudential Financial": 100,
-        "Sym": 100,
-        "ThinkTwice": 0,
-        "Ultron": 100
-      }
+      "score": 59
     },
-    "filename": "3L0E7A1E2L.pdf",
-    "prechecks": {
-      "doesFollowNaming": false,
-      "isAPage": true,
-      "isFilePDF": true,
-      "isFileScannable": true,
-      "precheckScore": 85
-    },
-    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=2K2P6E4P5X.jpg",
+    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=0P0L1W6M3P.jpg",
     "resumeJSON": {
-      "createdAt": 1610328333750,
-      "lastStoryAt": 1610328333750,
+      "createdAt": 1610336428761,
+      "lastStoryAt": 1610336428761,
       "links": [
         {
           "domain": "symops.com",
@@ -376,6 +333,7 @@ function App() {
     "score": 10,
     "success": true
   }
+
 
 
   let history = useHistory();

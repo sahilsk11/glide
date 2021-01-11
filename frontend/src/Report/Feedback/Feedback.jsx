@@ -3,10 +3,11 @@ import "./feedback.css";
 import copy from "./copy";
 
 import ReportSwitcher from "./FeedbackNav/FeedbackNav";
+import Experience from "./Experience/Experience";
 import ParseTable from "./ParseTable/ParseTable";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
-  const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
+  const [activeFeedback, updateActiveFeedback] = useState("Experience");
   console.log(activeFeedback);
   return (
     <div style={{ position: "relative" }}>
@@ -40,6 +41,8 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
     feedbackComponent = RequiredInfo({ activeContent });
   } else if (activeFeedback === "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
+  } else if (activeFeedback === "Experience") {
+    feedbackComponent = Experience({ activeContent });
   }
   return (
     <div className="report-content-container">

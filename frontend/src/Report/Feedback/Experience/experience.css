@@ -1,0 +1,69 @@
+.experience-skill-insight {
+  background-color: #F8FCFF;
+  padding: 15px;
+  border-radius: 10px;
+  padding-right: 20px;
+  margin-bottom: 30px;
+}
+
+.experience-skill-row {
+  display: flex;
+}
+
+.experience-score-background {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.experience-score-value {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.experience-eval-text {
+  margin-left: 30px;
+  margin-top: 2px;
+  font-size: 17px;
+  color: #424548;
+  font-family: Inter;
+}
+
+.experience-label-text {
+  font-size: 11px;
+  margin-top: 0px;
+  padding-top: 3px;
+}
+
+.experience-label {
+  height: 20px;
+  margin-top: 10px;
+  max-width: 90px;
+  min-width: 0px;
+}
+
+.experience-keyword-container {
+  display: flex;
+  margin: 0px auto;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.skill-keyword {
+  display: flex;
+}
+
+.skill-check {
+  width: 25px;
+}
+
+.skill-text {
+  margin: 0px;
+  margin-top: 3px;
+  font-family: Karla;
+  margin-left: 10px;
+}
