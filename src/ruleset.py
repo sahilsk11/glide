@@ -142,17 +142,21 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
     
     if resume_as_dict.get("positions") != None:
         for company_name in resume_as_dict["positions"]:
-            if company_name.get("org") == "Sym":
-                print(checklist["positions"][company_name.get("org")])
             if company_name.get("org") != None:
-                if checklist["positions"][company_name.get("org")]["startYear"] == False:
-                    ruleset_points = ruleset_points - 4
-                if checklist["positions"][company_name.get("org")]["startMonth"] == False:
-                    ruleset_points - ruleset_points - 4
-                if checklist["positions"][company_name.get("org")]["endYear"] == False:
-                    ruleset_points = ruleset_points - 4
-                if checklist["positions"][company_name.get("org")]["endMonth"] == False:
-                    ruleset_points = ruleset_points - 4
+                if company_name.get("isCurrent") != None:
+                    if checklist["positions"][company_name.get("org")]["startYear"] == False:
+                        ruleset_points = ruleset_points - 4
+                    if checklist["positions"][company_name.get("org")]["startMonth"] == False:
+                        ruleset_points - ruleset_points - 4
+                else:
+                    if checklist["positions"][company_name.get("org")]["startYear"] == False:
+                        ruleset_points = ruleset_points - 4
+                    if checklist["positions"][company_name.get("org")]["startMonth"] == False:
+                        ruleset_points - ruleset_points - 4
+                    if checklist["positions"][company_name.get("org")]["endYear"] == False:
+                        ruleset_points = ruleset_points - 4
+                    if checklist["positions"][company_name.get("org")]["endMonth"] == False:
+                        ruleset_points = ruleset_points - 4
     else:
         if checklist["startYear"] == False:
             ruleset_points = ruleset_points - 4
@@ -169,4 +173,5 @@ if __name__ == "__main__":
     d = resume_to_dict("sahil_kapur_resume.pdf")
     c = checklist("sahil_kapur_resume.pdf", d)
     v = verb_usage("sahil_kapur_resume.pdf", d)
+    print(c)
     ruleset_score(c, v, d)
