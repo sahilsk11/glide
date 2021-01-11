@@ -1,6 +1,7 @@
 from resume_converter import resume_to_str, resume_to_dict
 import prechecks
 import ruleset
+import verb_usage
 import json
 import PyPDF2
 from PyPDF2 import PdfFileReader 
@@ -80,8 +81,21 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
     return overall_points
 
 
-if __name__ == "__main__":
-  filename = "Resume-Semester-6.pdf"
+if __name__ == "__main__":  #test
+  filename = "Kapur_Saaniya.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
+  a = prechecks.is_resume_pdf(filename)
+  b = prechecks.is_resume_scannable(filename)
+  c = prechecks.is_resume_a_page(filename)
+  e = prechecks.is_filename_formatting(filename)
+  f = ruleset.checklist(filename,d)
+  g = ruleset.verb_usage(filename,d)
+  i = verb_usage.good_verbs(filename,d)
+  v = verb_usage.verb_score(i,d)
+  p = prechecks.precheck_score(a,b,c,e)
+  r= ruleset.ruleset_score(f, g, d)
+  e = experience_valuation.evaluate_all_experiences(d)
+  print(scan_resume(filename,d))    
+  print(calculate_overall_points(p, r, v, d, e))
 
