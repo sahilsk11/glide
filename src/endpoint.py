@@ -12,6 +12,8 @@ import sys
 import traceback
 import logging
 
+logging.basicConfig(filename="out.log",filemode='a')
+
 app = flask.Flask(__name__)
 from flask_cors import CORS
 CORS(app)
@@ -53,6 +55,7 @@ def parse_resume():
       scanned_data = scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
+      raise Exception('hi')
     except Exception as e:
       logging.exception(e)
       return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })

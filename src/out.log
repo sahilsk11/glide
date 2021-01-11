@@ -1,0 +1,32 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 168-463-495
+INFO:werkzeug: * Detected change in '/Users/sahil/Portfolio/resume-scanner/src/endpoint.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 168-463-495
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:06:59] "[37mGET /getResumeImage?filename=0P0L1W6M3P.jpg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:00] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:01] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:04] "[37mOPTIONS /postResume HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:04] "[37mPOST /postResume HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:04] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:04] "[37mGET /countDocuments HTTP/1.1[0m" 200 -
+ERROR:root:hi
+Traceback (most recent call last):
+  File "/Users/sahil/Portfolio/resume-scanner/src/endpoint.py", line 58, in parse_resume
+    raise Exception('hi')
+Exception: hi
+INFO:werkzeug:127.0.0.1 - - [10/Jan/2021 23:07:10] "[37mGET /getResumeDetails?filename=0P0L1W6M3P[GLIDE_0].pdf&optIn=true&isDev=true HTTP/1.1[0m" 200 -
