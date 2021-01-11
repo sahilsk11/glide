@@ -19,7 +19,7 @@ def scan_resume(filename, resume_as_dict,):
     is_scannable = prechecks.is_resume_scannable(filename)
     follow_naming = prechecks.is_filename_formatting(filename)
     number_pages = prechecks.is_resume_a_page(filename)
-    good_verbs_list= verb_usage.good_verbs(filename,d)
+    good_verbs_list= verb_usage.good_verbs(filename,resume_as_dict)
     exp_valuation = experience_valuation.evaluate_all_experiences(resume_as_dict,good_verbs_list)
     skill_valuation = experience_valuation.evaluate_summary_skills(resume_as_dict)
     p_score = prechecks.precheck_score(is_pdf, is_scannable, number_pages, follow_naming)
@@ -81,7 +81,7 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
 
 if __name__ == "__main__":  #test
-  filename = "Kapur_Saaniya.pdf"
+  filename = "sahil_kapur_resume.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
   a = prechecks.is_resume_pdf(filename)
@@ -96,6 +96,6 @@ if __name__ == "__main__":  #test
   p = prechecks.precheck_score(a,b,c,e)
   r= ruleset.ruleset_score(f, g, d)
   e = experience_valuation.evaluate_all_experiences(d,x)
-  print(scan_resume(filename,d))    
+  pprint(scan_resume(filename,d))    
   #print(calculate_overall_points(p, r, v, d, e))
 
