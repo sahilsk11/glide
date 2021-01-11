@@ -7,7 +7,7 @@ import Experience from "./Experience/Experience";
 import ParseTable from "./ParseTable/ParseTable";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
-  const [activeFeedback, updateActiveFeedback] = useState("Experience");
+  const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
   console.log(activeFeedback);
   return (
     <div style={{ position: "relative" }}>

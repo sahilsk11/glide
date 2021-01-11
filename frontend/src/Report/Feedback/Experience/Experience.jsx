@@ -17,6 +17,8 @@ export default function Experience({ activeContent }) {
     const experiences = activeContent.positions.map(position => {
       return <SkillInsight
         score={position.score}
+        org={position.org}
+        title={position.title}
         description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."}
         keywords={position.verbs}
       />
@@ -25,7 +27,7 @@ export default function Experience({ activeContent }) {
     return (
       <div>
         <h2>Skill Insight</h2>
-        <SkillInsight score={10} description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."} keywords={["python", "microservices"]} />
+        <SkillInsight score={10} description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."} keywords={["python", "microservices"]} org="Skills"/>
 
         <h2>Experience Insight</h2>
         {experiences}
@@ -34,16 +36,20 @@ export default function Experience({ activeContent }) {
   }
 }
 
-function SkillInsight({ score, description, keywords }) {
+function SkillInsight({ score, description, keywords, org, title }) {
   let keywordComponent = keywords.map(word => <SkillKeyword name={word} />);
   if (keywordComponent.length == 0) {
     keywordComponent = <p>no strong verbs were found</p>
+  }
+  if (title) {
+    title += ", "
   }
   return (
     <div className="experience-skill-insight">
       <div className="experience-skill-row">
         <><ScoreVisual score={score} /></>
         <p className="experience-eval-text">
+          <h3 className="experience-title">{title}{org}</h3>
           {description}
         </p>
       </div>
