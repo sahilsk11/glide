@@ -21,8 +21,8 @@ def good_verbs(filename, resume_as_dict):
                     string_split = string_strip.split()
                     for verb in jsonObject["good"]:
                         for index in string_split:
-                            if verb.lower() == index.lower():  #SAHIL CHECK 
-                             position_dict[work_description.get("org")].append(index)
+                            if verb.lower() == index.lower() and not(index.lower() in position_dict[work_description.get("org")]):
+                             position_dict[work_description.get("org")].append(index.lower())
                             
     return position_dict
 
