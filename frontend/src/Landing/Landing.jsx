@@ -15,7 +15,7 @@ export default function Landing({
     <>
       <div className="landing-wrapper">
         <div className="landing-backdrop" />
-        <img src="./img/wave.svg" className="landing-wave" />
+        <img alt="" src="./img/wave.svg" className="landing-wave" />
         <Nav />
         <LandingText />
         <div className="landing-dropzone-wrapper">
@@ -69,7 +69,7 @@ function ValueProps() {
 function Prop({ text }) {
   return (
     <div className="landing-props-container">
-      <img src="./img/prop-check.png" className="prop-check" />
+      <img alt="" src="./img/prop-check.png" className="prop-check" />
       <p className="prop-text">{text}</p>
     </div>
   )

@@ -14,92 +14,72 @@ import Error from "./Error/Error";
 
 function App() {
   const d = {
-    "analysis": {
-      "experience": {
-        "positions": [
-          {
-            "org": "Sym",
-            "reason": {
-              "company_score": 3,
-              "role_score": 7,
-              "summary_score": 0
-            },
-            "score": 2.7,
-            "title": "Freelance Web Developer"
+    "requiredInfo": {
+      "checklistScore": 59,
+      "checklist": {
+        "emails": false,
+        "linkedin": false,
+        "name": true,
+        "phoneNumber": false,
+        "positions": {
+          "Cratus": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "Delta Mu Kappa",
-            "reason": {
-              "company_score": 3,
-              "role_score": 3,
-              "summary_score": 0
-            },
-            "score": 1.5,
-            "title": "President"
+          "Delta Mu Kappa": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "Ultron",
-            "reason": {
-              "company_score": 3,
-              "role_score": 3,
-              "summary_score": 9
-            },
-            "score": 6.0,
-            "title": "Intent-based voice assistant"
+          "First Tee": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "HeadSpin",
-            "reason": {
-              "company_score": 3,
-              "role_score": 9,
-              "summary_score": 25
-            },
-            "score": 15.8,
-            "title": "Software Engr Intern"
+          "HeadSpin": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "Prudential Financial",
-            "reason": {
-              "company_score": 3,
-              "role_score": 9,
-              "summary_score": 0
-            },
-            "score": 3.3,
-            "title": "Software Engr Intern"
+          "Prudential Financial": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "ThinkTwice",
-            "reason": {
-              "company_score": 3,
-              "role_score": 3,
-              "summary_score": 0
-            },
-            "score": 1.5,
-            "title": ""
+          "Sym": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "Cratus",
-            "reason": {
-              "company_score": 3,
-              "role_score": 3,
-              "summary_score": 54
-            },
-            "score": 28.5,
-            "title": ""
+          "ThinkTwice": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           },
-          {
-            "org": "First Tee",
-            "reason": {
-              "company_score": 3,
-              "role_score": 3,
-              "summary_score": 8
-            },
-            "score": 5.5,
-            "title": "Golf Coach"
+          "Ultron": {
+            "endMonth": true,
+            "endYear": true,
+            "startMonth": true,
+            "startYear": true
           }
-        ],
-        "skills": null
-      },
+        },
+        "schools": {
+          "Purdue University": {
+            "degree": true,
+            "gpa": false
+          }
+        }
+      }
+    },
+    "experience": {
       "goodVerbs": {
         "Cratus": [
           "Created",
@@ -107,9 +87,12 @@ function App() {
         ],
         "Delta Mu Kappa": [],
         "First Tee": [
-          "Built"
+          "Built",
+          "customized"
         ],
-        "HeadSpin": [],
+        "HeadSpin": [
+          "built"
+        ],
         "Prudential Financial": [
           "Implemented",
           "Focused",
@@ -124,31 +107,112 @@ function App() {
           "Developed"
         ]
       },
-      "prechecks": {
-        "doesFollowNaming": false,
-        "isAPage": true,
-        "isFilePDF": true,
-        "isFileScannable": true
-      },
-      "requiredInfo": {
-        "emails": false,
-        "linkedin": false,
-        "name": true,
-        "phoneNumber": false,
-        "positions": {},
-        "schools": {
-          "Purdue University": {
-            "degree": true,
-            "gpa": false
-          }
+      "positions": [
+        {
+          "org": "HeadSpin",
+          "reason": {
+            "company_score": 3,
+            "role_score": 9,
+            "summary_score": 25
+          },
+          "score": 15.8,
+          "title": "Software Engr Intern"
+        },
+        {
+          "org": "Prudential Financial",
+          "reason": {
+            "company_score": 3,
+            "role_score": 9,
+            "summary_score": 0
+          },
+          "score": 3.3,
+          "title": "Software Engr Intern"
+        },
+        {
+          "org": "ThinkTwice",
+          "reason": {
+            "company_score": 3,
+            "role_score": 3,
+            "summary_score": 0
+          },
+          "score": 1.5,
+          "title": ""
+        },
+        {
+          "org": "Sym",
+          "reason": {
+            "company_score": 3,
+            "role_score": 7,
+            "summary_score": 0
+          },
+          "score": 2.7,
+          "title": "Freelance Web Developer"
+        },
+        {
+          "org": "Ultron",
+          "reason": {
+            "company_score": 3,
+            "role_score": 3,
+            "summary_score": 9
+          },
+          "score": 6.0,
+          "title": "Intent-based voice assistant"
+        },
+        {
+          "org": "Cratus",
+          "reason": {
+            "company_score": 3,
+            "role_score": 3,
+            "summary_score": 54
+          },
+          "score": 28.5,
+          "title": ""
+        },
+        {
+          "org": "First Tee",
+          "reason": {
+            "company_score": 3,
+            "role_score": 3,
+            "summary_score": 8
+          },
+          "score": 5.5,
+          "title": "Golf Coach"
+        },
+        {
+          "org": "Delta Mu Kappa",
+          "reason": {
+            "company_score": 3,
+            "role_score": 3,
+            "summary_score": 0
+          },
+          "score": 1.5,
+          "title": "President"
         }
+      ],
+      "skills": null,
+      "verbScore": {
+        "Cratus": 100,
+        "Delta Mu Kappa": 0,
+        "First Tee": 100,
+        "HeadSpin": 100,
+        "Prudential Financial": 100,
+        "Sym": 100,
+        "ThinkTwice": 0,
+        "Ultron": 100
       }
     },
-    "filename": "1D8D2C0O6F.pdf",
-    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=4X7T0S9D9K.jpg",
+    "filename": "3L0E7A1E2L.pdf",
+    "prechecks": {
+      "doesFollowNaming": false,
+      "isAPage": true,
+      "isFilePDF": true,
+      "isFileScannable": true,
+      "precheckScore": 85
+    },
+    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=2K2P6E4P5X.jpg",
     "resumeJSON": {
-      "createdAt": 1610180271332,
-      "lastStoryAt": 1610180271332,
+      "createdAt": 1610328333750,
+      "lastStoryAt": 1610328333750,
       "links": [
         {
           "domain": "symops.com",
@@ -309,8 +373,10 @@ function App() {
         }
       }
     },
+    "score": 10,
     "success": true
   }
+
 
   let history = useHistory();
   const location = useLocation();
@@ -332,9 +398,9 @@ function App() {
   }
 
   useEffect(() => {
-    if (pathName == "report") {
+    if (pathName === "report") {
       updateAppState("results");
-    } else if (pathName == "") {
+    } else if (pathName === "") {
       updateAppState("landing");
     } else if (pathName != "error") {
       redirect("error");
@@ -364,7 +430,7 @@ function App() {
     }
   }, [appState]);
   let pageContent;
-  if (appState == "landing") {
+  if (appState === "landing") {
     pageContent = (
       <>
         <div className="page-content">
@@ -387,11 +453,7 @@ function App() {
         <div className="page-content">
           <Nav />
           <Report
-            analysis={pageData.analysis}
-            resumeJSON={pageData.resumeJSON}
-            resumeImageSrc={pageData.resumeImageSrc}
-            filename={pageData.filename}
-            success={pageData.success}
+            pageData={pageData}
             redirect={redirect}
           />
         </div>
@@ -407,7 +469,7 @@ function App() {
 function BackgroundWave() {
   return (
     <div className="background-wave-container">
-      <img src="./img/wave-vector.svg" className="background-wave" />
+      <img alt="" src="./img/wave-vector.svg" className="background-wave" />
     </div>
   )
 }
@@ -415,7 +477,7 @@ function BackgroundWave() {
 function LoadingScreen() {
   return (
     <div className="loading-screen-container">
-      <img src="./img/loading.gif" className="loading-gif" />
+      <img alt="" src="./img/loading.gif" className="loading-gif" />
       <p className="loading-screen-text">Finding you a FAANG offer...</p>
     </div>
   );

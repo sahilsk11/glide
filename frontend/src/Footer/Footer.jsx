@@ -15,7 +15,7 @@ export default function Footer({ host }) {
           <Text numDocuments={numDocuments} />
         </div>
         <div className="footer-img-col">
-          <img src="./img/icon.svg" className="footer-icon" />
+          <img alt="" src="./img/icon.svg" className="footer-icon" />
         </div>
       </div>
     </div>

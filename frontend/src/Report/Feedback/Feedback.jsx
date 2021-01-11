@@ -34,11 +34,11 @@ const toLowerCamelCase = (str) => {
 
 function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
   let feedbackComponent;
-  if (activeFeedback == "Prechecks") {
+  if (activeFeedback === "Prechecks") {
     feedbackComponent = Prechecks({ activeContent });
-  } else if (activeFeedback == "Required Info") {
+  } else if (activeFeedback === "Required Info") {
     feedbackComponent = RequiredInfo({ activeContent });
-  } else if (activeFeedback == "ATS Scan") {
+  } else if (activeFeedback === "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
   }
   return (
@@ -73,11 +73,13 @@ function Prechecks({ activeContent }) {
 }
 
 function RequiredInfo({ activeContent }) {
+  const checklist = activeContent.checklist;
   const options = copy["Required Info"];
-  const componentNames = ["degree", "emails", "endMonth", "endYear", "gpa", "linkedin", "name", "phoneNumber", "startMonth", "startYear"];
+  const booleanChecks = ["name", "phoneNumber", "linkedin", "emails"];
   let components = [];
-  componentNames.forEach(key => {
-    const checked = activeContent[key];
+  booleanChecks.forEach(key => {
+    const checked = checklist[key];
+    console.log(key);
     components.push(
       <FeedbackComponent
         checked={checked}
@@ -96,9 +98,9 @@ function RequiredInfo({ activeContent }) {
 function FeedbackComponent({ checked, title, subtitle }) {
   let img;
   if (checked) {
-    img = <img src="./img/check.png" className="feedback-component-check" />
+    img = <img alt="" src="./img/check.png" className="feedback-component-check" />
   } else {
-    img = <img src="./img/dot.png" className="feedback-component-check" />
+    img = <img alt="" src="./img/dot.png" className="feedback-component-check" />
   }
   return (
     <div className="feedback-component-container">
@@ -112,7 +114,7 @@ function FeedbackComponent({ checked, title, subtitle }) {
 function ResumeImage({ filename, resumeImageSrc }) {
   return (
     <div className="report-resume-img-container">
-      <img src={resumeImageSrc} className="report-resume-img" />
+      <img alt="" src={resumeImageSrc} className="report-resume-img" />
       <p className="report-resume-filename">{filename}</p>
     </div>
   )

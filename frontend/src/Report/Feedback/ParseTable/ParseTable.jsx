@@ -103,7 +103,7 @@ function parseStartEndString(position) {
   if (position.end) {
     end = position.end.month + "/" + position.end.year;
   }
-  if (start == end) {
+  if (start === end) {
     return start;
   }
   return start + " - " + end;

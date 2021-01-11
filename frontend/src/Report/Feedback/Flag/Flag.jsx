@@ -15,7 +15,7 @@ export default function Flag({ type, message }) {
 function Suggestion({ message }) {
   return (
     <div className="flag-suggestion">
-      <img src="./img/lightbulb.png" className="flag-suggestion-icon" />
+      <img alt="" src="./img/lightbulb.png" className="flag-suggestion-icon" />
       <p className="suggestion-message">{message}</p>
     </div>
   )

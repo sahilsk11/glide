@@ -95,7 +95,7 @@ const Input = ({ accept, onFiles, files, getFilesFromEvent }) => {
   return (
     <div className="dropzone-input">
       <label>
-        <img src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
+        <img alt="" src="./img/resume-upload-img.png" className="dropzone-img" alt="" />
         <p className="dropzone-input-text">
           Drag & drop your resume here
           <br /><br />

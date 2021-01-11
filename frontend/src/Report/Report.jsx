@@ -4,32 +4,23 @@ import "./report.css";
 import CircleGraph from "./CircleGraph/CircleGraph";
 import Feedback from "./Feedback/Feedback"
 
-export default function Report(
-  {
-    analysis,
-    resumeJSON,
-    resumeImageSrc,
-    filename,
-    success,
-    redirect
-  }
-) {
-  if (!success) {
+export default function Report({ pageData, redirect }) {
+  if (!pageData.success) {
     redirect("error");
   }
   let summary = "We couldn't create a summary from this resume.";
-  if (resumeJSON.summary) {
-    summary = resumeJSON.summary.experience;
+  if (pageData.resumeJSON.summary) {
+    summary = pageData.resumeJSON.summary.experience;
   }
   return (
     <div className="report-container">
       <ReportTitle />
-      <Summary score={analysis.points} summaryText={summary} />
+      <Summary score={pageData.score} summaryText={summary} />
       <Feedback
-        resumeImageSrc={resumeImageSrc}
-        content={analysis}
-        resumeAsJSON={resumeJSON}
-        filename={filename}
+        resumeImageSrc={pageData.resumeImageSrc}
+        content={pageData}
+        resumeAsJSON={pageData.resumeJSON}
+        filename={pageData.filename}
       />
       {/* <EmailSignup /> */}
     </div>
