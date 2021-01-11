@@ -49,10 +49,10 @@ function SkillInsight({ score, description, keywords, org, title }) {
         <p className="experience-eval-text">
           <h3 className="experience-title">{title}{org}</h3>
           {description}
-          <div className="experience-keyword-container">
-            {keywordComponent}
-          </div>
         </p>
+      </div>
+      <div className="experience-keyword-container">
+        {keywordComponent}
       </div>
     </div>
   )
