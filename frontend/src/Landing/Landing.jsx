@@ -46,7 +46,7 @@ function ValueProps() {
       <h1 className="landing-props-title">Things you can do with Glide ✨</h1>
       <table className="prop-table">
         <tr>
-          <td className="prop-td"><Prop text="See how emploers really see your resume" /></td>
+          <td className="prop-td"><Prop text="See how employers really see your resume" /></td>
           <td className="prop-td"><Prop text="Evaluate your experience and compare with other students" /></td>
         </tr>
         <tr>
