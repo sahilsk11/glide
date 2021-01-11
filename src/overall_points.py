@@ -51,6 +51,8 @@ def scan_resume(filename, resume_as_dict,):
 def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_as_dict, exp_valuation):
     flag = 0
     overall_points = 0
+    v_score = 0
+    
 
     pre_score = int(0.20 * precheck_score)
     rule_score = int(0.20 * ruleset_score)
@@ -65,9 +67,12 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
     if "positions" in resume_as_dict:
         for summary in resume_as_dict["positions"]:
             flag = flag + 1
-            v_score = verb_scores[summary.get("org")]
-
-    ve_score = int(0.20 * (v_score/flag))
+            v_score = v_score + verb_scores[summary.get("org")]
+    
+    if flag != 0:
+        ve_score = int(0.20 * (v_score/flag))
+    else:
+        ve_score = 0
 
     overall_points = pre_score + rule_score + eval_score + ve_score
 
@@ -75,6 +80,7 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
 
 if __name__ == "__main__":
-  filename = "sahil_kapur_resume.pdf"
+  filename = "Resume-Semester-6.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
+

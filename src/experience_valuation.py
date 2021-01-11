@@ -14,17 +14,18 @@ def evaluate_all_experiences(resume_as_dict):
   valuations = []
   func_start = time.time()
   threads = []
-  for position_dict in resume_as_dict["positions"]:
-    start = time.time()
-    t = threading.Thread(target=evaluate_single_experience, args=(position_dict, valuations))
-    t.start()
-    threads.append(t)
-    end = time.time()
-    print(f"finished one company in {end - start}s ...")
-  for t in threads:
-    t.join()
-  func_end = time.time()
-  print(f"finished valuations in {func_end - func_start}s")
+  if resume_as_dict.get("positions") != None:
+    for position_dict in resume_as_dict["positions"]:
+      start = time.time()
+      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, valuations))
+      t.start()
+      threads.append(t)
+      end = time.time()
+      print(f"finished one company in {end - start}s ...")
+    for t in threads:
+      t.join()
+    func_end = time.time()
+    print(f"finished valuations in {func_end - func_start}s")
   return valuations
 
 
