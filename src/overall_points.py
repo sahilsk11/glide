@@ -28,22 +28,23 @@ def scan_resume(filename, resume_as_dict,):
     over_points = calculate_overall_points(p_score, r_score, v_score_dict, resume_as_dict, exp_valuation)
     return {
         "prechecks": {
-            "precheckScore": p_score,
+            "score": p_score,
             "isFilePDF": is_pdf,
             "isFileScannable": is_scannable,
             "doesFollowNaming": follow_naming,
             "isAPage": number_pages
         },
-        "checklist":{
-            "checklistScore": r_score,
-            "requiredInfo": checklist_dict,
+        "requiredInfo": {
+            "score": r_score,
+            "checklist": checklist_dict,
         },
         "experience": {
             "goodVerbs": good_verbs_list,
             "verbScore": v_score_dict,
             "skills": skill_valuation,
-            "positions": exp_valuation # [{report}, ....]
-        }
+            "positions": exp_valuation  # [{report}, ....]
+        },
+        "score": 10
     }
 
 
