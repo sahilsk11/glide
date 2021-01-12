@@ -6,9 +6,9 @@ import ReportSwitcher from "./FeedbackNav/FeedbackNav";
 import Experience from "./Experience/Experience";
 import ParseTable from "./ParseTable/ParseTable";
 
-export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename }) {
+export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename, experienceVisible, updateExperienceVisibility }) {
   const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
-  console.log(activeFeedback);
+
   return (
     <div style={{ position: "relative" }}>
       <div className="report-navigator-container">
@@ -20,6 +20,8 @@ export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filena
           activeFeedback={activeFeedback}
           activeContent={content[toLowerCamelCase(activeFeedback)]}
           resumeAsJSON={resumeAsJSON}
+          experienceVisible={experienceVisible}
+          updateExperienceVisibility={updateExperienceVisibility}
         />
       </div>
       <ResumeImage filename={filename} resumeImageSrc={resumeImageSrc} />
@@ -33,7 +35,7 @@ const toLowerCamelCase = (str) => {
   }).replace(/\s+/g, '');
 }
 
-function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
+function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experienceVisible, updateExperienceVisibility }) {
   let feedbackComponent;
   if (activeFeedback === "Prechecks") {
     feedbackComponent = Prechecks({ activeContent });
@@ -42,7 +44,7 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON }) {
   } else if (activeFeedback === "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
   } else if (activeFeedback === "Experience") {
-    feedbackComponent = Experience({ activeContent });
+    feedbackComponent = Experience({ activeContent, experienceVisible, updateExperienceVisibility });
   }
   return (
     <div className="report-content-container">

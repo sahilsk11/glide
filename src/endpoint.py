@@ -12,6 +12,8 @@ import sys
 import traceback
 import logging
 
+logging.basicConfig(filename="out.log",filemode='a')
+
 app = flask.Flask(__name__)
 from flask_cors import CORS
 CORS(app)

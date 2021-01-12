@@ -3,13 +3,11 @@ import "./experience.css";
 
 import CircleGraph from "../../ScoreVisual/CircleGraph";
 
-export default function Experience({ activeContent }) {
-  const [contentVisible, updateContentVisibility] = useState(false);
-
-  if (!contentVisible) {
+export default function Experience({ activeContent, experienceVisible, updateExperienceVisibility }) {
+  if (!experienceVisible) {
     return (
       <div>
-        <button className="glide-btn" onClick={() => updateContentVisibility(true)}>View Evaluation</button>
+        <button className="glide-btn" onClick={() => updateExperienceVisibility(true)}>View Evaluation</button>
       </div>
     );
   } else {
@@ -27,7 +25,7 @@ export default function Experience({ activeContent }) {
     return (
       <div>
         <h2>Skill Insight</h2>
-        <SkillInsight score={10} description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."} keywords={["python", "microservices"]} org="Skills"/>
+        <SkillInsight score={10} description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."} keywords={["python", "microservices"]} org="Skills" />
 
         <h2>Experience Insight</h2>
         {experiences}

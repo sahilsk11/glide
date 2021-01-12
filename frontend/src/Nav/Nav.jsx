@@ -24,6 +24,9 @@ function Icon() {
 }
 
 function EmailSignup() {
+  function submit(event) {
+    event.preventDefault();
+  }
   return (
     <div>
       <form className="nav-form-container">
@@ -31,7 +34,7 @@ function EmailSignup() {
           className="nav-email-input"
           placeholder="Get one resume tip every week"
         />
-        <button className="glide-btn nav-email-btn">Get Resume Tips 🔑</button>
+        <button className="glide-btn nav-email-btn" onClick={submit}>Get Resume Tips 🔑</button>
       </form>
     </div>
   )

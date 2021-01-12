@@ -55,7 +55,7 @@ function ValueProps() {
         </tr>
         <tr>
           <td className="prop-td"><Prop text="Ensure you have required information" /></td>
-          <td className="prop-td"><Prop text="See how emploers really see your resume" /></td>
+          <td className="prop-td"><Prop text="See how employers really see your resume" /></td>
         </tr>
         <tr>
           <td className="prop-td"><Prop text="Confirm resume is scannable" /></td>

@@ -38,6 +38,7 @@
   font-size: 17px;
   color: #424548;
   font-family: Inter;
+  margin-bottom: 0px;
 }
 
 .experience-label-text {
@@ -58,14 +59,18 @@
   margin: 0px auto;
   width: 90%;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .skill-keyword {
   display: flex;
+  margin-left: 10px;
+  padding-bottom: 10px;
 }
 
 .skill-check {
-  width: 25px;
+  width: 22px;
 }
 
 .skill-text {

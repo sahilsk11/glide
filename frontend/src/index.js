@@ -347,6 +347,7 @@ function App() {
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
   const [pageData, updatePageData] = useState(initialData);
+  const [experienceVisible, updateExperienceVisibility] = useState(false);
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "https://glidecv.com/server";
@@ -413,6 +414,8 @@ function App() {
           <Report
             pageData={pageData}
             redirect={redirect}
+            experienceVisible={experienceVisible}
+            updateExperienceVisibility={updateExperienceVisibility}
           />
         </div>
         <Footer host={host} />
