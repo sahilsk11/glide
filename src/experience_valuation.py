@@ -8,8 +8,11 @@ import threading
 def evaluate_summary_skills(resume_as_dict):
   if "summary" in resume_as_dict and "skills" in resume_as_dict["summary"]: # perform checks for keys
     skills = resume_as_dict["summary"]["skills"]
-    points_tuples = airtable.get_rows("skills") # [("PL", score), ...]
-  return None
+  else:
+    skills = ""
+
+  skill_score = get_skill_score(skills)
+  return skill_score
 
 def evaluate_all_experiences(resume_as_dict, pos_dict):
   valuations = []
@@ -18,7 +21,7 @@ def evaluate_all_experiences(resume_as_dict, pos_dict):
   if resume_as_dict.get("positions") != None:
     for position_dict in resume_as_dict["positions"]:
       start = time.time()
-      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, pos_dict, valuations))
+      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, pos_dict,valuations))
       t.start()
       threads.append(t)
       end = time.time()
@@ -41,6 +44,7 @@ def evaluate_single_experience(postion_dict, pos_dict, valuations=None):
 
   summary = postion_dict.get("summary") or ""
   summary_score = get_summary_score(summary)
+   
   # define weights for each component
   company_weight = 0.2
   role_weight = 0.3
@@ -85,6 +89,14 @@ def get_summary_score(experience_summary):
     if skill.lower() in experience_summary.lower():
       total_score += score
   return total_score
+
+def get_skill_score(skill_summary):
+  skill_total_score = 0
+  keyword_point_tuples = airtable.get_rows("skills")
+  for (skill, score) in keyword_point_tuples:
+    if skill.lower() in skill_summary.lower():
+      skill_total_score += score
+  return skill_total_score
 
 if __name__ == "__main__":
   start = time.time()

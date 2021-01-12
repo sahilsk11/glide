@@ -81,7 +81,7 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
 
 if __name__ == "__main__":  #test
-  filename = "sahil_kapur_resume.pdf"
+  filename = "Sameer_Kapur_Resume.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
   a = prechecks.is_resume_pdf(filename)
@@ -97,5 +97,5 @@ if __name__ == "__main__":  #test
   r= ruleset.ruleset_score(f, g, d)
   e = experience_valuation.evaluate_all_experiences(d,x)
   pprint(scan_resume(filename,d))    
-  #print(calculate_overall_points(p, r, v, d, e))
+  print(calculate_overall_points(p, r, v, d, e))
 
