@@ -14,14 +14,14 @@ def evaluate_summary_skills(resume_as_dict):
   skill_score = get_skill_score(skills)
   return skill_score
 
-def evaluate_all_experiences(resume_as_dict, pos_dict):
+def evaluate_all_experiences(resume_as_dict, pos_dict, skill_dict):
   valuations = []
   func_start = time.time()
   threads = []
   if resume_as_dict.get("positions") != None:
     for position_dict in resume_as_dict["positions"]:
       start = time.time()
-      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, pos_dict,valuations))
+      t = threading.Thread(target=evaluate_single_experience, args=(position_dict, pos_dict, skill_dict, valuations))
       t.start()
       threads.append(t)
       end = time.time()
@@ -33,17 +33,21 @@ def evaluate_all_experiences(resume_as_dict, pos_dict):
   return valuations
 
 
-def evaluate_single_experience(postion_dict, pos_dict, valuations=None):
+def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=None):
   company = postion_dict.get("org") or ""
   company_score = get_company_score(company)
 
   verb_list = pos_dict[company]
+
+  skill_list = skill_dict[company]
 
   role = postion_dict.get("title") or ""
   role_score = get_role_score(role)
 
   summary = postion_dict.get("summary") or ""
   summary_score = get_summary_score(summary)
+
+
    
   # define weights for each component
   company_weight = 0.2
@@ -57,6 +61,7 @@ def evaluate_single_experience(postion_dict, pos_dict, valuations=None):
     "title": role,
     "org": company,
     "verbs": verb_list,
+    "skills": skill_list
     # "reason": { # do NOT include these in production
     #   "company_score": company_score,
     #   "role_score": role_score,
@@ -98,11 +103,33 @@ def get_skill_score(skill_summary):
       skill_total_score += score
   return skill_total_score
 
+
+def skills_single_experience(filename, resume_as_dict):
+
+  skill_dict = {}
+
+  if "positions" in resume_as_dict:
+      for work_description in resume_as_dict["positions"]:
+          if work_description.get("org") != None:
+              skill_dict[work_description.get("org")] = []
+              if work_description.get("summary") != None:
+                  string = work_description.get("summary")
+                  string_strip = string.strip()
+                  string_split = string_strip.split()
+                  skill_point_tuples = airtable.get_rows("skills")
+                  for (skill, score) in skill_point_tuples:
+                    for word in string_split:
+                      if word.lower() == skill.lower():
+                        skill_dict[work_description.get("org")].append(word.lower())
+                            
+  return skill_dict
+
 if __name__ == "__main__":
   start = time.time()
   filename = "sahil_kapur_resume.pdf"
   d = resume_to_dict("sahil_kapur_resume.pdf")
   end = time.time()
   p = good_verbs(filename,d)
+  s = skills_single_experience(filename,d)
   print(f"resume dict received in {end - start}s ...")
-  pprint.pprint(evaluate_all_experiences(d,p))
+  pprint.pprint(evaluate_all_experiences(d,p,s))
