@@ -61,31 +61,45 @@ def checklist(filename, resume_as_dict):
             if time.get("org") != None:
                 response["positions"][time.get("org")] = {}
                 if time.get("isCurrent") != None:
-                    if time.get("start").get("year") == None:
-                        response["positions"][time.get("org")]["startYear"] = False
+                    if time.get("start") != None:
+                        if time.get("start").get("year") == None:
+                            response["positions"][time.get("org")]["startYear"] = False
+                        else:
+                            response["positions"][time.get("org")]["startYear"] = True
+                        if time.get("start").get("month") == None:
+                            response["positions"][time.get("org")]["startMonth"] = False   
+                        else:
+                            response["positions"][time.get("org")]["startMonth"] = True
                     else:
-                        response["positions"][time.get("org")]["startYear"] = True
-                    if time.get("start").get("month") == None:
-                        response["positions"][time.get("org")]["startMonth"] = False   
-                    else:
-                        response["positions"][time.get("org")]["startMonth"] = True
+                        response["startMonth"] = False
+                        response["startYear"] = False
                 else:
-                    if time.get("start").get("year") == None:
-                        response["positions"][time.get("org")]["startYear"] = False
+                    if time.get("start") != None:
+                        if time.get("start").get("year") == None:
+                            response["positions"][time.get("org")]["startYear"] = False
+                        else:
+                            response["positions"][time.get("org")]["startYear"] = True
+                        if time.get("start").get("month") == None:
+                            response["positions"][time.get("org")]["startMonth"] = False
+                        else:
+                            response["positions"][time.get("org")]["startMonth"] = True
                     else:
-                        response["positions"][time.get("org")]["startYear"] = True
-                    if time.get("start").get("month") == None:
-                        response["positions"][time.get("org")]["startMonth"] = False
+                        response["startMonth"] = False
+                        response["startYear"] = False
+
+                    if time.get("end") != None:
+                        if time.get("end").get("year") == None:
+                            response["positions"][time.get("org")]["endYear"] = False
+                        else:
+                            response["positions"][time.get("org")]["endYear"] = True
+                        if time.get("end").get("month") == None:
+                            response["positions"][time.get("org")]["endMonth"] = False
+                        else:
+                            response["positions"][time.get("org")]["endMonth"] = True
                     else:
-                        response["positions"][time.get("org")]["startMonth"] = True
-                    if time.get("end").get("year") == None:
-                        response["positions"][time.get("org")]["endYear"] = False
-                    else:
-                        response["positions"][time.get("org")]["endYear"] = True
-                    if time.get("end").get("month") == None:
-                        response["positions"][time.get("org")]["endMonth"] = False
-                    else:
-                        response["positions"][time.get("org")]["endMonth"] = True
+                        response["endMonth"] = False
+                        response["endYear"] = False
+
     else:
         response["startMonth"] = False
         response["startYear"] = False
@@ -144,19 +158,37 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
         for company_name in resume_as_dict["positions"]:
             if company_name.get("org") != None:
                 if company_name.get("isCurrent") != None:
-                    if checklist["positions"][company_name.get("org")]["startYear"] == False:
-                        ruleset_points = ruleset_points - 4
-                    if checklist["positions"][company_name.get("org")]["startMonth"] == False:
-                        ruleset_points - ruleset_points - 4
+                    if company_name.get("start") != None:
+                        if checklist["positions"][company_name.get("org")]["startYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["positions"][company_name.get("org")]["startMonth"] == False:
+                            ruleset_points - ruleset_points - 4
+                    else:
+                        if checklist["startYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["startMonth"] == False:
+                            ruleset_points = ruleset_points - 4
                 else:
-                    if checklist["positions"][company_name.get("org")]["startYear"] == False:
-                        ruleset_points = ruleset_points - 4
-                    if checklist["positions"][company_name.get("org")]["startMonth"] == False:
-                        ruleset_points - ruleset_points - 4
-                    if checklist["positions"][company_name.get("org")]["endYear"] == False:
-                        ruleset_points = ruleset_points - 4
-                    if checklist["positions"][company_name.get("org")]["endMonth"] == False:
-                        ruleset_points = ruleset_points - 4
+                    if company_name.get("start") != None:
+                        if checklist["positions"][company_name.get("org")]["startYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["positions"][company_name.get("org")]["startMonth"] == False:
+                            ruleset_points - ruleset_points - 4
+                    else:
+                        if checklist["startYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["startMonth"] == False:
+                            ruleset_points = ruleset_points - 4
+                    if company_name.get("end") != None:
+                        if checklist["positions"][company_name.get("org")]["endYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["positions"][company_name.get("org")]["endMonth"] == False:
+                            ruleset_points = ruleset_points - 4
+                    else:
+                        if checklist["endYear"] == False:
+                            ruleset_points = ruleset_points - 4
+                        if checklist["endMonth"] == False:
+                            ruleset_points = ruleset_points - 4
     else:
         if checklist["startYear"] == False:
             ruleset_points = ruleset_points - 4
