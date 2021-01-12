@@ -20,7 +20,8 @@ def scan_resume(filename, resume_as_dict,):
     follow_naming = prechecks.is_filename_formatting(filename)
     number_pages = prechecks.is_resume_a_page(filename)
     good_verbs_list= verb_usage.good_verbs(filename,resume_as_dict)
-    exp_valuation = experience_valuation.evaluate_all_experiences(resume_as_dict,good_verbs_list)
+    skills_list = experience_valuation.skills_single_experience(filename,resume_as_dict)
+    exp_valuation = experience_valuation.evaluate_all_experiences(resume_as_dict,good_verbs_list,skills_list)
     skill_valuation = experience_valuation.evaluate_summary_skills(resume_as_dict)
     p_score = prechecks.precheck_score(is_pdf, is_scannable, number_pages, follow_naming)
     r_score = ruleset.ruleset_score(checklist_dict, verb_usage, resume_as_dict)
@@ -81,7 +82,7 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
 
 if __name__ == "__main__":  #test
-  filename = "Sameer_Kapur_Resume.pdf"
+  filename = "Ethan_Cardenas_Resume.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
   a = prechecks.is_resume_pdf(filename)
@@ -92,10 +93,11 @@ if __name__ == "__main__":  #test
   g = ruleset.verb_usage(filename,d)
   i = verb_usage.good_verbs(filename,d)
   v = verb_usage.verb_score(i,d)
+  s = experience_valuation.skills_single_experience(filename,d)
   x = verb_usage.good_verbs(filename,d)
   p = prechecks.precheck_score(a,b,c,e)
   r= ruleset.ruleset_score(f, g, d)
-  e = experience_valuation.evaluate_all_experiences(d,x)
-  pprint(scan_resume(filename,d))    
+  e = experience_valuation.evaluate_all_experiences(d,x,s)
+  print(scan_resume(filename,d))    
   print(calculate_overall_points(p, r, v, d, e))
 
