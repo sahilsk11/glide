@@ -50,11 +50,16 @@ def parse_resume():
     did_user_opt_in = flask.request.args.get('optIn') == "true"
     is_development = flask.request.args.get("isDev") == "true"
     try:
-      resume_as_dict = resume_to_dict(filename)
       original_filename = remove_glide_index(filename)
-      scanned_data = scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
+    except Exception as e:
+      logging.exception(e)
+      logging.error(msg="Unable to rename file: " + filename+"\n\n")
+      return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })
+    try:
+      resume_as_dict = resume_to_dict(new_filename)
+      scanned_data = scan_resume(original_filename, resume_as_dict, system_filename=new_filename)
       save_resume_to_db(
         original_filename,
         new_filename,
@@ -65,6 +70,7 @@ def parse_resume():
       )
     except Exception as e:
       logging.exception(e)
+      logging.error(msg="Failed on file: " + new_filename+"\n\n")
       return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })
     img_filename = pdf_to_png(new_filename)
     host = ""

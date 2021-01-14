@@ -14,7 +14,6 @@ def get_all_entries():
 def add_entry(entry):
   entry["timestamp"] = datetime.datetime.now()
   remove_dot_from_keys(entry)
-  print(entry)
   return collection.insert_one(entry)
 
 def count_documents():

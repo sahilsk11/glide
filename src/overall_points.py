@@ -13,10 +13,13 @@ from operator import itemgetter
 from pprint import pprint
 
 
-def scan_resume(filename, resume_as_dict,):
+def scan_resume(filename, resume_as_dict, system_filename=None):
+    if system_filename is None:
+        system_filename = filename
+    print(system_filename)
     checklist_dict = ruleset.checklist(filename, resume_as_dict)
-    is_pdf = prechecks.is_resume_pdf(filename)
-    is_scannable = prechecks.is_resume_scannable(filename)
+    is_pdf = prechecks.is_resume_pdf(system_filename)
+    is_scannable = prechecks.is_resume_scannable(system_filename)
     follow_naming = prechecks.is_filename_formatting(filename)
     number_pages = prechecks.is_resume_a_page(filename)
     good_verbs_list= verb_usage.good_verbs(filename,resume_as_dict)
