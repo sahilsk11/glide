@@ -25,11 +25,11 @@ def evaluate_all_experiences(resume_as_dict, pos_dict, skill_dict):
       t.start()
       threads.append(t)
       end = time.time()
-      print(f"finished one company in {end - start}s ...")
+      # print(f"finished one company in {end - start}s ...")
     for t in threads:
       t.join()
     func_end = time.time()
-    print(f"finished valuations in {func_end - func_start}s")
+    # print(f"finished valuations in {func_end - func_start}s")
   return valuations
 
 

@@ -55,17 +55,17 @@ def parse_resume():
       scanned_data = scan_resume(original_filename, resume_as_dict)
       new_filename = generate_filename(filename)
       rename_file(filename, new_filename)
+      save_resume_to_db(
+        original_filename,
+        new_filename,
+        did_user_opt_in,
+        scanned_data,
+        resume_as_dict,
+        is_development
+      )
     except Exception as e:
       logging.exception(e)
       return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })
-    save_resume_to_db(
-      original_filename,
-      new_filename,
-      did_user_opt_in,
-      scanned_data,
-      resume_as_dict,
-      is_development
-    )
     img_filename = pdf_to_png(new_filename)
     host = ""
     if is_development:
