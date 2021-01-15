@@ -15,8 +15,10 @@ export default function Report({ pageData, redirect, experienceVisible, updateEx
 
   return (
     <div className="report-container">
-      <ReportTitle />
-      <Summary score={pageData.score} summaryText={summary} />
+      <div className="summary-wrapper">
+        <ReportTitle />
+        <Summary score={pageData.score} summaryText={summary} />
+      </div>
       <Feedback
         resumeImageSrc={pageData.resumeImageSrc}
         content={pageData}
@@ -32,10 +34,10 @@ export default function Report({ pageData, redirect, experienceVisible, updateEx
 
 function ReportTitle() {
   return (
-    <>
+    <div className="report-title-container">
       <h1 className="report-title">Resume Score</h1>
       <p className="report-subtitle">You're on your way to landing your dream job.</p>
-    </>
+    </div>
   );
 }
 

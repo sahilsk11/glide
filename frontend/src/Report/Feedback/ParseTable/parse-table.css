@@ -10,8 +10,13 @@
   padding: 10px;
 }
 
+.heading-tr {
+  background-color: #FFDB2A;
+  color: black;
+}
+
 tbody tr:nth-child(even) {
-  background-color: #f2f3fa;
+  background-color: #FFF7E8;
 }
 
 .parse-table-ul {

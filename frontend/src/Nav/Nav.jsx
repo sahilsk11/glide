@@ -1,9 +1,14 @@
 import React from "react";
 import "./nav.css";
 
-export default function Nav() {
+export default function Nav({ useYellowBackground }) {
+  const style = useYellowBackground ? {
+    position: "absolute",
+    left: "50%",
+    transform: "translateX(-50%)"
+  } : {};
   return (
-    <div className="nav">
+    <div className="nav" style={style}>
       <div className="nav-icon-wrapper">
         <Icon />
       </div>
@@ -16,7 +21,7 @@ export default function Nav() {
 
 function Icon() {
   return (
-    <div className="nav-icon-container" onClick={() => window.location.href="."}>
+    <div className="nav-icon-container" onClick={() => window.location.href = "."}>
       <img alt="" src="./img/icon.svg" className="nav-icon" alt="" />
       <h1 className="nav-title">Glide</h1>
     </div>

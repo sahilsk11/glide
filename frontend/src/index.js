@@ -410,7 +410,7 @@ function App() {
     pageContent = (
       <>
         <div className="page-content">
-          <Nav />
+          <Nav useYellowBackground={true} />
           <Report
             pageData={pageData}
             redirect={redirect}

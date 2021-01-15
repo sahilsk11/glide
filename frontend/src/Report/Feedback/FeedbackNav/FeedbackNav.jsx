@@ -26,7 +26,7 @@ function ReportNav({ title, activeFeedback, updateActiveFeedback }) {
   let containerActiveStyle = {};
   if (activeFeedback === title) {
     containerActiveStyle = {
-      backgroundColor: "rgba(241, 241, 244, 1)"
+      background: "linear-gradient(274.7deg, #FFF7E7 14.32%, #FFF9EC 97.17%)"
     }
   }
   let imgName = title.replace(" ", "-").toLowerCase();

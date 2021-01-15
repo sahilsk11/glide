@@ -1,7 +1,13 @@
 .report-container {
-  width: 85%;
+  width: 100%;
   margin: 0px auto;
-  margin-top: 50px;
+  border: 1px solid red;
+}
+
+.report-title-container {
+  width: 85%;
+  display: block;
+  margin: 0px auto;
 }
 
 .report-title {
@@ -19,14 +25,23 @@
   font-size: 16px;
 }
 
+.summary-wrapper {
+  background: linear-gradient(274.7deg, #FFF7E7 14.32%, #FFF9EC 97.17%);
+  width: 100%;
+  padding-bottom: 40px;
+  padding-top: 90px;
+}
+
 .report-summary-container {
   border: 1px solid #DCDCDC;
-  width: 100%;
+  width: 85%;
   min-height: 60px;
-  background-color: #F8FCFF;
   position: relative;
   border-radius: 17px;
   /* flex-grow: 2; */
+  background-color: white;
+  margin: 0px auto;
+  display: block;
 }
 
 .report-summary-content {

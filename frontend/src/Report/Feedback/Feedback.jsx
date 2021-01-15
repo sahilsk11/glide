@@ -10,7 +10,7 @@ export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filena
   const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", width: "85%", margin: "0px auto" }}>
       <div className="report-navigator-container">
         <ReportSwitcher
           activeFeedback={activeFeedback}
