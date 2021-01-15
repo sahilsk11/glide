@@ -68,7 +68,9 @@ function Submit({ files, onSubmit, sharingOptIn, updateSharingOptIn }) {
         sharingOptIn={sharingOptIn}
         updateSharingOptIn={updateSharingOptIn}
       />
+      <p className="dropzone-disclaimer">Disclaimer: Glide is built for software engineering interns and new grads. Take advice with caution.</p>
       <button onClick={handleSubmit} className="glide-btn dropzone-submit-btn">Scan My Resume</button>
+      <p className="dropzone-agreement">By clicking the button above, I agree to the <a className="opt-in-link" href="#">Glide Terms of Use and Privacy Policy.</a></p>
     </div>
   )
 }
@@ -84,7 +86,7 @@ function OptIn({ sharingOptIn, updateSharingOptIn }) {
           updateSharingOptIn(!sharingOptIn)
         }}
       />
-      <label className="opt-in-text">Share my resume with recruiters & the Glide team (<a href="#" className="opt-in-link" target="_blank">privacy policy</a>)</label>
+      <label className="opt-in-text">Want to share your resume with companies? </label>
     </div>
   )
 }

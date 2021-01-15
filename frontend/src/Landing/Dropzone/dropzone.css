@@ -37,8 +37,11 @@
 }
 
 .opt-in-container {
+  margin: 0px auto;
+  font-family: Inter;
+  color: rgba(75, 77, 81, 1);
   margin-top: 20px;
-  font-family: Karla;
+  transform: translateX(13%);
 }
 
 .dropzone-btn-text {
@@ -48,5 +51,21 @@
 }
 
 .dropzone-submit-btn {
-  margin-top: 30px;
+  margin-top: 20px;
+}
+
+.dropzone-disclaimer {
+  text-align: center;
+  font-size: 14px;
+  width: 400px;
+  margin: 0px auto;
+  margin-top: 35px;
+}
+
+.dropzone-agreement {
+  text-align: center;
+  margin: 0px auto;
+  color: rgba(75, 77, 81, 1);
+  font-size: 13px;
+  margin-top: 20px;
 }

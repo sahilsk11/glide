@@ -17,6 +17,7 @@ export default function Landing({
         <div className="landing-backdrop" />
         <img alt="" src="./img/wave.svg" className="landing-wave" />
         <Nav />
+        <MadeForLabel />
         <LandingText />
         <div className="landing-dropzone-wrapper">
           {FileDropzone({ updateAppState, updateFilename, host, sharingOptIn, updateSharingOptIn })}
@@ -29,12 +30,20 @@ export default function Landing({
   );
 }
 
+function MadeForLabel() {
+  return (
+    <div className="swe-label">
+      <p className="swe-label-text">MADE FOR SOFTWARE ENGINEERING INTERNS AND NEW GRADS</p>
+    </div>
+  );
+}
+
 function LandingText() {
   return (
     <div className="landing-text-container">
-      <h1 className="landing-text-title">Resume Feedback in One Click</h1>
+      <h1 className="landing-text-title">Detailed feedback to measure the<br />strength of your resume</h1>
       <p className="landing-subtext">
-        You’ve spent weeks refining your resume, but still can’t land an interview. Glide helps you refine and catch mistakes using the same parsing API used by companies like Netflix and Twitch. Now you’ll land an interview at your dream company.
+        Tired of not getting interviews? Glide takes the guesswork out of applying by demystifying application tracking systems (ATS). Identify where you stand, leverage feedback, and land more interviews.
       </p>
     </div>
   );
@@ -46,20 +55,20 @@ function ValueProps() {
       <h1 className="landing-props-title">Things you can do with Glide ✨</h1>
       <table className="prop-table">
         <tr>
-          <td className="prop-td"><Prop text="See how employers really see your resume" /></td>
-          <td className="prop-td"><Prop text="Evaluate your experience and compare with other students" /></td>
+          <td className="prop-td"><Prop text="Get actionable feedback on your resume" /></td>
+          <td className="prop-td"><Prop text="Ensure your resume scans and is ATS compliant" /></td>
         </tr>
         <tr>
-          <td className="prop-td"><Prop text="Check for weak and strong verb usage" /></td>
-          <td className="prop-td"><Prop text="Ensure dates are read correctly" /></td>
+          <td className="prop-td"><Prop text="Diagnose weakpoints in your resume" /></td>
+          <td className="prop-td"><Prop text="Unlimited scans. 100% free. No strings attached." /></td>
         </tr>
         <tr>
-          <td className="prop-td"><Prop text="Ensure you have required information" /></td>
-          <td className="prop-td"><Prop text="See how employers really see your resume" /></td>
+          <td className="prop-td"><Prop text="Identify pivotal missing information" /></td>
+          <td className="prop-td"><Prop text="Keyword analysis tailored for SWE roles" /></td>
         </tr>
         <tr>
-          <td className="prop-td"><Prop text="Confirm resume is scannable" /></td>
-          <td className="prop-td"><Prop text="Quick tips for applying" /></td>
+          <td className="prop-td"><Prop text="Get noticed by automated recruiting systems" /></td>
+          <td className="prop-td"><Prop text="Secure the bag 💰" /></td>
         </tr>
       </table>
     </div>

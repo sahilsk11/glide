@@ -31,15 +31,17 @@ function Text({ numDocuments }) {
 
     </>
   );
+  const betaComponent = <a className="maker-link" href="#">Our 50+ beta testers</a>
+  const howItsMade = <a className="maker-link" href="#">Check out this post</a>
+  const privacy = <a className="maker-link" href="#">Privacy Policy</a>
   return (
     <div>
-      <Pair keyName="Technologies Used" value="X, y, Z" />
-      <Pair keyName="Special Thanks" value="X, y, Z" />
+      <Pair keyName="Special Thanks" value={betaComponent} />
       <Pair keyName="Makers" value={makerComponent} />
-      <Pair keyName="How we Made This" value="X, y, Z" />
-      <Pair keyName="Fine Print" value="X, y, Z" />
+      <Pair keyName="How we Made This" value={howItsMade} />
+      <Pair keyName="Fine Print" value={privacy} />
       <Pair keyName="Resumes Processed" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
-      <em><p style={{ fontFamily: "Inter" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
+      <em><p style={{ fontFamily: "Inter", marginTop: "40px" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
     </div>
   );
 }

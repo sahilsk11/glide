@@ -1,10 +1,31 @@
+.swe-label {
+  display: block;
+  margin: 0px auto;
+  width: 400px;
+  height: 30px;
+  background-color: rgba(251, 243, 212, 1);
+  border: 1px solid #4B4D51;
+  border-radius: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  position: relative;
+  margin-top: 20px;
+}
+
+.swe-label-text {
+  font-family: Inter;
+  font-size: 12px;
+  color: rgba(75, 77, 81, 1);
+}
+
 .landing-text-container {
-  padding-top: 40px;
+  padding-top: 0px;
   text-align: center;
   margin: 0px auto;
   font-family: 'Inter', sans-serif;
   position: relative;
-  z-index: 99;
 }
 
 .landing-text-title {
@@ -14,7 +35,7 @@
 }
 
 .landing-subtext {
-  width: 700px;
+  width: 600px;
   max-width: 90%;
   margin-top: 0px;
   padding-top: 0px;
@@ -51,19 +72,20 @@
   height: 100%;
   border-radius: 0px 0px 40% 40%;
   padding-bottom: 0px;
-  background: linear-gradient(265.15deg, #FAF7F1 1.86%, #FAF7F1 94.95%);
+  background: linear-gradient(274.7deg, #FFF7E7 14.32%, #FFF9EC 97.17%);
+  ;
   position: absolute;
   width: 130%;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
+  z-index: 0;
 }
 
 .landing-wave {
   width: 100%;
   position: absolute;
   bottom: 15%;
-  z-index: 0;
 }
 
 .landing-props-title {

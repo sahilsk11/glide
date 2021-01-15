@@ -8,7 +8,7 @@ export default function Nav() {
         <Icon />
       </div>
       <div className="nav-email-signup-wrapper">
-        <EmailSignup />
+        {/* <EmailSignup /> */}
       </div>
     </div>
   );
