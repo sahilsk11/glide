@@ -6,6 +6,15 @@
   margin-bottom: 30px;
 }
 
+.experience-subtitle {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
+  color: #232B35;
+}
+
 .experience-disclaimer-container {
   width: 100%;
   background-color: #F8FCFF;
@@ -91,4 +100,29 @@
   margin-top: 3px;
   font-family: Karla;
   margin-left: 10px;
+}
+
+.experience-keyword {
+  background-color: #FCEA88;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.experience-strong-verb {
+  background-color: #BBEAC4;
+  border-radius: 5px;
+  padding: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.experience-analysis-container {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.experience-description {
+  line-height: 22px;
+  padding-bottom: 0px;
 }

@@ -55,6 +55,11 @@ body {
   cursor: pointer;
 }
 
+.glide-link {
+  text-decoration: underline;
+  color: black;
+}
+
 .glide-btn:hover {
   background-color: #EECF36;
 }

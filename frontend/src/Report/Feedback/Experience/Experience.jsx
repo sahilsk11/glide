@@ -7,34 +7,26 @@ export default function Experience({ activeContent, experienceVisible, updateExp
   if (!experienceVisible) {
     return <ViewEvaluation updateExperienceVisibility={updateExperienceVisibility} />
   } else {
-    console.log(activeContent.positions)
-    const experiences = activeContent.positions.map(position => {
-      return <SkillInsight
-        score={position.score}
-        org={position.org}
-        title={position.title}
-        description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."}
-        keywords={position.verbs}
-      />
-    });
-    console.log(experiences);
+    console.log(activeContent);
     return (
       <div>
-        <h2>Skill Insight</h2>
-        <SkillInsight score={10} description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."} keywords={["python", "microservices"]} org="Skills" />
+        <h2 className="experience-subtitle">Skill Insight</h2>
+        <SkillInsight
+          score={10}
+          keywords={["python", "microservices"]}
+        />
 
-        <h2>Experience Insight</h2>
-        {experiences}
+        <ExperienceInsight activeContent={activeContent} />
       </div>
     )
   }
 }
 
-function ViewEvaluation({updateExperienceVisibility}) {
+function ViewEvaluation({ updateExperienceVisibility }) {
   return (
     <div className="experience-disclaimer-container">
       <p className="experience-disclaimer-text">
-        Important Note: 
+        Important Note:
         <br /><br />
         The experience section is a simple, meaningful way to understand the strengths and weaknesses in your skills and experience through a hollistic approach.
         <br /><br />
@@ -47,7 +39,7 @@ function ViewEvaluation({updateExperienceVisibility}) {
   )
 }
 
-function SkillInsight({ score, description, keywords, org, title }) {
+function SkillInsight({ score, keywords, title }) {
   let keywordComponent = keywords.map(word => <SkillKeyword name={word} />);
   if (keywordComponent.length == 0) {
     keywordComponent = <p>no strong verbs were found</p>
@@ -60,8 +52,9 @@ function SkillInsight({ score, description, keywords, org, title }) {
       <div className="experience-skill-row">
         <><ScoreVisual score={score} /></>
         <p className="experience-eval-text">
-          <h3 className="experience-title">{title}{org}</h3>
-          {description}
+          Glide regularly scans software enginnering job posts to determine top in demand skills. Consider adding to your skillset up by learning popular technologies from this <a href="#" className="glide-link">list</a>.
+            <br /><br />
+          We found the following skills on your resume.
         </p>
       </div>
       <div className="experience-keyword-container">
@@ -100,31 +93,74 @@ function ScoreVisual({ score }) {
       <div style={{ backgroundColor: backgroundColor }} className="experience-score-background">
         <p style={{ color: primaryColor }} className="experience-score-value">{score}</p>
       </div>
-      <ScoreLabel score={score} />
     </div>
   )
 }
 
-function ScoreLabel({ score }) {
-  let backgroundColor;
-  let primaryColor;
-  let text;
-  if (score < 50) {
-    backgroundColor = 'rgba(253, 239, 237, 1)';
-    primaryColor = 'rgba(236, 92, 76, 1)';
-    text = "Critical";
-  } else if (score < 90) {
-    backgroundColor = 'rgba(247, 232, 210, 1)';
-    primaryColor = 'rgba(242, 167, 59, 1)';
-    text = "On Track";
-  } else {
-    backgroundColor = 'rgba(218, 243, 223, 1)';
-    primaryColor = 'rgba(94, 202, 117, 1)';
-    text = "Looks Good";
-  }
+function ExperienceInsight({ activeContent }) {
+  const experiences = activeContent.positions.map(position => {
+    return <IndividualExperienceAnalysis
+      org={position.org}
+      title={position.title}
+      description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."}
+      keywords={[]}
+      strongVerbs={position.verbs}
+    />
+  });
+  // const experiences = <
+  //   IndividualExperienceAnalysis
+  //   title="Software Engineering Intern"
+  //   org="Prudential"
+  //   description="● Built internal metadata tool to condense microservice information for better maintainability ● Developed and implemented a manifest processing tool for greater standardization across business unit ● Used Python, Spring Boot Microservices, Apache Kafka, JSON, and YAML"
+  //   keywords={["microservice", "python", "kafka"]}
+  //   strongVerbs={["developed", "implemented"]}
+  // />
   return (
-    <div className="report-label experience-label" style={{ backgroundColor }}>
-      <p className="report-label-text experience-label-text" style={{ color: primaryColor }}>{text}</p>
+    <>
+      <div className="experience-skill-insight">
+        <div className="experience-skill-row">
+          <><ScoreVisual score={10} /></>
+          <div>
+            <h2 className="experience-subtitle" style={{ marginLeft: "30px" }}>Experience Insight</h2>
+            <p className="experience-eval-text">
+              Glide compares popular Software Engineering role descriptions to analyze matching keywords found on your resume to help you understand where you stand as an application. <span className="experience-strong-verb">Strong</span> verbs and <span className="experience-keyword">
+                technical keywords</span> are highlighted.
+            </p>
+          </div>
+        </div>
+        {experiences}
+      </div>
+    </>
+  )
+}
+
+function IndividualExperienceAnalysis({
+  title,
+  org,
+  description,
+  keywords,
+  strongVerbs
+}) {
+  if (title) {
+    title += ", "
+  }
+  let experienceDescription = [];
+  description.split(" ").forEach(word => {
+    if (keywords.includes(word.toLowerCase())) {
+      experienceDescription.push(<span className="experience-keyword">{word}</span>)
+    } else if (strongVerbs.includes(word.toLowerCase())) {
+      experienceDescription.push(<span className="experience-strong-verb">{word}</span>)
+    } else {
+      experienceDescription.push(<>{word}</>)
+    }
+    experienceDescription.push(" ")
+  })
+  return (
+    <div className="experience-analysis-container">
+      <h3 className="experience-title">{title}{org}</h3>
+      <p className="experience-description">
+        {experienceDescription}
+      </p>
     </div>
   )
 }
