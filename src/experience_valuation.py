@@ -15,6 +15,15 @@ def evaluate_summary_skills(resume_as_dict):
   skill_score = get_skill_score(skills)
   return skill_score
 
+def list_skills_found_summary(resume_as_dict):
+  summary_skills_list = []
+  if "summary" in resume_as_dict and "skills" in resume_as_dict["summary"]: # perform checks for keys
+    skills = resume_as_dict["summary"]["skills"]
+    summary_skills_list.append(skills)
+  
+  return summary_skills_list
+
+
 def evaluate_all_experiences(resume_as_dict, pos_dict, skill_dict):
   valuations = []
   func_start = time.time()

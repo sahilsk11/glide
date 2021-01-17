@@ -29,6 +29,7 @@ def scan_resume(filename, resume_as_dict, system_filename=None):
     v_score_dict = verb_usage.verb_score(good_verbs_list, resume_as_dict)
     e_score =  None
     agg_score = experience_valuation.get_agg_score(exp_valuation)
+    summary_skill_list = experience_valuation.list_skills_found_summary(resume_as_dict)
     over_points = calculate_overall_points(p_score, r_score, v_score_dict, resume_as_dict, exp_valuation)
     return {
         "prechecks": {
@@ -45,6 +46,7 @@ def scan_resume(filename, resume_as_dict, system_filename=None):
         "experience": {
             "verbScore": v_score_dict,
             "skills": skill_valuation,
+            "skillsList": summary_skill_list,
             "aggregateScore": agg_score,
             "positions": exp_valuation  # [{report}, ....]
         },
