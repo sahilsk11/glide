@@ -150,7 +150,7 @@ def get_agg_score(exp_valuation):
   for i in range (len(top_positions)):
     exp_score += top_positions[i]["score"] * weight[i]
 
-  return exp_score
+  return int(exp_score)
 
 
 
