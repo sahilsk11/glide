@@ -258,7 +258,7 @@ function App() {
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "https://glidecv.com/server";
-
+  alert(appState);
   function redirect(path) {
     history.push(path);
   }
@@ -346,7 +346,8 @@ function LoadingScreen() {
   return (
     <div className="loading-screen-container">
       <img alt="" src="./img/loading.gif" className="loading-gif" />
-      <p className="loading-screen-text">Finding you a FAANG offer...</p>
+      <p className="loading-screen-text"><strong>Loading...</strong></p>
+      <p className="loading-screen-text">Did you know Glide uses the same resume parsing technology that companies like Netflix,	Shopify, and Twitch use to screen their applicants?</p>
     </div>
   );
 }
