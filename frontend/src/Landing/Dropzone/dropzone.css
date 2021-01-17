@@ -1,14 +1,13 @@
 .container {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
 }
 
 .dzu-dropzone {
   border-color: rgb(196, 196, 180);
   border-style: dashed;
   border-radius: 12px;
-  height: 320px;
+  height: 340px;
   max-width: 90%;
   background-color: #fbf3d4;
   overflow: hidden;
@@ -36,12 +35,18 @@
   text-decoration: underline;
 }
 
+.opt-in-text {
+  font-family: Inter;
+  max-width: 80%;
+}
+
 .opt-in-container {
   margin: 0px auto;
   font-family: Inter;
   color: rgba(75, 77, 81, 1);
   margin-top: 20px;
-  transform: translateX(13%);
+  width: 360px;
+  max-width: 90%;
 }
 
 .dropzone-btn-text {
@@ -60,6 +65,7 @@
   width: 400px;
   margin: 0px auto;
   margin-top: 35px;
+  max-width: 80%;
 }
 
 .dropzone-agreement {
@@ -68,4 +74,18 @@
   color: rgba(75, 77, 81, 1);
   font-size: 13px;
   margin-top: 20px;
+  max-width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+  .opt-in-text {
+    font-size: 13px;
+    height: 320px;
+  }
+  .opt-in-container {
+    width: 300px;
+  }
+  .dzu-dropzone {
+    height: 400px;
+  }
 }
