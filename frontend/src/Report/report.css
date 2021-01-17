@@ -1,6 +1,7 @@
 .report-container {
   width: 100%;
   margin: 0px auto;
+  min-width: 700px;
 }
 
 .report-title-container {
