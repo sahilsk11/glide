@@ -58,6 +58,16 @@
   font-weight: 700;
 }
 
+.nav-feedback {
+  text-decoration: none;
+  transition-duration: 0.3s;
+  font-family: Inter;
+}
+
+.nav-feedback:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 714px) {
   .nav {
     margin-top: 5px;
