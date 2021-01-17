@@ -36,9 +36,9 @@ function Text({ numDocuments }) {
   const privacy = <a className="maker-link" href="#">Privacy Policy</a>
   return (
     <div>
-      <Pair keyName="Special Thanks" value={betaComponent} />
+      {/* <Pair keyName="Special Thanks" value={betaComponent} /> */}
       <Pair keyName="Makers" value={makerComponent} />
-      <Pair keyName="How we Made This" value={howItsMade} />
+      {/* <Pair keyName="How we Made This" value={howItsMade} /> */}
       <Pair keyName="Fine Print" value={privacy} />
       <Pair keyName="Resumes Processed" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
       <em><p style={{ fontFamily: "Inter", marginTop: "40px" }}>Copyright © 2021 Glide. All rights reserved.</p></em>

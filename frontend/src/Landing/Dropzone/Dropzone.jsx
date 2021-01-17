@@ -71,7 +71,7 @@ function Submit({ files, onSubmit, sharingOptIn, updateSharingOptIn }) {
       />
       <p className="dropzone-disclaimer">Disclaimer: Glide is built for software engineering interns and new grads. Take advice with caution.</p>
       <button onClick={handleSubmit} className="glide-btn dropzone-submit-btn">Scan My Resume</button>
-      <p className="dropzone-agreement">By clicking the button above, I agree to the <a className="opt-in-link" href="#">Glide Terms of Use and Privacy Policy.</a></p>
+      <p className="dropzone-agreement">By clicking the button above, I agree to the <a className="opt-in-link" href="https://www.notion.so/Glide-Privacy-Policy-and-Terms-of-Use-86d9f1a914704f86ae8ebbb3ec70ca24" target="_blank">Glide Terms of Use and Privacy Policy.</a></p>
     </div>
   )
 }

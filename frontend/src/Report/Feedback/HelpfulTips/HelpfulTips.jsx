@@ -11,7 +11,7 @@ export default function HelpfulTips() {
       <Flag
         type="suggestion"
         message={
-          <>Below are crowdsourced resume tips. To submit a helpful tip, fill out <a className="glide-link" href="#">this form</a>.</>
+          <>Below are crowdsourced resume tips. To submit a helpful tip, fill out <a className="glide-link" href="https://airtable.com/shrP9Dx3riOCUJVDL" target="_blank">this form</a>.</>
         }
       />
       <div className="resources-container">
