@@ -31,7 +31,8 @@ export default function FileDropzone({
       allFiles.forEach(f => f.remove());
       updateAppState("submitted");
     } else {
-      alert("Unable to submit - Check Upload Message");
+      alert("Unable to submit resume. Please check the error message stated in the upload zone below"
+      );
     }
   }
 
