@@ -62,6 +62,7 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
   summary = postion_dict.get("summary") or ""
   summary_score = get_summary_score(summary)
 
+
   experience = postion_dict.get("summary") or ""
    
   # define weights for each component
@@ -69,7 +70,8 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
   role_weight = 0.3
   summary_weight = 0.5
   score = (company_score * company_weight) + (role_score * role_weight) + (summary_score * summary_weight)
-
+  
+  
   # what else would we want to report?
   report = {
     #"overallScore" : overall_score,
@@ -96,14 +98,14 @@ def get_company_score(company_name):
   default_score = 3
   if score is None:
     score = default_score
-  return score
+  return 10*score
 
 def get_role_score(role_name):
   score = airtable.get_score_from_key(role_name, "roles") # checks equality between name and key
   default_score = 3
   if score is None:
     score = default_score
-  return score
+  return 10*score
 
 def get_summary_score(experience_summary):
   total_score = 0
@@ -111,7 +113,9 @@ def get_summary_score(experience_summary):
   for (skill, score) in keyword_point_tuples:
     if skill.lower() in experience_summary.lower():
       total_score += score
-  return total_score
+  if total_score > 20:
+    total_score = 20
+  return 5*total_score
 
 def get_skill_score(skill_summary):
   skill_total_score = 0
@@ -144,7 +148,9 @@ def get_agg_score(exp_valuation):
   top_positions = sorted(exp_valuation, key=itemgetter('score'), reverse=True)[:3] # top 3 scores sorted
   for position in top_positions:
     exp_score += position["score"]
-  return exp_score
+  if exp_score > 100:
+    exp_score = 100
+  return int((exp_score/150)*100)
 
 
 
