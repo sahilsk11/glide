@@ -41,7 +41,7 @@ function ViewEvaluation({ updateExperienceVisibility }) {
 function SkillInsight({ score, keywords, title }) {
   let keywordComponent = keywords.map(word => <SkillKeyword name={word} />);
   if (keywordComponent.length == 0) {
-    keywordComponent = <p>no strong verbs were found</p>
+    keywordComponent = <p>No skill keywords were found. Check the ATS tab to ensure they were scanned correctly.</p>
   }
   if (title) {
     title += ", "

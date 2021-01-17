@@ -36,6 +36,10 @@ body {
   padding-top: 0px;
   margin-top: 0px;
   font-family: 'Inter', sans-serif;
+  width: 550px;
+  margin: 0px auto;
+  margin-bottom: 30px;
+  max-width: 90%;
 }
 
 .glide-btn {

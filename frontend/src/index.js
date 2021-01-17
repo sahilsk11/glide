@@ -346,7 +346,8 @@ function LoadingScreen() {
   return (
     <div className="loading-screen-container">
       <img alt="" src="./img/loading.gif" className="loading-gif" />
-      <p className="loading-screen-text">Finding you a FAANG offer...</p>
+      <p className="loading-screen-text"><strong>Loading...</strong></p>
+      <p className="loading-screen-text">Did you know Glide uses the same resume parsing technology that companies like Netflix,	Shopify, and Twitch use to screen their applicants?</p>
     </div>
   );
 }
