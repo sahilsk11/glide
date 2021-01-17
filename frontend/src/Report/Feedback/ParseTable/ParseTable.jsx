@@ -103,6 +103,9 @@ function parseStartEndString(position) {
   if (position.end) {
     end = position.end.month + "/" + position.end.year;
   }
+  if (position.isCurrent) {
+    end = "present";
+  }
   if (start === end) {
     return start;
   }
