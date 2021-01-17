@@ -155,7 +155,7 @@ def rename_file(original_filename, new_filename):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
+  if len(sys.argv) < 2:
     if '/usr/bin' not in os.environ:
       os.environ['PATH'] = '/usr/bin'
   app.run(debug=True)
