@@ -12,6 +12,7 @@
   z-index: 99999;
   position: relative;
   margin-top: 20px;
+  max-width: 90%;
 }
 
 .swe-label-text {
@@ -31,7 +32,10 @@
 .landing-text-title {
   font-weight: 700;
   font-family: 'Inter', sans-serif;
+  max-width: 90%;
+  margin: 0px auto;
   margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .landing-subtext {
@@ -119,6 +123,20 @@
   width: 50%;
 }
 
+.landing-value-props-mobile-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: none;
+}
+
+.landing-value-props-mobile {
+  width: 367px;
+  display: block;
+  margin: 0px auto;
+  max-width: 90%;
+}
+
 @media only screen and (max-width: 829px) {
   .prop-table {
     width: 80%;
@@ -133,10 +151,34 @@
   .landing-text-container {
     padding-top: 0px;
   }
+  .prop-table {
+    display: none;
+  }
+  .landing-value-props-mobile-wrapper {
+    display: block;
+  }
+  .landing-props-container {
+    margin-bottom: 40px;
+  }
+  .landing-props-title {
+    margin-bottom: 50px;
+  }
 }
 
 @media only screen and (max-width: 529px) {
   .landing-subtext {
     font-size: 14px;
+  }
+  .br-collapse {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .swe-label-text {
+    font-size: 10px;
+  }
+  .landing-props-title {
+    font-size: 23px;
   }
 }

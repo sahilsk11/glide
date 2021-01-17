@@ -41,7 +41,7 @@ function MadeForLabel() {
 function LandingText() {
   return (
     <div className="landing-text-container">
-      <h1 className="landing-text-title">Detailed feedback to measure the<br />strength of your resume</h1>
+      <h1 className="landing-text-title">Detailed feedback to measure the <br className="br-collapse" />strength of your resume</h1>
       <p className="landing-subtext">
         Tired of not getting interviews? Glide takes the guesswork out of applying by demystifying application tracking systems (ATS). Identify where you stand, leverage feedback, and land more interviews.
       </p>
@@ -51,28 +51,53 @@ function LandingText() {
 
 function ValueProps() {
   return (
-    <div className="landing-value-props-container">
-      <h1 className="landing-props-title">Things you can do with Glide ✨</h1>
-      <table className="prop-table">
-        <tr>
-          <td className="prop-td"><Prop text="Get actionable feedback on your resume" /></td>
-          <td className="prop-td"><Prop text="Ensure your resume scans and is ATS compliant" /></td>
-        </tr>
-        <tr>
-          <td className="prop-td"><Prop text="Diagnose weakpoints in your resume" /></td>
-          <td className="prop-td"><Prop text="Unlimited scans. 100% free. No strings attached." /></td>
-        </tr>
-        <tr>
-          <td className="prop-td"><Prop text="Identify pivotal missing information" /></td>
-          <td className="prop-td"><Prop text="Keyword analysis tailored for SWE roles" /></td>
-        </tr>
-        <tr>
-          <td className="prop-td"><Prop text="Get noticed by automated recruiting systems" /></td>
-          <td className="prop-td"><Prop text="Secure the bag 💰" /></td>
-        </tr>
-      </table>
-    </div>
+    <>
+      <div className="landing-value-props-container">
+        <h1 className="landing-props-title">Things you can do with Glide ✨</h1>
+        <TableValueProps />
+        <MobileValueProps />
+      </div>
+    </>
   )
+}
+
+function TableValueProps() {
+  return (
+    <table className="prop-table">
+      <tr>
+        <td className="prop-td"><Prop text="Get actionable feedback on your resume" /></td>
+        <td className="prop-td"><Prop text="Ensure your resume scans and is ATS compliant" /></td>
+      </tr>
+      <tr>
+        <td className="prop-td"><Prop text="Diagnose weakpoints in your resume" /></td>
+        <td className="prop-td"><Prop text="Unlimited scans. 100% free. No strings attached." /></td>
+      </tr>
+      <tr>
+        <td className="prop-td"><Prop text="Identify pivotal missing information" /></td>
+        <td className="prop-td"><Prop text="Keyword analysis tailored for SWE roles" /></td>
+      </tr>
+      <tr>
+        <td className="prop-td"><Prop text="Get noticed by automated recruiting systems" /></td>
+        <td className="prop-td"><Prop text="Secure the bag 💰" /></td>
+      </tr>
+    </table>
+  )
+}
+
+function MobileValueProps() {
+  return (
+    <div className="landing-value-props-mobile-wrapper">
+      <div className="landing-value-props-mobile">
+        <Prop text="Get actionable feedback on your resume" />
+        <Prop text="Ensure your resume scans and is ATS compliant" />
+        <Prop text="Diagnose weakpoints in your resume" />
+        <Prop text="Unlimited scans. 100% free. No strings attached." />
+        <Prop text="Identify pivotal missing information" />
+        <Prop text="Keyword analysis tailored for SWE roles" />
+        <Prop text="Secure the bag 💰" />
+      </div>
+    </div>
+  );
 }
 
 function Prop({ text }) {
