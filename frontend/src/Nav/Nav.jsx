@@ -13,7 +13,7 @@ export default function Nav({ useYellowBackground }) {
         <Icon />
       </div>
       <div className="nav-email-signup-wrapper">
-        <a href="#" className="glide-link nav-feedback" target="_blank">Feedback</a>
+        <a href="https://airtable.com/shr2dgrLZTvXliBD6" className="glide-link nav-feedback" target="_blank">Feedback</a>
       </div>
     </div>
   );
