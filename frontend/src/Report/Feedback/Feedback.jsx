@@ -62,7 +62,7 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experience
 
 function Prechecks({ activeContent }) {
   const options = copy["Prechecks"];
-  const componentNames = ["isFilePDF", "isFileScannable", "doesFollowNaming"]
+  const componentNames = ["isFilePDF", "isFileScannable", "doesFollowNaming", "isAPage"]
   let components = [];
   componentNames.forEach(key => {
     const checked = activeContent[key];

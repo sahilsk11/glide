@@ -29,6 +29,16 @@ const copy = {
         "title": "Please use standard resume naming conventions.",
         "subtitle": "Rename your resume as 'FirstName_LastName_Resume.pdf'"
       },
+    },
+    "isAPage": {
+      "true": {
+        "title": "Resume length is one page.",
+        "subtitle": "Your resume fits on a single page - just as recruiters want it."
+      },
+      "false": {
+        "title": "Resume is more than one page.",
+        "subtitle": "Try to cut your resume down to one page."
+      }
     }
   },
   "Required Info": {
