@@ -15,87 +15,54 @@ import Error from "./Error/Error";
 function App() {
   const d = {
     "experience": {
+      "aggregateScore": 11.2,
       "positions": [
         {
-          "org": "ThinkTwice",
-          "score": 1.5,
-          "title": "",
-          "verbs": []
-        },
-        {
-          "org": "Sym",
-          "score": 2.7,
-          "title": "Freelance Web Developer",
-          "verbs": [
-            "collaborated"
-          ]
-        },
-        {
-          "org": "First Tee",
-          "score": 5.5,
-          "title": "Golf Coach",
-          "verbs": [
-            "built",
-            "customized"
-          ]
-        },
-        {
-          "org": "Ultron",
-          "score": 6.0,
-          "title": "Intent-based voice assistant",
-          "verbs": [
-            "developed"
-          ]
-        },
-        {
           "org": "Prudential Financial",
-          "score": 3.3,
-          "title": "Software Engr Intern",
+          "score": 7.3,
+          "skills": [],
+          "summaryExperience": "\n\n\u25cf\tBuilt internal metadata tool to condense microservice information for better maintainability\r\n\n\n\u25cf\tDeveloped and implemented a manifest processing tool for greater standardization across business unit\r\n\n\n\u25cf\tUsed Python, Spring Boot Microservices, Apache Kafka, JSON, and YAML",
+          "title": "Software Engineering Intern",
           "verbs": [
             "implemented",
-            "focused",
-            "created"
-          ]
-        },
-        {
-          "org": "HeadSpin",
-          "score": 15.8,
-          "title": "Software Engr Intern",
-          "verbs": [
-            "built"
-          ]
-        },
-        {
-          "org": "Cratus",
-          "score": 28.5,
-          "title": "",
-          "verbs": [
-            "created",
+            "built",
             "developed"
           ]
         },
         {
-          "org": "Delta Mu Kappa",
+          "org": "The Codex",
+          "score": 2.4,
+          "skills": [],
+          "summaryExperience": "\n\n\u2022\tLed platform growth to 400 new users per week and 7,500+ users internationally\r\n\n\n\u25cf\tConducted 30+ customer interviews per month to collect actionable insights\r\n\n\n\u25cf\tIncreased user conversion and retention rate by 20% by conducting data driven experiments",
+          "title": "Cofounder & Head of Product",
+          "verbs": [
+            "increased",
+            "conducted",
+            "led"
+          ]
+        },
+        {
+          "org": "Future Engineers Camp",
           "score": 1.5,
-          "title": "President",
+          "skills": [],
+          "summaryExperience": "Co-founded in 2014 with a mission to provide students with high-energy, personalized, and hands-on\r\ntechnology education in a summer camp setting\r\n\n\n\u25cf\tScaled the business to over $80k in revenue, 700+ students, and 30+ staff members",
+          "title": "President & Cofounder",
           "verbs": []
         }
       ],
-      "skills": null,
+      "skills": 18,
+      "skillsList": [
+        "Skills\r\n\u25cf\tSoftware: Python, Spring Boot/ Java, HTML/CSS, React Native, SQL, YAML\r\n\u25cf\tDesign: Figma, Photoshop/Illustrator, Sketch, Invision\r\n\u25cf\tMarketing: Amplitude, Google Analytics, Hotjar, Convertkit, SEO, Growth Strategy"
+      ],
       "verbScore": {
-        "Cratus": 100,
-        "Delta Mu Kappa": 0,
-        "First Tee": 100,
-        "HeadSpin": 100,
+        "Future Engineers Camp": 0,
         "Prudential Financial": 100,
-        "Sym": 100,
-        "ThinkTwice": 0,
-        "Ultron": 100
+        "The Codex": 100
       }
     },
-    "filename": "2K2P6E4P5X.pdf",
+    "filename": "Sameer_Kapur_Resume.pdf",
     "prechecks": {
-      "doesFollowNaming": false,
+      "doesFollowNaming": true,
       "isAPage": true,
       "isFilePDF": true,
       "isFileScannable": true,
@@ -103,30 +70,12 @@ function App() {
     },
     "requiredInfo": {
       "checklist": {
-        "emails": false,
-        "linkedin": false,
+        "emails": true,
+        "linkedin": true,
         "name": true,
-        "phoneNumber": false,
+        "phoneNumber": true,
         "positions": {
-          "Cratus": {
-            "endMonth": true,
-            "endYear": true,
-            "startMonth": true,
-            "startYear": true
-          },
-          "Delta Mu Kappa": {
-            "endMonth": true,
-            "endYear": true,
-            "startMonth": true,
-            "startYear": true
-          },
-          "First Tee": {
-            "endMonth": true,
-            "endYear": true,
-            "startMonth": true,
-            "startYear": true
-          },
-          "HeadSpin": {
+          "Future Engineers Camp": {
             "endMonth": true,
             "endYear": true,
             "startMonth": true,
@@ -138,19 +87,7 @@ function App() {
             "startMonth": true,
             "startYear": true
           },
-          "Sym": {
-            "endMonth": true,
-            "endYear": true,
-            "startMonth": true,
-            "startYear": true
-          },
-          "ThinkTwice": {
-            "endMonth": true,
-            "endYear": true,
-            "startMonth": true,
-            "startYear": true
-          },
-          "Ultron": {
+          "The Codex": {
             "endMonth": true,
             "endYear": true,
             "startMonth": true,
@@ -160,179 +97,149 @@ function App() {
         "schools": {
           "Purdue University": {
             "degree": true,
-            "gpa": false
+            "gpa": true
           }
         }
       },
-      "score": 59
+      "score": 100
     },
-    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=0P0L1W6M3P.jpg",
+    "resumeImageSrc": "http://localhost:5000/getResumeImage?filename=3U1P2P1F9V.jpg",
     "resumeJSON": {
-      "createdAt": 1610336428761,
-      "lastStoryAt": 1610336428761,
+      "createdAt": 1610872094329,
+      "emails": [
+        {
+          "canonical": "kapur10@purdue.edu",
+          "value": "kapur10@purdue.edu"
+        }
+      ],
+      "lastStoryAt": 1610872094329,
       "links": [
         {
-          "domain": "symops.com",
-          "path": null,
-          "url": "https://symops.com"
+          "domain": "linkedin.com",
+          "path": "/in/kapursameer",
+          "url": "linkedin.com/in/kapursameer"
         },
         {
-          "domain": "sahilkapur.com",
+          "domain": "sameerkapur.com",
           "path": null,
-          "url": "sahilkapur.com"
+          "url": "sameerkapur.com"
+        },
+        {
+          "domain": "anvilstartups.com",
+          "path": null,
+          "url": "https://www.anvilstartups.com"
+        },
+        {
+          "domain": "thinktwice.me",
+          "path": null,
+          "url": "http://thinktwice.me"
+        },
+        {
+          "domain": "thecodex.me",
+          "path": null,
+          "url": "https://thecodex.me"
+        },
+        {
+          "domain": "groundup.vc",
+          "path": null,
+          "url": "https://groundup.vc"
+        },
+        {
+          "domain": "matchly.co",
+          "path": null,
+          "url": "http://matchly.co"
         }
       ],
       "names": [
-        "Sahil Kapur"
+        "Sameer Kapur"
+      ],
+      "phones": [
+        {
+          "type": "home",
+          "value": "(408) 805-1733"
+        }
       ],
       "positions": [
         {
-          "end": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "org": "Sym",
+          "isCurrent": true,
+          "org": "The Codex",
           "start": {
-            "month": 1,
-            "timestamp": 1577865600000,
+            "month": 6,
+            "timestamp": 1590994800000,
             "year": 2020
           },
-          "summary": "Minor\r\n\n\n\u2022 Collaborated with engineering team to rebuild company\tGraduation: May 2022\r\nwebsite in React (https://symops.com)\tGPA: 3.71",
-          "title": "Freelance Web Developer"
+          "summary": "\n\n\u2022\tLed platform growth to 400 new users per week and 7,500+ users internationally\r\n\n\n\u25cf\tConducted 30+ customer interviews per month to collect actionable insights\r\n\n\n\u25cf\tIncreased user conversion and retention rate by 20% by conducting data driven experiments",
+          "title": "Cofounder & Head of Product"
         },
         {
           "end": {
-            "month": 1,
-            "timestamp": 1577865600000,
+            "month": 8,
+            "timestamp": 1596265200000,
             "year": 2020
-          },
-          "org": "HeadSpin",
-          "start": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "summary": "Harker High School\r\n\n\n\u2022 Architected and built SWAT (sales weekly app tracker)\tSocieties: Varsity Golf, Red Cross,\r\nusing React.js, Node.js, Python, and SQL\tDECA\r\nGPA: 3.98\r\n\n\n\u2022 SWAT dashboard aggregates worldwide usage data of major mobile apps into actionable visualizations for\t.involvement.\r\nsales/marketing to drive leads",
-          "title": "Software Engr Intern"
-        },
-        {
-          "end": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "org": "Delta Mu Kappa",
-          "start": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "title": "President"
-        },
-        {
-          "end": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "org": "Ultron",
-          "start": {
-            "month": 1,
-            "timestamp": 1577865600000,
-            "year": 2020
-          },
-          "summary": "schoolers to find unique\r\n\n\n\u2022 Developed cloud-based Node.js system that controls\tvolunteering events\r\nlights, tracks workouts, and automates a majority of my\t\n\n\u2022 Developed in MIT incubator",
-          "title": "Intent-based voice assistant"
-        },
-        {
-          "end": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
           },
           "org": "Prudential Financial",
           "start": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
+            "month": 6,
+            "timestamp": 1590994800000,
+            "year": 2020
           },
-          "summary": "\n\n\u2022 Lead planning/development of\r\n\n\n\u2022 Implemented microservice monitoring application\tPurdue's co-ed entrepreneurship\r\n\n\n\u2022 Tracks health metrics/downtime of 800 API services and\tfraternity (50+ members)\r\nupdates health on live status page\t\n\n\u2022 Focused on building community of makers in the Midwest\r\n\r\n.notable projects.\tMIT Launch   Participant\r\n\n\n\u2022 Created platform for high",
-          "title": "Software Engr Intern"
+          "summary": "\n\n\u25cf\tBuilt internal metadata tool to condense microservice information for better maintainability\r\n\n\n\u25cf\tDeveloped and implemented a manifest processing tool for greater standardization across business unit\r\n\n\n\u25cf\tUsed Python, Spring Boot Microservices, Apache Kafka, JSON, and YAML",
+          "title": "Software Engineering Intern"
         },
         {
           "end": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
-          },
-          "org": "Cratus",
-          "start": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
-          },
-          "summary": ".skills.\r\n\n\n\u2022 Created and deployed AWS production-ready API\tLanguages: JavaScript, Java,\r\nendpoints written in Golang, Node.js, Python, and Java\tC/C++, Python3, Golang, SQL\r\n\n\n\u2022 Developed analysis system to measure execution speed,\tFrameworks: React, Express, Node,\r\nmemory usage, and scalability of endpoints in each\tFlask, Spring boot, MongoDB,\r\nlanguage\tMySQL\r\n\n\n\u2022 Automated verbose test reports for performance\tTechnologies: AWS, bash, git,\r\ncomparison of each endpoint\tApache, Docker, Nginx, Gunicorn,\r\nGoogle Cloud, REST APIs"
-        },
-        {
-          "end": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
-          },
-          "org": "ThinkTwice",
-          "start": {
-            "month": 1,
-            "timestamp": 1546329600000,
-            "year": 2019
-          },
-          "summary": "Other: Data structures, Figma, Linux\r\n\n\n\u2022 JS-based web app for users to view philanthropic\tOS, NLP, Raspberry Pi\r\nalternatives to blowing cash\r\n\n\n\u2022 Received 3rd place Product of the Day on Product Hunt\r\nwith over 8,000 pageviews in 2 days"
-        },
-        {
-          "end": {
-            "month": 1,
-            "timestamp": 1514793600000,
+            "month": 7,
+            "timestamp": 1530428400000,
             "year": 2018
           },
-          "org": "First Tee",
+          "org": "Future Engineers Camp",
           "start": {
-            "month": 1,
-            "timestamp": 1420099200000,
-            "year": 2015
+            "month": 4,
+            "timestamp": 1396335600000,
+            "year": 2014
           },
-          "summary": "\n\n\u2022 Built customized NLP service to parse intents\tShare my love of the game with\r\n\n\n\u2022 Service runs on Siri, Alexa, Google, and uses React.js for   economically and culturally diverse\r\nweb interface\tgrade-school students",
-          "title": "Golf Coach"
+          "summary": "Co-founded in 2014 with a mission to provide students with high-energy, personalized, and hands-on\r\ntechnology education in a summer camp setting\r\n\n\n\u25cf\tScaled the business to over $80k in revenue, 700+ students, and 30+ staff members",
+          "title": "President & Cofounder"
         }
       ],
       "schools": [
         {
-          "degree": "B.S.",
+          "degree": "B.S. in Computer Information Technology",
           "end": {
-            "month": 1,
-            "timestamp": 1609488000000,
-            "year": 2021
+            "month": 5,
+            "timestamp": 1651388400000,
+            "year": 2022
           },
-          "field": "Computer Science",
+          "field": "Computer Information Technology",
+          "gpa": "3.77",
+          "gpaMax": "4",
           "org": "Purdue University",
-          "summary": "Amazon   Incoming Software Engr Intern (2021)\tPurdue University\r\nB.S. Computer Science, Economics"
+          "start": {
+            "month": 8,
+            "timestamp": 1533106800000,
+            "year": 2018
+          },
+          "summary": "Purdue University, West Lafayette, IN (GPA: 3.77)\tAug 2018- May 2022\r\n\n\n\u25cf B.S. in Computer Information Technology\r\n\n\n\u25cf Minor in Organizational Leadership"
         }
       ],
       "summary": {
-        "experience": "Sahil Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Sales (mostly General). Sahil Kapur has 6 years of work experience, with 5 years of management experience, including a high-level position.",
-        "management": "Starting on 1/1/2020, the candidate held the following executive-level management position for 12 months:\r\n\tTitle: President for Delta Mu Kappa\r\nStarting on 1/1/2015, the candidate held the following low-level management position for 4 years:\r\n\tTitle: Golf Coach for First Tee",
+        "experience": "Sameer Kapur's experience appears to be strongly concentrated in Information Technology (mostly Programming) and slightly concentrated in Marketing (mostly Digital). Sameer Kapur's experience appears to be lower-to-mid level, with about 5 years of experience, with 5 years of management experience, including a high-level position.",
+        "management": "Current position is a low-level management role: Cofounder & Head of Product\r\nStarting on 6/1/2020, the candidate held the following low-level management position for 7 months:\r\n\tTitle: Cofounder & Head of Product for The Codex\r\nStarting on 4/1/2014, the candidate held the following executive-level management position for 4 years and 3 months:\r\n\tTitle: President & Cofounder for Future Engineers Camp",
         "managementTime": {
-          "months": 60,
+          "months": 59,
           "years": 5
         },
+        "skills": "Skills\r\n\u25cf\tSoftware: Python, Spring Boot/ Java, HTML/CSS, React Native, SQL, YAML\r\n\u25cf\tDesign: Figma, Photoshop/Illustrator, Sketch, Invision\r\n\u25cf\tMarketing: Amplitude, Google Analytics, Hotjar, Convertkit, SEO, Growth Strategy",
         "workTime": {
-          "months": 77,
-          "years": 6
+          "months": 59,
+          "years": 5
         }
       }
     },
-    "score": 10,
+    "score": 54,
     "success": true
   }
+
 
 
 
