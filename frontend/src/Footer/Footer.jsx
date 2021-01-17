@@ -33,7 +33,7 @@ function Text({ numDocuments }) {
   );
   const betaComponent = <a className="maker-link" href="#">Our 50+ beta testers</a>
   const howItsMade = <a className="maker-link" href="#">Check out this post</a>
-  const privacy = <a className="maker-link" href="#">Privacy Policy</a>
+  const privacy = <a className="maker-link" href="https://www.notion.so/Glide-Privacy-Policy-and-Terms-of-Use-86d9f1a914704f86ae8ebbb3ec70ca24" target="_blank">Privacy Policy</a>
   return (
     <div>
       {/* <Pair keyName="Special Thanks" value={betaComponent} /> */}
