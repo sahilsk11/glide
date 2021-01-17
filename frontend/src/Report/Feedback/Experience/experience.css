@@ -89,6 +89,9 @@
   display: flex;
   margin-left: 10px;
   padding-bottom: 10px;
+  width: 30%;
+  margin-bottom: 10px;
+  align-items: flex-start;
 }
 
 .skill-check {
