@@ -12,11 +12,9 @@ import verb_usage
 from operator import itemgetter
 from pprint import pprint
 
-
 def scan_resume(filename, resume_as_dict, system_filename=None):
     if system_filename is None:
         system_filename = filename
-    print(system_filename)
     checklist_dict = ruleset.checklist(filename, resume_as_dict)
     is_pdf = prechecks.is_resume_pdf(system_filename)
     is_scannable = prechecks.is_resume_scannable(system_filename)
@@ -62,8 +60,6 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
     pre_score = int(0.20 * precheck_score)
     rule_score = int(0.20 * ruleset_score)
     exp_score = 0
-    for k in exp_valuation:
-      print(k.get("score"))
     top_positions = sorted(exp_valuation, key=itemgetter('score'), reverse=True)[:3] # top 3 scores sorted
     for position in top_positions:
       exp_score += position["score"]
