@@ -123,7 +123,7 @@ def get_skill_score(skill_summary):
   for (skill, score) in keyword_point_tuples:
     if skill.lower() in skill_summary.lower():
       skill_total_score += score
-  return skill_total_score
+  return min(int(1.6*skill_total_score),100)
 
 
 def skills_single_experience(filename, resume_as_dict):
