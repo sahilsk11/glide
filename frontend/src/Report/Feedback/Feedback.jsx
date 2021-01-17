@@ -48,7 +48,7 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experience
   } else if (activeFeedback === "Experience") {
     feedbackComponent = Experience({ activeContent, experienceVisible, updateExperienceVisibility });
   } else if (activeFeedback === "Helpful Tips") {
-    feedbackComponent = <HelpfulTips />;
+    feedbackComponent = HelpfulTips();
   }
   return (
     <div className="report-content-container">
@@ -100,29 +100,34 @@ function RequiredInfo({ activeContent }) {
   //these checks are nested
   let allDegreesPresent = true;
   let allGPAPresent = true;
-  Object.keys(checklist.schools).forEach(schoolName => {
-    const school = checklist.schools[schoolName];
-    if (!school.degree) {
-      allDegreesPresent = false;
-      components.push(
-        <FeedbackComponent
-          checked={false}
-          title={"Missing degree name from " + schoolName}
-          subtitle={"Double check that your degree from " + schoolName + " is present, and can be parsed by an ATS."}
-        />
-      );
-    }
-    if (!school.gpa) {
-      allGPAPresent = false;
-      components.push(
-        <FeedbackComponent
-          checked={false}
-          title={"Missing GPA name from " + schoolName}
-          subtitle={"Double check that your GPA from " + schoolName + " is present (if it's over 3.0), and can be parsed by an ATS."}
-        />
-      );
-    }
-  });
+  if (checklist.schools) {
+    Object.keys(checklist.schools).forEach(schoolName => {
+      const school = checklist.schools[schoolName];
+      if (!school.degree) {
+        allDegreesPresent = false;
+        components.push(
+          <FeedbackComponent
+            checked={false}
+            title={"Missing degree name from " + schoolName}
+            subtitle={"Double check that your degree from " + schoolName + " is present, and can be parsed by an ATS."}
+          />
+        );
+      }
+      if (!school.gpa) {
+        allGPAPresent = false;
+        components.push(
+          <FeedbackComponent
+            checked={false}
+            title={"Missing GPA name from " + schoolName}
+            subtitle={"Double check that your GPA from " + schoolName + " is present (if it's over 3.0), and can be parsed by an ATS."}
+          />
+        );
+      }
+    });
+  } else {
+    allGPAPresent = false;
+    allDegreesPresent = false;
+  }
   if (allDegreesPresent) {
     components.push(
       <FeedbackComponent
@@ -141,28 +146,29 @@ function RequiredInfo({ activeContent }) {
       />
     );
   }
+  if (checklist.positions) {
+    Object.keys(checklist.positions).forEach(positionName => {
+      const position = checklist.positions[positionName];
+      if (!position.endMonth) {
+        components.push(
+          <FeedbackComponent
+            checked={false}
+            title={"Missing end date for position " + positionName}
+            subtitle={"Missing end date for position " + positionName}
+          />
+        );
+      }
+      if (!position.endYear) {
 
-  Object.keys(checklist.positions).forEach(positionName => {
-    const position = checklist.positions[positionName];
-    if (!position.endMonth) {
-      components.push(
-        <FeedbackComponent
-          checked={false}
-          title={"Missing end date for position " + positionName}
-          subtitle={"Missing end date for position " + positionName}
-        />
-      );
-    }
-    if (!position.endYear) {
+      }
+      if (!position.startMonth) {
 
-    }
-    if (!position.startMonth) {
+      }
+      if (!position.startYear) {
 
-    }
-    if (!position.startYear) {
-
-    }
-  });
+      }
+    });
+  }
   return (
     <div>
       {components}
