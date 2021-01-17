@@ -31,6 +31,7 @@ def evaluate_all_experiences(resume_as_dict, pos_dict, skill_dict):
       t.join()
     func_end = time.time()
     # print(f"finished valuations in {func_end - func_start}s")
+    valuations = sorted(valuations, key = lambda i: i['score'],reverse=True)
   return valuations
 
 
@@ -72,6 +73,7 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
     #   "summary_score": summary_score
     # }
   }
+
   if valuations is None:
     return report
   valuations.append(report)
@@ -136,6 +138,7 @@ def get_agg_score(exp_valuation):
   return exp_score
 
 
+
 if __name__ == "__main__":
   start = time.time()
   filename = "Kapur_Saaniya.pdf"
@@ -146,4 +149,4 @@ if __name__ == "__main__":
   #print(f"resume dict received in {end - start}s ...")
   x = evaluate_all_experiences(d,p,s)
   print(evaluate_all_experiences(d,p,s))
-  get_agg_score(x)
+ 
