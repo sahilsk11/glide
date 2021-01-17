@@ -64,11 +64,14 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
     pre_score = int(0.20 * precheck_score)
     rule_score = int(0.20 * ruleset_score)
     exp_score = 0
+   
+    weight = [0.6,0.3,0.1]
     top_positions = sorted(exp_valuation, key=itemgetter('score'), reverse=True)[:3] # top 3 scores sorted
-    for position in top_positions:
-      exp_score += position["score"]
-    
+    for i in range (len(top_positions)):
+        exp_score += top_positions[i]["score"] * weight[i]
+
     eval_score = int(0.40 * exp_score)
+
     if "positions" in resume_as_dict:
         for summary in resume_as_dict["positions"]:
             flag = flag + 1
@@ -81,13 +84,13 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
     overall_points = pre_score + rule_score + eval_score + ve_score
 
-    return overall_points
+    return int(overall_points)
 
 
 if __name__ == "__main__":  #test
-  filename = "Kapur_Saaniya.pdf"
+  filename = "sahil_kapur_resume.pdf"
   d = resume_to_dict(filename)
-  scan_resume(filename, d)
+  #scan_resume(filename, d)
   a = prechecks.is_resume_pdf(filename)
   b = prechecks.is_resume_scannable(filename)
   c = prechecks.is_resume_a_page(filename)
@@ -101,6 +104,6 @@ if __name__ == "__main__":  #test
   p = prechecks.precheck_score(a,b,c,e)
   r= ruleset.ruleset_score(f, g, d)
   e = experience_valuation.evaluate_all_experiences(d,x,s)
-  print(scan_resume(filename,d))    
+  pprint(scan_resume(filename,d))    
   print(calculate_overall_points(p, r, v, d, e))
 
