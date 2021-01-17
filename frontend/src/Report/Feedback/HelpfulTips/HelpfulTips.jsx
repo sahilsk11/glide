@@ -48,12 +48,14 @@ function getResourceData() {
     {
       title: "Levels.fyi",
       imgSrc: "./img/resource-images/levels-fyi.png",
-      description: "Levels.fyi is a great resource for salary comparison for intern and full time positions as well as to see who is currently hiring."
+      description: "Levels.fyi is a great resource for salary comparison for intern and full time positions as well as to see who is currently hiring.",
+      href: "#"
     },
     {
       title: "The Codex",
       imgSrc: "./img/resource-images/codex.png",
-      description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume thos employers you are a self-starter."
+      description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume thos employers you are a self-starter.",
+      href: "#"
     }
   ]
 }
