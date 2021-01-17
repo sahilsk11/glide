@@ -18,8 +18,11 @@ def evaluate_summary_skills(resume_as_dict):
 def list_skills_found_summary(resume_as_dict):
   summary_skills_list = []
   if "summary" in resume_as_dict and "skills" in resume_as_dict["summary"]: # perform checks for keys
-    skills = resume_as_dict["summary"]["skills"]
-    summary_skills_list.append(skills)
+    skills_exp = resume_as_dict["summary"]["skills"]
+    keyword_point_tuples = airtable.get_rows("skills")
+    for (skill, score) in keyword_point_tuples:
+      if skill.lower() in skills_exp.lower():
+        summary_skills_list.append(skill.lower())
   
   return summary_skills_list
 
@@ -128,14 +131,11 @@ def skills_single_experience(filename, resume_as_dict):
           if work_description.get("org") != None:
               skill_dict[work_description.get("org")] = []
               if work_description.get("summary") != None:
-                  string = work_description.get("summary")
-                  string_strip = string.strip()
-                  string_split = string_strip.split()
+                  summary_exp = work_description.get("summary")
                   skill_point_tuples = airtable.get_rows("skills")
                   for (skill, score) in skill_point_tuples:
-                    for word in string_split:
-                      if word.lower() == skill.lower():
-                        skill_dict[work_description.get("org")].append(word.lower())
+                    if skill.lower() in summary_exp.lower():
+                        skill_dict[work_description.get("org")].append(skill.lower())
                             
   return skill_dict
 
