@@ -49,7 +49,7 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
   summary = postion_dict.get("summary") or ""
   summary_score = get_summary_score(summary)
 
-
+  experience = postion_dict.get("summary") or ""
    
   # define weights for each component
   company_weight = 0.2
@@ -64,7 +64,8 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
     "title": role,
     "org": company,
     "verbs": verb_list,
-    "skills": skill_list
+    "skills": skill_list,
+    "summaryExperience ": experience 
     # "reason": { # do NOT include these in production
     #   "company_score": company_score,
     #   "role_score": role_score,
