@@ -145,18 +145,18 @@ def skills_single_experience(filename, resume_as_dict):
 
 def get_agg_score(exp_valuation):
   exp_score = 0
+  weight = [0.6,0.3,0.1]
   top_positions = sorted(exp_valuation, key=itemgetter('score'), reverse=True)[:3] # top 3 scores sorted
-  for position in top_positions:
-    exp_score += position["score"]
-  if exp_score > 100:
-    exp_score = 100
-  return int((exp_score/150)*100)
+  for i in range (len(top_positions)):
+    exp_score += top_positions[i]["score"] * weight[i]
+
+  return exp_score
 
 
 
 if __name__ == "__main__":
   start = time.time()
-  filename = "Kapur_Saaniya.pdf"
+  filename = "Sameer_Kapur_Resume.pdf"
   d = resume_to_dict(filename)
   end = time.time()
   p = good_verbs(filename,d)
