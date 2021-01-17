@@ -28,6 +28,7 @@ def scan_resume(filename, resume_as_dict, system_filename=None):
     r_score = ruleset.ruleset_score(checklist_dict, verb_usage, resume_as_dict)
     v_score_dict = verb_usage.verb_score(good_verbs_list, resume_as_dict)
     e_score =  None
+    agg_score = experience_valuation.get_agg_score(exp_valuation)
     over_points = calculate_overall_points(p_score, r_score, v_score_dict, resume_as_dict, exp_valuation)
     return {
         "prechecks": {
@@ -44,6 +45,7 @@ def scan_resume(filename, resume_as_dict, system_filename=None):
         "experience": {
             "verbScore": v_score_dict,
             "skills": skill_valuation,
+            "aggregateScore": agg_score,
             "positions": exp_valuation  # [{report}, ....]
         },
         "score": over_points
@@ -81,7 +83,7 @@ def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_
 
 
 if __name__ == "__main__":  #test
-  filename = "Ethan_Cardenas_Resume.pdf"
+  filename = "Kapur_Saaniya.pdf"
   d = resume_to_dict(filename)
   scan_resume(filename, d)
   a = prechecks.is_resume_pdf(filename)
