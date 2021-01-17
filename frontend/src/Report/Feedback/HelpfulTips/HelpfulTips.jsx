@@ -43,19 +43,19 @@ function getResourceData() {
       title: "YC Work at a Startup",
       imgSrc: "./img/resource-images/yc-logo.png",
       description: "Submit one application for hundreds of top jobs at Y Combinator companies.",
-      href: "#"
+      href: "https://workatastartup.com"
     },
     {
       title: "Levels.fyi",
       imgSrc: "./img/resource-images/levels-fyi.png",
       description: "Levels.fyi is a great resource for salary comparison for intern and full time positions as well as to see who is currently hiring.",
-      href: "#"
+      href: "https://levels.fyi?ref=glidecv.com"
     },
     {
       title: "The Codex",
       imgSrc: "./img/resource-images/codex.png",
       description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume thos employers you are a self-starter.",
-      href: "#"
+      href: "https://thecodex.me?ref=glidecv.com"
     }
   ]
 }

@@ -7,13 +7,12 @@ export default function Experience({ activeContent, experienceVisible, updateExp
   if (!experienceVisible) {
     return <ViewEvaluation updateExperienceVisibility={updateExperienceVisibility} />
   } else {
-    console.log(activeContent);
     return (
       <div>
         <h2 className="experience-subtitle">Skill Insight</h2>
         <SkillInsight
-          score={10}
-          keywords={["python", "microservices"]}
+          score={activeContent.skills}
+          keywords={activeContent.skillsList}
         />
 
         <ExperienceInsight activeContent={activeContent} />
@@ -102,24 +101,16 @@ function ExperienceInsight({ activeContent }) {
     return <IndividualExperienceAnalysis
       org={position.org}
       title={position.title}
-      description={"Based on your skills, an ATS system may rank you as 68. Consider adding more from this list. We only recommend including these keywords in the context of your experience. We found the following skills on your resume."}
-      keywords={[]}
+      description={position.summaryExperience}
+      keywords={position.skills}
       strongVerbs={position.verbs}
     />
   });
-  // const experiences = <
-  //   IndividualExperienceAnalysis
-  //   title="Software Engineering Intern"
-  //   org="Prudential"
-  //   description="● Built internal metadata tool to condense microservice information for better maintainability ● Developed and implemented a manifest processing tool for greater standardization across business unit ● Used Python, Spring Boot Microservices, Apache Kafka, JSON, and YAML"
-  //   keywords={["microservice", "python", "kafka"]}
-  //   strongVerbs={["developed", "implemented"]}
-  // />
   return (
     <>
       <div className="experience-skill-insight">
         <div className="experience-skill-row">
-          <><ScoreVisual score={10} /></>
+          <><ScoreVisual score={activeContent.aggregateScore} /></>
           <div>
             <h2 className="experience-subtitle" style={{ marginLeft: "30px" }}>Experience Insight</h2>
             <p className="experience-eval-text">
@@ -145,16 +136,23 @@ function IndividualExperienceAnalysis({
     title += ", "
   }
   let experienceDescription = [];
-  description.split(" ").forEach(word => {
-    if (keywords.includes(word.toLowerCase())) {
-      experienceDescription.push(<span className="experience-keyword">{word}</span>)
-    } else if (strongVerbs.includes(word.toLowerCase())) {
-      experienceDescription.push(<span className="experience-strong-verb">{word}</span>)
-    } else {
-      experienceDescription.push(<>{word}</>)
-    }
-    experienceDescription.push(" ")
-  })
+  if (description) {
+    description.split(/[ \n]/).forEach(word => {
+      let ogWord = word;
+      word = word.replace(/\W/g, ' ');
+      
+      word = word.trim()
+      if (keywords.includes(word.toLowerCase())) {
+        experienceDescription.push(<span className="experience-keyword">{word}</span>)
+      } else if (strongVerbs.includes(word.toLowerCase())) {
+        experienceDescription.push(<span className="experience-strong-verb">{word}</span>)
+      } else {
+        console.log(word);
+        experienceDescription.push(<>{ogWord}</>)
+      }
+      experienceDescription.push(" ")
+    })
+  }
   return (
     <div className="experience-analysis-container">
       <h3 className="experience-title">{title}{org}</h3>
