@@ -4,6 +4,7 @@ import airtable
 import pprint
 import time
 import threading
+from operator import itemgetter
 
 def evaluate_summary_skills(resume_as_dict):
   if "summary" in resume_as_dict and "skills" in resume_as_dict["summary"]: # perform checks for keys
@@ -34,6 +35,7 @@ def evaluate_all_experiences(resume_as_dict, pos_dict, skill_dict):
 
 
 def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=None):
+  
   company = postion_dict.get("org") or ""
   company_score = get_company_score(company)
 
@@ -57,6 +59,7 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
 
   # what else would we want to report?
   report = {
+    #"overallScore" : overall_score,
     "score": score,
     "title": role,
     "org": company,
@@ -124,12 +127,22 @@ def skills_single_experience(filename, resume_as_dict):
                             
   return skill_dict
 
+def get_agg_score(exp_valuation):
+  exp_score = 0
+  top_positions = sorted(exp_valuation, key=itemgetter('score'), reverse=True)[:3] # top 3 scores sorted
+  for position in top_positions:
+    exp_score += position["score"]
+  return exp_score
+
+
 if __name__ == "__main__":
   start = time.time()
-  filename = "sahil_kapur_resume.pdf"
-  d = resume_to_dict("sahil_kapur_resume.pdf")
+  filename = "Kapur_Saaniya.pdf"
+  d = resume_to_dict(filename)
   end = time.time()
   p = good_verbs(filename,d)
   s = skills_single_experience(filename,d)
-  print(f"resume dict received in {end - start}s ...")
-  pprint.pprint(evaluate_all_experiences(d,p,s))
+  #print(f"resume dict received in {end - start}s ...")
+  x = evaluate_all_experiences(d,p,s)
+  print(evaluate_all_experiences(d,p,s))
+  get_agg_score(x)
