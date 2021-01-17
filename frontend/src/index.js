@@ -258,7 +258,7 @@ function App() {
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "https://glidecv.com/server";
-  alert(appState);
+
   function redirect(path) {
     history.push(path);
   }
