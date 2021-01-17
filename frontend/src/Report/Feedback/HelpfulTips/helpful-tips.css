@@ -1,0 +1,25 @@
+.resource-container {
+  width: calc(100% - 20px);
+  background-color: #F8FCFF;
+  border: 1px solid #DCDCDC;
+  border-radius: 7px;
+  margin-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.resource-container:hover {
+  background-color: #f1f5f9;
+}
+
+.resource-content {
+  display: flex;
+  align-items: center;
+}
+
+.helpful-tips-resource-img {
+  width: 50px;
+  padding-right: 30px;
+}

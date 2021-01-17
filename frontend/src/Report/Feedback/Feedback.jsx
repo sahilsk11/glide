@@ -5,9 +5,10 @@ import copy from "./copy";
 import ReportSwitcher from "./FeedbackNav/FeedbackNav";
 import Experience from "./Experience/Experience";
 import ParseTable from "./ParseTable/ParseTable";
+import HelpfulTips from "./HelpfulTips/HelpfulTips";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename, experienceVisible, updateExperienceVisibility }) {
-  const [activeFeedback, updateActiveFeedback] = useState("Experience");
+  const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
 
   return (
     <div style={{ position: "relative", width: "85%", margin: "0px auto" }}>
@@ -36,6 +37,7 @@ const toLowerCamelCase = (str) => {
 }
 
 function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experienceVisible, updateExperienceVisibility }) {
+  console.log(activeFeedback);
   let feedbackComponent;
   if (activeFeedback === "Prechecks") {
     feedbackComponent = Prechecks({ activeContent });
@@ -45,6 +47,8 @@ function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experience
     feedbackComponent = ParseTable({ resumeAsJSON });
   } else if (activeFeedback === "Experience") {
     feedbackComponent = Experience({ activeContent, experienceVisible, updateExperienceVisibility });
+  } else if (activeFeedback === "Helpful Tips") {
+    feedbackComponent = <HelpfulTips />;
   }
   return (
     <div className="report-content-container">
