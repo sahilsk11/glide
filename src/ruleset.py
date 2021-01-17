@@ -70,9 +70,13 @@ def checklist(filename, resume_as_dict):
                             response["positions"][time.get("org")]["startMonth"] = False   
                         else:
                             response["positions"][time.get("org")]["startMonth"] = True
+                        response["positions"][time.get("org")]["endMonth"] = True
+                        response["positions"][time.get("org")]["endYear"] = True
                     else:
                         response["startMonth"] = False
                         response["startYear"] = False
+                        response["endMonth"] = True
+                        response["endYear"] = True
                 else:
                     if time.get("start") != None:
                         if time.get("start").get("year") == None:
