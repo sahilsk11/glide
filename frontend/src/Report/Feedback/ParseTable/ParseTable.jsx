@@ -133,7 +133,7 @@ function WorkExperience({ positions }) {
   }
   return (
     <table className="parse-table">
-      <tr>
+      <tr className="heading-tr">
         <th className="parse-table-th">Company</th>
         <th className="parse-table-th">Position</th>
         <th className="parse-table-th">Dates</th>

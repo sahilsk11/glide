@@ -6,6 +6,19 @@
   margin-bottom: 30px;
 }
 
+.experience-disclaimer-container {
+  width: 100%;
+  background-color: #F8FCFF;
+  padding-bottom: 20px;
+}
+
+.experience-disclaimer-text {
+  padding: 20px;
+  margin-bottom: 20px;
+  color: rgba(35, 43, 53, 1);
+  font-family: Inter;
+}
+
 .experience-skill-row {
   display: flex;
 }

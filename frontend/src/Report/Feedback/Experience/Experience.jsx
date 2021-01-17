@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./experience.css";
 
 import CircleGraph from "../../ScoreVisual/CircleGraph";
 
 export default function Experience({ activeContent, experienceVisible, updateExperienceVisibility }) {
   if (!experienceVisible) {
-    return (
-      <div>
-        <button className="glide-btn" onClick={() => updateExperienceVisibility(true)}>View Evaluation</button>
-      </div>
-    );
+    return <ViewEvaluation updateExperienceVisibility={updateExperienceVisibility} />
   } else {
     console.log(activeContent.positions)
     const experiences = activeContent.positions.map(position => {
@@ -32,6 +28,23 @@ export default function Experience({ activeContent, experienceVisible, updateExp
       </div>
     )
   }
+}
+
+function ViewEvaluation({updateExperienceVisibility}) {
+  return (
+    <div className="experience-disclaimer-container">
+      <p className="experience-disclaimer-text">
+        Important Note: 
+        <br /><br />
+        The experience section is a simple, meaningful way to understand the strengths and weaknesses in your skills and experience through a hollistic approach.
+        <br /><br />
+        Similar to how applicant tracking systems work, Glide compares popular Software Engineering role keywords and skills with data found on your resume. Based on similarity, a score is produced to help you understand where you stand as an application.
+        <br /><br />
+        The Glide algorithm takes into account company name, role, and role summary, with the greatest weight places on the keywords and skills found in your role summary. Take evaluation with caution as every recruiting processes vary greatly between companies.
+      </p>
+      <button className="glide-btn" onClick={() => updateExperienceVisibility(true)}>View Evaluation</button>
+    </div>
+  )
 }
 
 function SkillInsight({ score, description, keywords, org, title }) {

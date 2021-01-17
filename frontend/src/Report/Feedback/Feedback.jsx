@@ -7,7 +7,7 @@ import Experience from "./Experience/Experience";
 import ParseTable from "./ParseTable/ParseTable";
 
 export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filename, experienceVisible, updateExperienceVisibility }) {
-  const [activeFeedback, updateActiveFeedback] = useState("ATS Scan");
+  const [activeFeedback, updateActiveFeedback] = useState("Experience");
 
   return (
     <div style={{ position: "relative", width: "85%", margin: "0px auto" }}>
