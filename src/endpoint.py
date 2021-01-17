@@ -123,7 +123,7 @@ def save_resume_to_db(filename, new_filename, did_user_opt_in, scanned_data, res
   db.add_entry(entry)
 
 def pdf_to_png(filename):
-  images = convert_from_path("saved-resumes/"+ filename,size = (300, None)) 
+  images = convert_from_path("saved-resumes/"+ filename, size = (300, None),first_page=1, last_page=1) 
   img_filename = os.path.splitext(filename)[0]+".jpg"
   for img in images: 
     img.save("saved-images/"+ img_filename, 'JPEG')
@@ -155,7 +155,8 @@ def rename_file(original_filename, new_filename):
 
 
 if __name__ == "__main__":
-  if len(sys.argv) < 2:
+    if len(sys.argv) < 2:
     if '/usr/bin' not in os.environ:
       os.environ['PATH'] = '/usr/bin'
   app.run(debug=True)
+

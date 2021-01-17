@@ -75,7 +75,7 @@ def evaluate_single_experience(postion_dict, pos_dict, skill_dict, valuations=No
     "org": company,
     "verbs": verb_list,
     "skills": skill_list,
-    "summaryExperience ": experience 
+    "summaryExperience": experience 
     # "reason": { # do NOT include these in production
     #   "company_score": company_score,
     #   "role_score": role_score,
