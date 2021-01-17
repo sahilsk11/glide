@@ -16,7 +16,7 @@
   border: 8px solid;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .graph-score {
@@ -30,4 +30,11 @@
   margin: 0px auto;
   padding: 0px;
   font-family: Inter;
+}
+
+.graph-score-total {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
 }
