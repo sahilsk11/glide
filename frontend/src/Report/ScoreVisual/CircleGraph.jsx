@@ -21,6 +21,7 @@ export default function CircleGraph({ score, isCircle=true }) {
         <div className="graph-background-circle" style={{ backgroundColor }} />
         <div className="graph-arc" style={{ borderColor: primaryColor }} />
         <p className="graph-score" style={{ color: primaryColor }}>{score}</p>
+        <p className="graph-score-total" style={{ color: primaryColor }}>/100</p>
       </div >
     )
   }
