@@ -27,23 +27,20 @@ def healthcheck():
 
 @app.route("/postResume", methods=['POST'])
 def accept_resume():
-  if authenticate(flask.request.json):
-    # save resume as file
-    print(flask.request.files)
-    file = flask.request.files['file']
-    glide_rename_index = 0 #value to put in filename
-    new_filename = file.filename
-    while os.path.exists("saved-resumes/"+new_filename):
-      print("file found")
-      new_filename = new_filename.replace(".", "[GLIDE_"+str(glide_rename_index)+"].")
-      glide_rename_index += 1
-    file.save(os.path.join("saved-resumes/",new_filename))
-    size = os.stat('saved-resumes/'+new_filename).st_size
-    if (size > 1048576):
-      os.remove("saved-resumes/"+new_filename)
-      return flask.jsonify({"code": 400, "message": "File rejected - too big"})
-    return flask.jsonify({"success": True, "filename": new_filename})
-  return flask.jsonify({"code": 403, "message": "Invalid credentials"})
+  # save resume as file
+  file = flask.request.files['file']
+  glide_rename_index = 0 #value to put in filename
+  new_filename = file.filename
+  while os.path.exists("saved-resumes/"+new_filename):
+    print("file found")
+    new_filename = new_filename.replace(".", "[GLIDE_"+str(glide_rename_index)+"].")
+    glide_rename_index += 1
+  file.save(os.path.join("saved-resumes/",new_filename))
+  size = os.stat('saved-resumes/'+new_filename).st_size
+  if (size > 1048576):
+    os.remove("saved-resumes/"+new_filename)
+    return flask.jsonify({"code": 400, "message": "File rejected - too big"})
+  return flask.jsonify({"success": True, "filename": new_filename})
 
 @app.route("/getResumeDetails", methods=['GET'])
 def parse_resume():
