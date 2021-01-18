@@ -12,6 +12,7 @@ import sys
 import traceback
 import logging
 import time
+import passwords
 
 
 logging.basicConfig(filename="out.log",filemode='a')
@@ -22,7 +23,6 @@ CORS(app)
 
 @app.route("/")
 def healthcheck():
-  print("i am printing to stdout")
   return flask.jsonify({"status": 200, "message": "application is running"})
 
 @app.route("/postResume", methods=['POST'])
@@ -108,8 +108,14 @@ def get_resume_jpg():
 def count_documents():
   return flask.jsonify({"numDocuments": db.count_documents()})
 
-def authenticate(data):
-  return True
+@app.route("/access")
+def access_file():
+  if (authenticate(flask.request.args.get("api_key"))):
+    return flask.send_from_directory("saved-resumes/", flask.request.args.get("filename"))
+  return flask.jsonify({"message": "invalid credentials"})
+
+def authenticate(key):
+  return key == passwords.access_key()
 
 def save_resume_to_db(filename, new_filename, did_user_opt_in, scanned_data, resume_as_json, is_development):
   entry = {
