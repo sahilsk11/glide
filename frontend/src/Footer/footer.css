@@ -63,4 +63,8 @@
     margin-top: 40px;
     max-width: 150px;
   }
+  .product-hunt-tag {
+    display: flex;
+    justify-content: center;
+  }
 }

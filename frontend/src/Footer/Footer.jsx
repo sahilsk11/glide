@@ -3,7 +3,7 @@ import "./footer.css";
 
 export default function Footer({ host }) {
   const [numDocuments, updateNumDocuments] = useState("?");
-  fetch(host+"/countDocuments")
+  fetch(host + "/countDocuments")
     .then(r => r.json())
     .then(data => {
       updateNumDocuments(data.numDocuments)
@@ -42,6 +42,7 @@ function Text({ numDocuments }) {
       <Pair keyName="Fine Print" value={privacy} />
       <Pair keyName="Resumes Processed" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
       <em><p style={{ fontFamily: "Inter", marginTop: "40px" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
+      <ProductHuntTag />
     </div>
   );
 }
@@ -60,5 +61,13 @@ function Pair({ keyName, value }) {
         {value}
       </p>
     </>
+  )
+}
+
+function ProductHuntTag() {
+  return (
+    <div className="product-hunt-tag">
+      <a href="https://www.producthunt.com/posts/glide-cv?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-glide-cv" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=281317&theme=light&period=daily" alt="Glide CV - Debug your resume | Product Hunt" style={{"width": "250px", "height": "54px"}} width="250" height="54" /></a>
+    </div>
   )
 }
