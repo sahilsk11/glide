@@ -9,7 +9,7 @@ export default function Report({ pageData, redirect, experienceVisible, updateEx
     redirect("error");
   }
   let summary = "We couldn't create a summary from this resume.";
-  if (pageData.resumeJSON.summary) {
+  if (pageData.resumeJSON && pageData.resumeJSON.summary) {
     summary = pageData.resumeJSON.summary.experience;
   }
 

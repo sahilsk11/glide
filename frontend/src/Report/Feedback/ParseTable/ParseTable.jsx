@@ -4,15 +4,19 @@ import "./parse-table.css";
 import Flag from "../Flag/Flag";
 
 export default function ParseTable({ resumeAsJSON }) {
-  return (
-    <>
-      <Flag type="suggestion" message="If the parsed resume information appears wrong, your resume is being read wrong by applicant tracking systems (ATS). Please ensure formatting aligns using this guide." />
-      <h2>Summary</h2>
-      <Summary resumeAsJSON={resumeAsJSON} />
-      <h2>Work Experience</h2>
-      <WorkExperience positions={resumeAsJSON.positions} />
-    </>
-  )
+  if (resumeAsJSON) {
+    return (
+      <>
+        <Flag type="suggestion" message="If the parsed resume information appears wrong, your resume is being read wrong by applicant tracking systems (ATS). Please ensure formatting aligns using this guide." />
+        <h2>Summary</h2>
+        <Summary resumeAsJSON={resumeAsJSON} />
+        <h2>Work Experience</h2>
+        <WorkExperience positions={resumeAsJSON.positions} />
+      </>
+    )
+  } else {
+    return <></>;
+  }
 }
 
 function Summary({ resumeAsJSON }) {

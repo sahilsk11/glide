@@ -253,7 +253,7 @@ function App() {
   const [appState, updateAppState] = useState(initialState);
   const [sharingOptIn, updateSharingOptIn] = useState(true);
   const [filename, updateFilename] = useState("");
-  const [pageData, updatePageData] = useState(initialData);
+  const [pageData, updatePageData] = useState({ success: false });
   const [experienceVisible, updateExperienceVisibility] = useState(false);
   const simulateProd = false;
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
