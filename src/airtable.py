@@ -1,6 +1,7 @@
 import passwords
 import requests
 import datetime
+import json
 
 cached_entries = {}
 
@@ -43,5 +44,20 @@ def get_score_from_key(queried_key, table_name):
       return score
   return None
 
+def add_email(email):
+  url = "https://api.mailerlite.com/api/v2/groups/105804937/subscribers"
+
+  data = {
+    'email': email,
+  }
+  payload = json.dumps(data)
+  headers = {
+    'content-type': "application/json",
+    'x-mailerlite-apikey': "a0ec5ddd2812eea57ea94c20c5e63a79"
+  }
+
+  response = requests.request("POST", url, data=payload, headers=headers)
+  return response.status_code == 200
+
 if __name__ == "__main__":
-  print(get_rows("skills"))  # returns [('Java', 10), ('Python', 8)]
+  print(add_email("email@kapurs.net"))

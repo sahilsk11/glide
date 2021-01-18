@@ -13,7 +13,7 @@ import traceback
 import logging
 import time
 import passwords
-
+import airtable
 
 logging.basicConfig(filename="out.log",filemode='a')
 
@@ -100,6 +100,16 @@ def parse_resume():
 @app.route("/getResumeImage")
 def get_resume_jpg():
   return flask.send_from_directory("saved-images/", flask.request.args.get("filename"))
+
+@app.route("/emailSignup")
+def add_email():
+  email = flask.request.args.get("email")
+  try:
+    success = airtable.add_email(email)
+    return flask.jsonify({"success": success})
+  except Exception as e:
+    logging.exception(e)
+    return flask.jsonify({"success": False})
 
 @app.route("/countDocuments")
 def count_documents():
