@@ -31,7 +31,8 @@ function ViewEvaluation({ updateExperienceVisibility }) {
         <br /><br />
         Similar to how applicant tracking systems work, Glide compares popular Software Engineering role keywords and skills with data found on your resume. Based on similarity, a score is produced to help you understand where you stand as an application.
         <br /><br />
-        The Glide algorithm takes into account company name, role, and role summary, with the greatest weight places on the keywords and skills found in your role summary. Take evaluation with caution as every recruiting processes vary greatly between companies.
+        The Glide algorithm takes into account company name, role, and role summary, with the greatest weight places on the keywords and skills found in your role summary. Take evaluation with caution as every recruiting process varies greatly between companies.
+
       </p>
       <button className="glide-btn" onClick={() => updateExperienceVisibility(true)}>View Evaluation</button>
     </div>
