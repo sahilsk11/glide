@@ -1,0 +1,86 @@
+.email-container {
+  width: 100%;
+  background: #F8FCFF;
+  border: 1px solid #DCDCDC;
+  min-height: 220px;
+  padding-bottom: 50px;
+}
+
+.email-title {
+  font-family: Inter;
+  text-align: center;
+  max-width: 80%;
+  margin: 0px auto;
+  margin-top: 40px;
+  font-weight: 600;
+  color: rgba(35, 43, 53, 1);
+}
+
+.email-subtitle {
+  font-family: Inter;
+  text-align: center;
+  max-width: 90%;
+  margin: 0px auto;
+  margin-top: 30px;
+  font-weight: 600;
+  color: rgba(158, 157, 173, 1);
+  font-weight: 400;
+}
+
+.email-form-container {
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  width: 90%;
+}
+
+.email-input {
+  margin-right: 10px;
+  height: 34px;
+  width: 240px;
+  border: none;
+  background: rgba(241, 245, 248, 1);
+  border-radius: 4px;
+  outline: none;
+  padding-left: 13px;
+  font-size: 14px;
+}
+
+.email-submit-btn {
+  height: 36px;
+  border-radius: 4px;
+  width: 207px;
+  display: block;
+  margin: initial;
+}
+
+.email-subtext {
+  text-align: center;
+  margin: 0px auto;
+  width: 80%;
+  color: rgba(158, 157, 173, 1);
+  font-family: Inter;
+  font-size: 12px;
+}
+
+.email-submit-btn-mobile {
+  display: none;
+  height: 36px;
+  border-radius: 4px;
+  width: 207px;
+  margin: initial;
+}
+
+@media only screen and (max-width: 400px) {
+  .email-submit-btn {
+    display: none;
+  }
+  .email-submit-btn-mobile {
+    display: block;
+  }
+}

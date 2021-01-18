@@ -45,7 +45,7 @@ def get_score_from_key(queried_key, table_name):
   return None
 
 def add_email(email):
-  url = "https://api.mailerlite.com/api/v2/groups/105804937/subscribers"
+  url = "https://api.mailerlite.com/api/v2/groups/105805303/subscribers"
 
   data = {
     'email': email,
@@ -53,7 +53,7 @@ def add_email(email):
   payload = json.dumps(data)
   headers = {
     'content-type': "application/json",
-    'x-mailerlite-apikey': "a0ec5ddd2812eea57ea94c20c5e63a79"
+    'x-mailerlite-apikey': passwords.mail_key()
   }
 
   response = requests.request("POST", url, data=payload, headers=headers)

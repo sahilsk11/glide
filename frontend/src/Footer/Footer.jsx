@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./footer.css";
 
+import EmailSignup from "./EmailSignup/EmailSignup";
+
 export default function Footer({ host }) {
   const [numDocuments, updateNumDocuments] = useState("?");
   fetch(host + "/countDocuments")
@@ -9,16 +11,19 @@ export default function Footer({ host }) {
       updateNumDocuments(data.numDocuments)
     })
   return (
-    <div className="footer-container">
-      <div className="footer-content">
-        <div className="footer-text-col">
-          <Text numDocuments={numDocuments} />
-        </div>
-        <div className="footer-img-col">
-          <img alt="" src="./img/icon.svg" className="footer-icon" />
+    <>
+      <EmailSignup />
+      <div className="footer-container">
+        <div className="footer-content">
+          <div className="footer-text-col">
+            <Text numDocuments={numDocuments} />
+          </div>
+          <div className="footer-img-col">
+            <img alt="" src="./img/icon.svg" className="footer-icon" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -67,7 +72,7 @@ function Pair({ keyName, value }) {
 function ProductHuntTag() {
   return (
     <div className="product-hunt-tag">
-      <a href="https://www.producthunt.com/posts/glide-cv?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-glide-cv" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=281317&theme=light&period=daily" alt="Glide CV - Debug your resume | Product Hunt" style={{"width": "250px", "height": "54px"}} width="250" height="54" /></a>
+      <a href="https://www.producthunt.com/posts/glide-cv?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-glide-cv" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=281317&theme=light&period=daily" alt="Glide CV - Debug your resume | Product Hunt" style={{ "width": "250px", "height": "54px" }} width="250" height="54" /></a>
     </div>
   )
 }

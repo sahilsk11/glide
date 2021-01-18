@@ -24,40 +24,6 @@
   margin-top: 7px;
 }
 
-.nav-email-signup-wrapper {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  z-index: 99;
-}
-
-.nav-form-container {
-  display: flex;
-  align-items: center;
-}
-
-.nav-email-input {
-  margin-right: 10px;
-  height: 34px;
-  width: 240px;
-  border: none;
-  background: rgba(241, 245, 248, 1);
-  border-radius: 4px;
-  outline: none;
-  padding-left: 13px;
-  font-size: 14px;
-}
-
-.nav-email-btn {
-  height: 36px;
-  width: 175px;
-  font-size: 15px;
-  border: none;
-  padding-bottom: 5px;
-  font-family: Karla;
-  font-weight: 700;
-}
-
 .nav-feedback {
   text-decoration: none;
   transition-duration: 0.3s;
