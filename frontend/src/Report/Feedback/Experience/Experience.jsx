@@ -52,7 +52,7 @@ function SkillInsight({ score, keywords, title }) {
       <div className="experience-skill-row">
         <><ScoreVisual score={score} /></>
         <p className="experience-eval-text">
-          Glide regularly scans software enginnering job posts to determine top in demand skills. Consider adding to your skillset up by learning popular technologies from this <a href="#" className="glide-link">list</a>.
+          Glide regularly scans software enginnering job posts to determine top in demand skills. Consider adding to your skillset up by learning popular technologies from this <a href="https://www.ziprecruiter.com/Career/Software-Engineer/Resume-Keywords-and-Skills" className="glide-link">list</a>.
             <br /><br />
           We found the following skills on your resume.
         </p>
