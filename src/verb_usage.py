@@ -43,11 +43,3 @@ def verb_score(good_verbs, resume_as_dict):
 
 
 
-
-
-
-
-
-    
-    
-    return verb_points
