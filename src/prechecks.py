@@ -8,7 +8,7 @@ import re
 def is_resume_pdf(filename):
     try:
         PyPDF2.PdfFileReader(open("saved-resumes/" + filename, "rb"))
-    except PyPDF2.utils.PdfReadError:
+    except:
         return False
     else:
         return True
