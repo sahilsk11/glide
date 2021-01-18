@@ -54,7 +54,7 @@ export default function FileDropzone({
       InputComponent={Input}
       SubmitButtonComponent={(props) => Submit({ ...props, sharingOptIn, updateSharingOptIn })}
       getFilesFromEvent={getFilesFromEvent}
-      maxSizeBytes={1048576}
+      maxSizeBytes={2*1048576}
     />
   )
 }

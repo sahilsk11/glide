@@ -37,7 +37,7 @@ def accept_resume():
     glide_rename_index += 1
   file.save(os.path.join("saved-resumes/",new_filename))
   size = os.stat('saved-resumes/'+new_filename).st_size
-  if (size > 1048576):
+  if (size > 2*1048576):
     os.remove("saved-resumes/"+new_filename)
     return flask.jsonify({"code": 400, "message": "File rejected - too big"})
   return flask.jsonify({"success": True, "filename": new_filename})
