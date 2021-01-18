@@ -277,8 +277,18 @@ function App() {
 
   useEffect(() => {
     if (appState === "submitted") {
-      const endpoint = host + "/getResumeDetails?filename=" + filename + "&optIn=" + sharingOptIn + "&isDev=" + isDev;
-      fetch(endpoint)
+      const endpoint = host + "/getResumeDetails";
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          filename,
+          optIn: sharingOptIn,
+          isDev
+        })
+      })
         .then(response => response.json())
         .then(data => {
           updatePageData(data);

@@ -11,7 +11,6 @@ import re
 import sys
 import traceback
 import logging
-import time
 import passwords
 import airtable
 
@@ -32,7 +31,6 @@ def accept_resume():
   glide_rename_index = 0 #value to put in filename
   new_filename = file.filename
   while os.path.exists("saved-resumes/"+new_filename):
-    print("file found")
     new_filename = new_filename.replace(".", "[GLIDE_"+str(glide_rename_index)+"].")
     glide_rename_index += 1
   file.save(os.path.join("saved-resumes/",new_filename))
@@ -42,30 +40,23 @@ def accept_resume():
     return flask.jsonify({"code": 400, "message": "File rejected - too big"})
   return flask.jsonify({"success": True, "filename": new_filename})
 
-@app.route("/getResumeDetails", methods=['GET'])
+@app.route("/getResumeDetails", methods=['POST'])
 def parse_resume():
-  o_start = time.time()
-  filename = flask.request.args.get('filename')
-  did_user_opt_in = flask.request.args.get('optIn') == "true"
-  is_development = flask.request.args.get("isDev") == "true"
+  json_body = flask.request.get_json()
+  filename = json_body["filename"]
+  did_user_opt_in = json_body["optIn"]
+  is_development = json_body["isDev"]
   try:
-    file_start = time.time()
     original_filename = remove_glide_index(filename)
     new_filename = generate_filename(filename)
     rename_file(filename, new_filename)
-    print(f"finished file_time in {time.time() - file_start}s")
   except Exception as e:
     logging.exception(e)
     logging.error(msg="Unable to rename file: " + filename+"\n\n")
     return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })
   try:
-    api_start = time.time()
     resume_as_dict = resume_to_dict(new_filename)
-    print(f"finished api_start in {time.time() - api_start}s")
-    scan_start = time.time()
     scanned_data = scan_resume(original_filename, resume_as_dict, system_filename=new_filename)
-    print(f"finished scan_start in {time.time() - scan_start}s")
-    db_start = time.time()
     save_resume_to_db(
       original_filename,
       new_filename,
@@ -74,12 +65,10 @@ def parse_resume():
       resume_as_dict,
       is_development
     )
-    print(f"finished db_start in {time.time() - db_start}s")
   except Exception as e:
     logging.exception(e)
     logging.error(msg="Failed on file: " + new_filename+"\n\n")
     return flask.jsonify({"success": False, "message": "There was an error in the request", "error": traceback.format_exc() })
-  response_start = time.time()
   img_filename = pdf_to_png(new_filename)
   host = ""
   if is_development:
@@ -93,8 +82,6 @@ def parse_resume():
     "success": True
   }
   response.update(scanned_data) # deconstruct scanned data and add to response
-  print(f"finished response_start in {time.time() - response_start}s")
-  print(f"finished o_time in {time.time() - o_start}s")
   return flask.jsonify(response)
 
 @app.route("/getResumeImage")
