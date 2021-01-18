@@ -152,7 +152,7 @@ def remove_glide_index(filename):
     return filename
 
 def generate_filename(filename):
-  original_extension = filename[filename.find("."):]
+  original_extension = filename[filename.rindex("."):]
   letters = string.ascii_uppercase
   nums = string.digits
   out = ""

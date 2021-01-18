@@ -10,7 +10,7 @@ import json
 import docxpy
 
 def resume_to_str(filename, path="saved-resumes/"):
-  dot_index = filename.index(".")
+  dot_index = filename.rindex(".")
   extension = filename[dot_index:]
   if extension.lower() == ".pdf":
     return pdf_to_str(filename, path)
