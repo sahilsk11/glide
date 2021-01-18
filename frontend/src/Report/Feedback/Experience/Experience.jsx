@@ -115,7 +115,7 @@ function ExperienceInsight({ activeContent }) {
           <div>
             <h2 className="experience-subtitle" style={{ marginLeft: "30px" }}>Experience Insight</h2>
             <p className="experience-eval-text">
-              Glide compares popular Software Engineering role descriptions to analyze matching keywords found on your resume to help you understand where you stand as an application. <span className="experience-strong-verb">Strong</span> verbs and <span className="experience-keyword">
+              Glide compares popular Software Engineering role descriptions to analyze matching keywords found on your resume to help you understand where you stand as an applicant. <span className="experience-strong-verb">Strong</span> verbs and <span className="experience-keyword">
                 technical keywords</span> are highlighted.
             </p>
           </div>
