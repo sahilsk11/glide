@@ -7,9 +7,16 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 import requests
 import json
-
+import docxpy
 
 def resume_to_str(filename, path="saved-resumes/"):
+  dot_index = filename.index(".")
+  extension = filename[dot_index:]
+  if extension.lower() == ".pdf":
+    return pdf_to_str(filename, path)
+  return docxpy.process(path+filename)
+
+def pdf_to_str(filename, path):
   output_string = StringIO()
   with open(path+filename, 'rb') as in_file:
       parser = PDFParser(in_file)

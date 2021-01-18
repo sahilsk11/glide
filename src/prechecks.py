@@ -12,16 +12,21 @@ def is_resume_pdf(filename):
         return False
     else:
         return True
+
 def is_resume_scannable(filename):
     string = resume_to_str(filename, path="saved-resumes/")
-    return bool(string and string.strip())
+    return bool(string and len(string.strip()) > 0)
 
 def is_resume_a_page(filename):
-    num_pages = PdfFileReader(open("saved-resumes/" + filename, "rb")).getNumPages() 
+    try:
+        num_pages = PdfFileReader(open("saved-resumes/" + filename, "rb")).getNumPages()
+    except PyPDF2.utils.PdfReadError: # could not process doc
+        return True
     if num_pages != 1:
         return False
     else:
         return True
+
 def is_filename_formatting(filename):
     return re.match("[a-zA-Z]+_[a-zA-Z]+_(r|R)esume\.", filename) != None
 

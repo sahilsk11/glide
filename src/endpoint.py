@@ -2,7 +2,7 @@ import flask
 import os
 from overall_points import scan_resume
 import PyPDF2
-from pdf2image import convert_from_path 
+import pdf2image
 import db_connection as db
 from resume_converter import resume_to_dict
 import string
@@ -123,10 +123,13 @@ def save_resume_to_db(filename, new_filename, did_user_opt_in, scanned_data, res
   db.add_entry(entry)
 
 def pdf_to_png(filename):
-  images = convert_from_path("saved-resumes/"+ filename, size = (300, None),first_page=1, last_page=1) 
-  img_filename = os.path.splitext(filename)[0]+".jpg"
-  for img in images: 
-    img.save("saved-images/"+ img_filename, 'JPEG')
+  try:
+    images = pdf2image.convert_from_path("saved-resumes/"+ filename, size = (300, None),first_page=1, last_page=1) 
+    img_filename = os.path.splitext(filename)[0]+".jpg"
+    for img in images: 
+      img.save("saved-images/"+ img_filename, 'JPEG')
+  except pdf2image.exceptions.PDFPageCountError:
+    return "default.jpg"
   return img_filename
 
 def remove_glide_index(filename):
