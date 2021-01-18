@@ -14,8 +14,12 @@ def is_resume_pdf(filename):
         return True
 
 def is_resume_scannable(filename):
-    string = resume_to_str(filename, path="saved-resumes/")
-    return bool(string and len(string.strip()) > 0)
+    try:
+        string = resume_to_str(filename, path="saved-resumes/")
+        return bool(string and len(string.strip()) > 0)
+    #doc extension
+    except KeyError:
+        return True
 
 def is_resume_a_page(filename):
     try:
