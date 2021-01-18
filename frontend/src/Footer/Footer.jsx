@@ -12,7 +12,7 @@ export default function Footer({ host }) {
     })
   return (
     <>
-      <EmailSignup />
+      <EmailSignup host={host} />
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-text-col">

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./email-signup.css";
 
-export default function EmailSignup() {
+export default function EmailSignup({host}) {
   const [email, updateEmail] = useState("");
   const myChangeHandler = (event) => {
     updateEmail(event.target.value);
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    const host = "http://localhost:5000";
     fetch(host + "/emailSignup?email=" + email)
       .then(response => response.json())
       .then(data => {
