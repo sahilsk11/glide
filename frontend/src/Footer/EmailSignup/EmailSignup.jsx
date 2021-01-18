@@ -24,7 +24,7 @@ export default function EmailSignup({host}) {
   return (
     <div className="email-container">
       <h2 className="email-title">Resume Hacks. SWE Jobs. Plain and Simple.</h2>
-      <p className="email-subtitle">We’ll send you occasional resume tips. No B.S. Upsubscribe anytime.</p>
+      <p className="email-subtitle">We’ll send you occasional resume tips. No B.S. Unsubscribe anytime.</p>
       <form className="email-form-container">
         <input
           className="email-input"
