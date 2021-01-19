@@ -54,7 +54,7 @@ function getResourceData() {
     {
       title: "The Codex",
       imgSrc: "./img/resource-images/codex.png",
-      description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume thos employers you are a self-starter.",
+      description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume to show employers you are a self-starter. Get 20% off with promo code GLIDE20.",
       href: "https://thecodex.me?ref=glidecv.com"
     }
   ]
