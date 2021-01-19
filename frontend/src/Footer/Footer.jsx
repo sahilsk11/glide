@@ -36,18 +36,21 @@ function Text({ numDocuments }) {
 
     </>
   );
-  const betaComponent = <a className="maker-link" href="#">Our 50+ beta testers</a>
+  const donate = <a className="maker-link" href="https://www.buymeacoffee.com/sahilkapur" target="_blank">Support us here</a>
   const howItsMade = <a className="maker-link" href="https://github.com/sahilsk11/resume-scanner" target="_blank">Check out our GitHub</a>
   const privacy = <a className="maker-link" href="https://www.notion.so/Glide-Privacy-Policy-and-Terms-of-Use-86d9f1a914704f86ae8ebbb3ec70ca24" target="_blank">Privacy Policy</a>
   return (
     <div>
       {/* <Pair keyName="Special Thanks" value={betaComponent} /> */}
-      <Pair keyName="Makers" value={makerComponent} />
-      <Pair keyName="How we Made This" value={howItsMade} />
-      <Pair keyName="Fine Print" value={privacy} />
-      <Pair keyName="Resumes Processed" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
+      <Pair keyName="Makers:" value={makerComponent} />
+      <Pair keyName="How we Made This:" value={howItsMade} />
+      <Pair keyName="Fine Print:" value={privacy} />
+      <Pair keyName="Feeling Generous?" value={donate} />
+      <Pair keyName="Resumes Processed:" value={numDocuments.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
       <em><p style={{ fontFamily: "Inter", marginTop: "40px" }}>Copyright © 2021 Glide. All rights reserved.</p></em>
       <ProductHuntTag />
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="sahilkapur" data-color="#FFDD00" data-emoji="" data-font="Lato" data-text="Support Glide" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+      
     </div>
   );
 }
@@ -62,7 +65,7 @@ function Pair({ keyName, value }) {
   return (
     <>
       <p className="footer-text">
-        <b className="footer-key">{keyName}:&nbsp;</b>
+        <b className="footer-key">{keyName}&nbsp;</b>
         {value}
       </p>
     </>
