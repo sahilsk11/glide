@@ -11,6 +11,7 @@
   max-width: 90%;
   background-color: #fbf3d4;
   overflow: hidden;
+  font-family: Inter;
 }
 
 .dropzone-input {
