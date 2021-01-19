@@ -11,6 +11,7 @@ import experience_valuation
 import verb_usage
 from operator import itemgetter
 from pprint import pprint
+from math import sqrt
 
 def scan_resume(filename, resume_as_dict, system_filename=None):
     if system_filename is None:
@@ -50,10 +51,11 @@ def scan_resume(filename, resume_as_dict, system_filename=None):
             "aggregateScore": agg_score,
             "positions": exp_valuation  # [{report}, ....]
         },
-        "score": over_points
+        "score": square_root_curve(over_points)
     }
 
-
+def square_root_curve(points):
+    return int(10*sqrt(points))
 
 def calculate_overall_points(precheck_score, ruleset_score, verb_scores, resume_as_dict, exp_valuation, skill_scores):
     flag = 0
