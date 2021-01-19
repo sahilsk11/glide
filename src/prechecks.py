@@ -18,7 +18,7 @@ def is_resume_scannable(filename):
         string = resume_to_str(filename, path="saved-resumes/")
         return bool(string and len(string.strip()) > 0)
     #doc extension
-    except KeyError:
+    except:
         return True
 
 def is_resume_a_page(filename):
