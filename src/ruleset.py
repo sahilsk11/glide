@@ -203,7 +203,7 @@ def ruleset_score(checklist, verb_usage, resume_as_dict):
         if checklist["endMonth"] == False:
             ruleset_points = ruleset_points - 4
     
-    return ruleset_points
+    return max(0,ruleset_points)
     
 if __name__ == "__main__":
     d = resume_to_dict("sahil_kapur_resume.pdf")
