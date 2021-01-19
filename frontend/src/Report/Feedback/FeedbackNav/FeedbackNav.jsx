@@ -4,10 +4,10 @@ import "./report-switcher.css";
 export default function ReportSwitcher({ activeFeedback, updateActiveFeedback }) {
   const tabs = [
     "ATS Scan",
-    "Prechecks",
-    "Required Info",
+    "Checklist",
     "Experience",
-    "Helpful Tips"
+    "Helpful Tips",
+    "FAQ"
   ];
   const tabComponents = tabs.map(tabName => (
     <ReportNav title={tabName}

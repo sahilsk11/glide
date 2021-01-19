@@ -28,11 +28,11 @@ export default function EmailSignup({host}) {
       <form className="email-form-container">
         <input
           className="email-input"
-          placeholder="Get one resume tip every week" value={email} onChange={myChangeHandler}
+          placeholder="Get resume hacks and SWE jobs" value={email} onChange={myChangeHandler}
         />
         <Submit handleSubmit={handleSubmit} />
       </form>
-      <p className="email-subtext" >Join the hundreds of student developers getting smarter with Glide.</p>
+      <p className="email-subtext">Join the hundreds of student developers getting smarter with Glide.</p>
     </div>
   )
 }

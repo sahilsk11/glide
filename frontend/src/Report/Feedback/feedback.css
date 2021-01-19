@@ -58,6 +58,25 @@
   margin-top: 10px;
 }
 
+.feedback-hr {
+  border: none;
+  border-top: 2px solid #F1F3F9;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.feedback-faq-title {
+  font-family: Inter;
+  color: #232B35;
+  font-weight: 500;
+}
+
+.feedback-faq-answer {
+  font-family: Inter;
+  color: #5a5c60;
+  font-weight: 400;
+}
+
 @media only screen and (max-width: 1265px) {
   .report-resume-img-container {
     display: none;

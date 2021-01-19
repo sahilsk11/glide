@@ -20,6 +20,7 @@ export default function Feedback({ resumeImageSrc, content, resumeAsJSON, filena
         <ReportContent
           activeFeedback={activeFeedback}
           activeContent={content[toLowerCamelCase(activeFeedback)]}
+          content={content}
           resumeAsJSON={resumeAsJSON}
           experienceVisible={experienceVisible}
           updateExperienceVisibility={updateExperienceVisibility}
@@ -36,13 +37,16 @@ const toLowerCamelCase = (str) => {
   }).replace(/\s+/g, '');
 }
 
-function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experienceVisible, updateExperienceVisibility }) {
-  console.log(activeFeedback);
+function ReportContent({ activeFeedback, activeContent, resumeAsJSON, experienceVisible, updateExperienceVisibility, content }) {
+  console.log(content);
   let feedbackComponent;
-  if (activeFeedback === "Prechecks") {
-    feedbackComponent = Prechecks({ activeContent });
-  } else if (activeFeedback === "Required Info") {
-    feedbackComponent = RequiredInfo({ activeContent });
+  if (activeFeedback === "Checklist") {
+    feedbackComponent = <>
+      <Prechecks activeContent={content["prechecks"]} />
+      <RequiredInfo activeContent={content["requiredInfo"]} />
+    </>
+  } else if (activeFeedback === "FAQ") {
+    feedbackComponent = FAQSection();
   } else if (activeFeedback === "ATS Scan") {
     feedbackComponent = ParseTable({ resumeAsJSON });
   } else if (activeFeedback === "Experience") {
@@ -198,5 +202,38 @@ function ResumeImage({ filename, resumeImageSrc }) {
       <img alt="" src={resumeImageSrc} className="report-resume-img" />
       <p className="report-resume-filename">{filename}</p>
     </div>
+  )
+}
+
+function FAQSection() {
+  const faqs = [
+    {
+      question: "How does Glide Calculate my score?",
+      answer: "Similar to how applicant tracking systems work, Glide compares popular Software Engineering role keywords and skills with data found on your resume. Based on similarity, a score is produced to help you understand where you stand as an application. We also factor if you include required information found in our checklist section.",
+    },
+    {
+      question: "How can I improve my score?",
+      answer: <>If your resume is scanning incorrectly, use this guide to better format your resume. Check to see if all information on the checklist is included on your resume. If your experience score is low, consider adding to your skillset up by learning popular technologies from this list.<br /><br/>Reminder: Glide is built for job seeks looking for software engineering roles.</>,
+    },
+    {
+      question: "Where can I get personalized advice?",
+      answer: "We’re offering students personalized advice from the creators of Glide tips to ",
+    },
+  ];
+  const faqComponents = faqs.map(props => FAQ(props));
+  return (
+    <div>
+      {faqComponents}
+    </div>
+  )
+}
+
+function FAQ({ question, answer }) {
+  return (
+    <>
+      <hr className="feedback-hr" />
+      <h3 className="feedback-faq-title">{question}</h3>
+      <p className="feedback-faq-answer">{answer}</p>
+    </>
   )
 }

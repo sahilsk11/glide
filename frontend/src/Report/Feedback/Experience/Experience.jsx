@@ -91,7 +91,7 @@ function ScoreVisual({ score }) {
   return (
     <div>
       <div style={{ backgroundColor: backgroundColor }} className="experience-score-background">
-        <p style={{ color: primaryColor }} className="experience-score-value">{score}</p>
+        <p style={{ color: primaryColor }} className="experience-score-value">{score}%</p>
       </div>
     </div>
   )
@@ -148,7 +148,6 @@ function IndividualExperienceAnalysis({
       } else if (strongVerbs.includes(word.toLowerCase())) {
         experienceDescription.push(<span className="experience-strong-verb">{word}</span>)
       } else {
-        console.log(word);
         experienceDescription.push(<>{ogWord}</>)
       }
       experienceDescription.push(" ")
