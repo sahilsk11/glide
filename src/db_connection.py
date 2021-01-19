@@ -46,8 +46,9 @@ def remove_dot_from_keys(entry):
     return entry
 
 if __name__ == "__main__":
-  f = open("out.json")
-  r = f.read()
-  d = json.loads(r)
-  print(add_entry(d))
+  entries = get_all_entries()
+  total = 0
+  for entry in entries:
+    total += max(entry["analysis"]["score"], 0)
+  print(total/count_documents())
 

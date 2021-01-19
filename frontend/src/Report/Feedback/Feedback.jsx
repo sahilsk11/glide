@@ -212,13 +212,21 @@ function FAQSection() {
       answer: "Similar to how applicant tracking systems work, Glide compares popular Software Engineering role keywords and skills with data found on your resume. Based on similarity, a score is produced to help you understand where you stand as an application. We also factor if you include required information found in our checklist section.",
     },
     {
-      question: "How can I improve my score?",
-      answer: <>If your resume is scanning incorrectly, use this guide to better format your resume. Check to see if all information on the checklist is included on your resume. If your experience score is low, consider adding to your skillset up by learning popular technologies from this list.<br /><br/>Reminder: Glide is built for job seeks looking for software engineering roles.</>,
+      question: "What is an ATS?",
+      answer: "ATS stands for applicant tracking systems. Most companies use ATS to screen applicants by using a resume parsing and grading algorithm to decide which applicants make it to the first round. "
     },
     {
-      question: "Where can I get personalized advice?",
-      answer: "We’re offering students personalized advice from the creators of Glide tips to ",
+      question: "How can I improve my score?",
+      answer: <>If your resume is scanning incorrectly, use <a href="https://www.notion.so/Resume-Tips-and-General-Guidelines-Glide-efde853b2b0b48b59b76a66ae3a04d74" target="_blank" className="glide-link">this guide</a> to better format your resume. Check to see if all information on the checklist is included on your resume. If your experience score is low, consider adding to your skillset up by learning popular technologies from <a href="https://www.ziprecruiter.com/Career/Software-Engineer/Resume-Keywords-and-Skills" className="glide-link" target="_blank">this list</a>.<br /><br />Reminder: Glide is built for job seeks looking for software engineering roles.<br /><br />We’re offering students personalized advice from the creators of Glide tips to help perfect your resume. If you are interested in getting some eyes on your resume, <a className="glide-link" href="https://gumroad.com/l/XoLzX" target="_blank">see here</a>.</>,
     },
+    {
+      question: "Why is Glide limited to SWE candidates?",
+      answer: "We’ve found that hiring for software engineering roles is far more objective than other roles. This allows us to provide an objective algorithm to evaluate how the strength of a resume. Oh and our team is well versed in applying for SWE roles and we’d like to share what has worked for us!",
+    },
+    {
+      question: "I have more questions, how can I reach out?",
+      answer: <>Shoot us a message through our feedback <a href="https://airtable.com/shr2dgrLZTvXliBD6" target="_blank" className="glide-link">form here</a>, and we’ll get back as soon as possible :)</>
+    }
   ];
   const faqComponents = faqs.map(props => FAQ(props));
   return (
