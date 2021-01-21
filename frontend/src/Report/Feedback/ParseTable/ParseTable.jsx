@@ -85,7 +85,10 @@ function Summary({ resumeAsJSON }) {
 function School(school) {
   let gpa = "null";
   if (school.gpa) {
-    gpa = school.gpa.toString() + "/" + school.gpaMax.toString();
+    gpa = school.gpa.toString();
+  }
+  if (school.gpaMax) {
+    gpa += "/" + school.gpaMax.toString();
   }
   return (
     <ul className="parse-table-ul">
