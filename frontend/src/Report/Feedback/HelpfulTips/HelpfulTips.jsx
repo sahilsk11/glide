@@ -56,6 +56,12 @@ function getResourceData() {
       imgSrc: "./img/resource-images/codex.png",
       description: "The Codex shows you how to build fun, practical projects with Python. Projects are always a great add to your resume to show employers you are a self-starter. Get 20% off with promo code GLIDE20.",
       href: "https://thecodex.me?ref=glidecv.com"
-    }
+    },
+    {
+      title: "Resume Puppy",
+      imgSrc: "https://resumepuppy.com/wp-content/uploads/2020/10/cropped-RPlogo-full-colour@3x-180x180.png",
+      description: "At ResumePuppy, we're committed to providing you with the best technology to help you reach your goals. Whether you need to quickly build a resume for a particular job or track multiple resume versions our tools will help you sort through the small stuff, so you can focus on what you do best.",
+      href: "https://resumepuppy.com?ref=glidecv.com"
+    },
   ]
 }
