@@ -23,3 +23,10 @@
   width: 50px;
   padding-right: 30px;
 }
+
+.resource-link {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+}

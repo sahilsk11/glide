@@ -23,16 +23,18 @@ export default function HelpfulTips() {
 
 function Resource({ title, imgSrc, description, href }) {
   return (
-    <div className="resource-container" onClick={() => window.open(href, "_blank")}>
-      <div className="resource-content">
-        <div>
-          <img src={imgSrc} className="helpful-tips-resource-img" alt="" />
+    <div className="resource-container">
+      <a href={href} className="resource-link" target="_blank">
+        <div className="resource-content">
+          <div>
+            <img src={imgSrc} className="helpful-tips-resource-img" alt="" />
+          </div>
+          <div className="resource-text-container">
+            <h3 className="resource-title">{title}</h3>
+            <p className="resource-description">{description}</p>
+          </div>
         </div>
-        <div className="resource-text-container">
-          <h3 className="resource-title">{title}</h3>
-          <p className="resource-description">{description}</p>
-        </div>
-      </div>
+      </a>
     </div>
   )
 }
