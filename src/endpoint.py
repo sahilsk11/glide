@@ -13,6 +13,8 @@ import traceback
 import logging
 import passwords
 import airtable
+from werkzeug.utils import secure_filename
+
 
 logging.basicConfig(filename="out.log",filemode='a')
 
@@ -28,8 +30,12 @@ def healthcheck():
 def accept_resume():
   # save resume as file
   file = flask.request.files['file']
-  glide_rename_index = 0 #value to put in filename
-  new_filename = file.filename
+  glide_rename_index = 0
+
+  new_filename = secure_filename(file.filename) # thank you andre
+
+  if not is_valid_filetype(new_filename):
+    return flask.jsonify({"success": False, "message": "File rejected - invalid filetype"})
   while os.path.exists("saved-resumes/"+new_filename):
     new_filename = new_filename.replace(".", "[GLIDE_"+str(glide_rename_index)+"].")
     glide_rename_index += 1
@@ -39,6 +45,9 @@ def accept_resume():
     os.remove("saved-resumes/"+new_filename)
     return flask.jsonify({"code": 400, "message": "File rejected - too big"})
   return flask.jsonify({"success": True, "filename": new_filename})
+
+def is_valid_filetype(filename):
+  return filename.endswith(".pdf") or filename.endswith(".doc") or filename.endswith(".docx")
 
 @app.route("/getResumeDetails", methods=['POST'])
 def parse_resume():
