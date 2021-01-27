@@ -4,8 +4,8 @@ import datetime
 import json
 
 client = pymongo.MongoClient(f"mongodb+srv://mac-dev:{passwords.mongo_password()}@cluster0.i7jmt.mongodb.net/resume-scanner?retryWrites=true&w=majority")
-db = client["resume-scanner"]
-collection = db["resumeCollection"]
+db = client["glide"]
+collection = db["glideResumes"]
 
 
 def get_all_entries():
@@ -48,7 +48,11 @@ def remove_dot_from_keys(entry):
 if __name__ == "__main__":
   entries = get_all_entries()
   total = 0
+  a = 0
   for entry in entries:
-    total += max(entry["analysis"]["score"], 0)
-  print(total/count_documents())
+    s = max(entry["analysis"]["score"], 0)
+    total += s
+    if s < 81:
+      a += 1
+  print(a)
 
