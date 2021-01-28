@@ -259,6 +259,10 @@ function App() {
   const isDev = process.env.NODE_ENV !== "production" && !simulateProd;
   const host = isDev ? "http://localhost:5000" : "https://glidecv.com/server";
 
+  useEffect(() => {
+    alert("Howdy, friend. We're experiencing 3rd party issues with Glide, and are unable to parse any resumes right now. Please try again later!")
+  }, []);
+
   function redirect(path) {
     history.push(path);
   }
