@@ -21,9 +21,16 @@ def good_verbs(filename, resume_as_dict):
                     string_split = string_strip.split()
                     for verb in jsonObject["good"]:
                         for index in string_split:
-                            if verb.lower() == index.lower() and not(index.lower() in pos_dict[work_description.get("org")]):
-                             pos_dict[work_description.get("org")].append(index.lower())
-                            
+                            index_end = index[-3:]
+                            if index_end == "ing":
+                                new_index = index[:-3] + "ed"
+                                print(new_index)
+                                if verb.lower() == new_index.lower() and not(new_index.lower() in pos_dict[work_description.get("org")]):
+                                    pos_dict[work_description.get("org")].append(new_index.lower())
+                            else:
+                                if verb.lower() == index.lower() and not(index.lower() in pos_dict[work_description.get("org")]):
+                                    pos_dict[work_description.get("org")].append(index.lower())
+
     return pos_dict
 
 def verb_score(good_verbs, resume_as_dict):
