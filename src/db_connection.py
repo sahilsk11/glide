@@ -3,7 +3,7 @@ import passwords
 import datetime
 import json
 
-client = pymongo.MongoClient(f"mongodb+srv://mac-dev:{passwords.mongo_password()}@cluster0.i7jmt.mongodb.net/resume-scanner?retryWrites=true&w=majority")
+client = pymongo.MongoClient(f"mongodb+srv://{passwords.mongo_user()}:{passwords.mongo_password()}@cluster0.i7jmt.mongodb.net/resume-scanner?retryWrites=true&w=majority")
 db = client["glide"]
 collection = db["glideResumes"]
 
